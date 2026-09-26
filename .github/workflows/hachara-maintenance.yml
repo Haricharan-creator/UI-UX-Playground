@@ -68,7 +68,7 @@ jobs:
           if missing:
               raise SystemExit('Missing required runtime markers: ' + ', '.join(missing))
           runtime = Path('runtime-fix.js').read_text(encoding='utf-8')
-          for marker in ['window.HACHARA_RUNTIME','uiuxPlaygroundUnifiedUXContext','design-review-flow-runtime.js','project-workspace-runtime.js']:
+          for marker in ['window.HACHARA_RUNTIME','uiuxPlaygroundUnifiedUXContext','design-review-flow-runtime.js','project-workspace-runtime.js','ux-workflow-orchestrator.js']:
               if marker not in runtime:
                   raise SystemExit('runtime-fix.js is missing required marker: ' + marker)
           dna = Path('design-dna-runtime.js').read_text(encoding='utf-8')
@@ -80,6 +80,9 @@ jobs:
           workspace = Path('project-workspace-runtime.js').read_text(encoding='utf-8')
           if 'window.HACHARA_WORKSPACE' not in workspace or 'Project Workspace' not in workspace or 'hacharaDesignReviewFlow' not in workspace:
               raise SystemExit('project-workspace-runtime.js is missing required workspace markers.')
+          workflow = Path('ux-workflow-orchestrator.js').read_text(encoding='utf-8')
+          if 'window.HACHARA_WORKFLOW' not in workflow or 'Recommended next workspace action' not in workflow:
+              raise SystemExit('ux-workflow-orchestrator.js is missing required workflow markers.')
           print('HACHARA runtime validation passed.')
 
       - name: Validate JavaScript syntax
@@ -89,6 +92,7 @@ jobs:
           node --check design-dna-runtime.js
           node --check design-review-flow-runtime.js
           node --check project-workspace-runtime.js
+          node --check ux-workflow-orchestrator.js
           echo "HACHARA JavaScript syntax validation passed."
 
       - name: Commit repair if needed
