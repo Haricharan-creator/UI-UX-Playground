@@ -1,0 +1,1 @@
+The automated browser smoke test is configured in .github/workflows/hachara-browser-smoke.yml and tests/smoke.mjs. This note is a build artifact, not runtime code.
