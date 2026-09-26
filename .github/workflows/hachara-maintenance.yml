@@ -68,14 +68,16 @@ jobs:
           if missing:
               raise SystemExit('Missing required runtime markers: ' + ', '.join(missing))
           runtime = Path('runtime-fix.js').read_text(encoding='utf-8')
-          if 'window.HACHARA_RUNTIME' not in runtime:
-              raise SystemExit('runtime-fix.js is missing HACHARA runtime marker.')
+          for marker in ['window.HACHARA_RUNTIME','uiuxPlaygroundUnifiedUXContext','design-review-flow-runtime.js']:
+              if marker not in runtime:
+                  raise SystemExit('runtime-fix.js is missing required marker: ' + marker)
           dna = Path('design-dna-runtime.js').read_text(encoding='utf-8')
           if 'window.HACHARA_DNA' not in dna or 'wireframeCanvas' not in dna or 'uiBuilderCanvas' not in dna:
               raise SystemExit('design-dna-runtime.js is missing required canvas bindings.')
           review = Path('design-review-flow-runtime.js').read_text(encoding='utf-8')
-          if 'window.HACHARA_REVIEW_FLOW' not in review or 'Finding → Correction → Before / After → Test' not in review:
-              raise SystemExit('design-review-flow-runtime.js is missing the review-flow runtime marker.')
+          for marker in ['window.HACHARA_REVIEW_FLOW','Finding → Correction → Before / After → Test','uiuxPlaygroundUnifiedUXContext','contextLabel']:
+              if marker not in review:
+                  raise SystemExit('design-review-flow-runtime.js is missing required marker: ' + marker)
           print('HACHARA runtime validation passed.')
 
       - name: Validate JavaScript syntax
