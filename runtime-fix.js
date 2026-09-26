@@ -88,4 +88,14 @@
     bootstrap: 'safe',
     continuity: 'enabled'
   };
+
+  function loadReviewFlow(){
+    if(document.querySelector('script[data-hachara-review-flow]')) return;
+    const s=document.createElement('script');
+    s.src='design-review-flow-runtime.js';
+    s.async=true;
+    s.dataset.hacharaReviewFlow='1';
+    document.head.appendChild(s);
+  }
+  loadReviewFlow();
 })();
