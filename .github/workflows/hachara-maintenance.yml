@@ -1,0 +1,61 @@
+name: HACHARA Maintenance
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate-and-repair:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Repair known runtime bootstrap issue
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          original = s
+          s = s.replace(
+              'const topics=["Start From Zero"',
+              'const extra_topics = window.extra_topics || [];\nconst topics=["Start From Zero"',
+              1,
+          )
+          s = s.replace('extra_topics.forEach(x=>topics.push(x));', 'extra_topics.forEach(x=>topics.push(x));', 1)
+          p.write_text(s, encoding='utf-8')
+          print('Changed:', s != original)
+
+      - name: Validate HTML/JS bootstrap markers
+        shell: python
+        run: |
+          from pathlib import Path
+          s = Path('index.html').read_text(encoding='utf-8')
+          required = [
+              'const extra_topics = window.extra_topics || [];',
+              'extra_topics.forEach(x=>topics.push(x));',
+              'function go(id)',
+              'function escapeHtml(s)',
+          ]
+          missing = [x for x in required if x not in s]
+          if missing:
+              raise SystemExit('Missing required runtime markers: ' + ', '.join(missing))
+          print('HACHARA bootstrap validation passed.')
+
+      - name: Commit repair if needed
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No repair commit required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Fix HACHARA runtime bootstrap"
+          git push
