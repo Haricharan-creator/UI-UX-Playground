@@ -3092,6 +3092,7 @@ select[multiple]{min-height:95px}
 </div>
 
 <script>
+const extra_topics = window.extra_topics || [];
 const topics=["Start From Zero","UX Foundations","User Research","Problem Definition","Information Architecture","User Flows","Interaction Design","Wireframing","UI Design","Visual Design","Design Systems","Responsive Design","Accessibility","Prototyping","Usability Testing","Product Design","Analytics","Professional Practice","Portfolio & Case Studies"];
 extra_topics.forEach(x=>topics.push(x));
 const learnGrid=document.getElementById('learnGrid');
