@@ -38,8 +38,9 @@
   function boot(){restoreContext();FIELD_IDS.forEach(id=>{const el=document.getElementById(id);if(el){el.addEventListener('input',writeContext);el.addEventListener('change',writeContext)}});updateContextBadge()}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
   window.HACHARA_CONTEXT={version:'0.3.0',key:KEY,get:storedContext,save:writeContext,restore:restoreContext,clear:function(){localStorage.removeItem(KEY);localStorage.removeItem('uiuxPlaygroundCurrentScreenContext');updateContextBadge()}};
-  window.HACHARA_RUNTIME={version:'0.4.0',bootstrap:'safe',continuity:'enabled',unifiedContext:'connected'};
+  window.HACHARA_RUNTIME={version:'0.5.0',bootstrap:'safe',continuity:'enabled',unifiedContext:'connected',workflow:'connected'};
   function loadScript(src,attr){if(document.querySelector(`script[${attr}]`))return;const s=document.createElement('script');s.src=src;s.async=true;s.setAttribute(attr,'1');document.head.appendChild(s)}
   loadScript('design-review-flow-runtime.js','data-hachara-review-flow');
   loadScript('project-workspace-runtime.js','data-hachara-workspace');
+  loadScript('ux-workflow-orchestrator.js','data-hachara-workflow');
 })();
