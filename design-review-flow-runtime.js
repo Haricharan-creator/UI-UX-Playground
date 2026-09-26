@@ -16,7 +16,6 @@
   function uid(prefix){ return prefix + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,7); }
   function esc(v){ return String(v == null ? '' : v).replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c])); }
   function get(id){ const el=document.getElementById(id); return el ? el.value : ''; }
-  function set(id,v){ const el=document.getElementById(id); if(el) el.value=v == null ? '' : v; }
 
   function currentScreen(){
     return {
@@ -27,9 +26,9 @@
   }
 
   function selectedFinding(){
-    const items=read();
+    const findings=read().filter(x=>x.type==='finding');
     const id=get('drfFindingSelect');
-    return items.find(x=>x.id===id) || items[0] || null;
+    return findings.find(x=>x.id===id) || findings[0] || null;
   }
 
   function render(){
@@ -171,6 +170,6 @@
     else document.addEventListener('DOMContentLoaded', mount, {once:true});
   }
 
-  window.HACHARA_REVIEW_FLOW={version:'0.1.0',key:KEY,read,render,mount};
+  window.HACHARA_REVIEW_FLOW={version:'0.1.1',key:KEY,read,render,mount};
   boot();
 })();
