@@ -12,7 +12,7 @@ page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
 
 try {
   await page.goto('http://127.0.0.1:4173/index.html', { waitUntil: 'networkidle' });
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(800);
 
   const checks = {
     title: await page.title(),
@@ -22,7 +22,7 @@ try {
     contextRuntime: await page.evaluate(() => !!window.HACHARA_CONTEXT),
     workflowRuntime: await page.evaluate(() => !!window.HACHARA_WORKFLOW),
     workspaceRuntime: await page.evaluate(() => !!window.HACHARA_WORKSPACE),
-    workflowControl: await page.locator('#hacharaWorkflowControl').count(),
+    workflowControl: await page.locator('#hwoButton').count(),
     contextBadge: await page.locator('#hacharaContextBadge').count(),
   };
 
