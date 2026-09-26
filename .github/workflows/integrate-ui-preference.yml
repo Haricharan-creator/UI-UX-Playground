@@ -1,0 +1,64 @@
+name: Integrate HACHARA UI preference
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add UI preference controls to Classic UI
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          style = '''
+<style>
+.hacharaUiControl{display:inline-flex;align-items:center;gap:8px;margin-left:8px}
+.hacharaUiControl .uiPill{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font-size:12px;font-weight:800;text-decoration:none}
+.hacharaUiControl .uiPill:hover{border-color:var(--p2);box-shadow:0 5px 16px rgba(30,38,70,.08)}
+.hacharaClassicFooter{margin-top:28px;padding:18px 4px 8px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;align-items:center;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-align:right}
+.hacharaClassicFooter span{opacity:.9}
+@media(max-width:720px){.hacharaUiControl{margin-left:0}.hacharaClassicFooter{justify-content:center;text-align:center}}
+</style>
+'''
+
+          if 'class="hacharaUiControl"' not in text and '</head>' in text:
+              text = text.replace('</head>', style + '</head>', 1)
+
+          control = '<div class="hacharaUiControl"><a class="uiPill" href="ui-options.html">🎨 Choose UI</a><a class="uiPill" href="modern.html">Modern Workspace →</a></div>'
+          if 'href="ui-options.html"' not in text:
+              marker = '</div>\n'
+              pos = text.find(marker)
+              if pos != -1:
+                  pos += len(marker)
+                  text = text[:pos] + control + text[pos:]
+
+          footer = '\n<footer class="hacharaClassicFooter"><span>HACHARA · Learn · Think · Create · Grow</span></footer>\n'
+          if 'class="hacharaClassicFooter"' not in text and '</body>' in text:
+              text = text.replace('</body>', footer + '</body>', 1)
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit integration
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "Classic UI already integrated; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Integrate UI preference into Classic Workspace"
+          git push
