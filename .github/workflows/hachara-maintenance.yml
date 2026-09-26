@@ -15,21 +15,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Ensure runtime guard is loaded
+      - name: Ensure runtime guards are loaded
         shell: python
         run: |
           from pathlib import Path
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
           original = s
-          marker = '<script src="runtime-fix.js"></script>'
-          if marker not in s:
-              anchor = '</head>'
-              if anchor not in s:
-                  raise SystemExit('Could not find </head> insertion point.')
-              s = s.replace(anchor, f'{marker}\n{anchor}', 1)
+          markers = [
+              '<script src="runtime-fix.js"></script>',
+              '<script src="design-dna-runtime.js"></script>'
+          ]
+          anchor = '</head>'
+          if anchor not in s:
+              raise SystemExit('Could not find </head> insertion point.')
+          for marker in markers:
+              if marker not in s:
+                  s = s.replace(anchor, f'{marker}\n{anchor}', 1)
           p.write_text(s, encoding='utf-8')
-          print('Runtime guard loaded:', s != original)
+          print('Runtime guards loaded:', s != original)
 
       - name: Repair known runtime bootstrap issue
         shell: python
@@ -54,6 +58,7 @@ jobs:
           s = Path('index.html').read_text(encoding='utf-8')
           required = [
               '<script src="runtime-fix.js"></script>',
+              '<script src="design-dna-runtime.js"></script>',
               'const extra_topics = window.extra_topics || [];',
               'extra_topics.forEach(x=>topics.push(x));',
               'function go(id)',
@@ -65,6 +70,9 @@ jobs:
           runtime = Path('runtime-fix.js').read_text(encoding='utf-8')
           if 'window.HACHARA_RUNTIME' not in runtime:
               raise SystemExit('runtime-fix.js is missing HACHARA runtime marker.')
+          dna = Path('design-dna-runtime.js').read_text(encoding='utf-8')
+          if 'window.HACHARA_DNA' not in dna or 'wireframeCanvas' not in dna or 'uiBuilderCanvas' not in dna:
+              raise SystemExit('design-dna-runtime.js is missing required canvas bindings.')
           print('HACHARA runtime validation passed.')
 
       - name: Commit repair if needed
@@ -77,5 +85,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Harden HACHARA runtime bootstrap"
+          git commit -m "Load HACHARA Design DNA runtime"
           git push
