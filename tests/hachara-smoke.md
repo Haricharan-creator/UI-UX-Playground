@@ -1,0 +1,1 @@
+HACHARA browser smoke-test checkpoint: Playwright workflow is configured to launch the current application, verify runtime initialization, and fail on browser/page errors.
