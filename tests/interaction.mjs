@@ -14,15 +14,20 @@ try {
   await page.goto('http://127.0.0.1:4173/index.html', { waitUntil: 'networkidle' });
   await page.waitForTimeout(1000);
 
-  // Seed only the local trace stores used by the workflow orchestrator.
+  // Seed only the local trace stores used by the existing HACHARA workflow.
   await page.evaluate(() => {
-    localStorage.setItem('uiuxPlaygroundUnifiedUXContext', JSON.stringify({project:'Smoke Project',screen:'Checkout',phase:'Review',version:'1.0'}));
-    localStorage.setItem('hacharaDesignDNA', JSON.stringify({viewport:'Desktop',spacing:'8pt',radius:'12px'}));
+    localStorage.setItem('uiuxPlaygroundUnifiedUXContext', JSON.stringify({
+      project:'Smoke Project', screen:'Checkout', phase:'Review', version:'1.0',
+      goal:'Validate checkout flow', users:'Test users'
+    }));
+    localStorage.setItem('hacharaDesignDNA', JSON.stringify({
+      viewport:'Desktop', spacing:'8pt', radius:'12px'
+    }));
     localStorage.setItem('hacharaDesignReviewFlow', JSON.stringify([
-      {id:'f1',type:'finding',screen:'Checkout',observation:'Primary action is visually unclear'},
+      {id:'f1',type:'finding',screen:'Checkout',observation:'Primary action is visually unclear',impact:'Task completion may be delayed',principle:'Visibility'},
       {id:'c1',type:'correction',findingId:'f1',screen:'Checkout',correction:'Increase CTA hierarchy',status:'Implemented'},
       {id:'e1',type:'before-after',findingId:'f1',screen:'Checkout',status:'Captured'},
-      {id:'t1',type:'test',findingId:'f1',screen:'Checkout',result:'Task completed without clarification',decision:'Keep the correction'}
+      {id:'t1',type:'test',findingId:'f1',screen:'Checkout',testQuestion:'Can users find the primary action?',method:'Usability task',result:'Task completed without clarification',decision:'Keep the correction'}
     ]));
   });
 
@@ -33,18 +38,32 @@ try {
   await page.locator('#hwoButton').click();
   await page.waitForSelector('#hwoOverlay');
 
-  const overlayText = await page.locator('#hwoOverlay').innerText();
+  const overlay = page.locator('#hwoOverlay');
+  const overlayText = await overlay.innerText();
   if (!overlayText.includes('UX Workflow Orchestrator')) throw new Error('Workflow overlay did not render.');
   if (!overlayText.includes('Review the test evidence and decide whether to iterate')) throw new Error('Workflow completion state missing.');
-  if (!overlayText.includes('Findings')) throw new Error('Workflow trace statistics missing.');
+  for (const label of ['Findings', 'Corrections', 'Evidence', 'Tests']) {
+    if (!overlayText.includes(label)) throw new Error(`Workflow trace statistic missing: ${label}`);
+  }
+  if (!overlayText.includes('1') ) throw new Error('Workflow trace counts did not render.');
 
   await page.locator('#hwoGo').click();
   await page.waitForTimeout(300);
   const reviewVisible = await page.locator('#screenreview').evaluate(el => !el.classList.contains('hidden'));
   if (!reviewVisible) throw new Error('Workflow Open review did not navigate to Screen Review.');
 
+  // Confirm the local trace survived the navigation/reload boundary.
+  const trace = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaDesignReviewFlow') || '[]'));
+  const counts = ['finding','correction','before-after','test'].map(type => trace.filter(x => x.type === type).length);
+  if (counts.join(',') !== '1,1,1,1') throw new Error(`Trace persistence mismatch: ${counts.join(',')}`);
+
   if (errors.length) throw new Error('Browser console/page errors: ' + errors.join(' | '));
-  console.log(JSON.stringify({ ok:true, interaction:'workflow-open-completion-state-navigation', checks:['workflow control','overlay','completion state','trace stats','open review navigation'] }, null, 2));
+  console.log(JSON.stringify({
+    ok:true,
+    interaction:'workflow-open-completion-state-navigation',
+    checks:['workflow control','overlay','completion state','trace stats','open review navigation','trace persistence'],
+    traceCounts:{findings:counts[0],corrections:counts[1],evidence:counts[2],tests:counts[3]}
+  }, null, 2));
 } finally {
   await browser.close();
   server.kill();
