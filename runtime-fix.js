@@ -2,11 +2,16 @@
 (function(){
   window.extra_topics = Array.isArray(window.extra_topics) ? window.extra_topics : [];
 
-  const KEY = 'hacharaProjectContext';
+  const KEY = 'uiuxPlaygroundUnifiedUXContext';
   const FIELD_IDS = ['uxcProject','uxcScreen','uxcPhase','uxcVersion','uxcGoal','uxcUsers'];
 
+  function storedContext(){
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; }
+    catch(e) { return {}; }
+  }
+
   function readContext(){
-    const out = {};
+    const out = {...storedContext()};
     FIELD_IDS.forEach(id => {
       const el = document.getElementById(id);
       if(el) out[id] = el.value || '';
@@ -14,24 +19,28 @@
     return out;
   }
 
-  function storedContext(){
-    try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; }
-    catch(e) { return {}; }
-  }
-
   function writeContext(){
-    const ctx = readContext();
-    if(Object.values(ctx).some(v => String(v).trim())){
-      localStorage.setItem(KEY, JSON.stringify({...storedContext(), ...ctx, updatedAt:new Date().toISOString()}));
+    const c = readContext();
+    if(c.project || c.uxcProject){
+      localStorage.setItem(KEY, JSON.stringify({...c, updatedAt:new Date().toISOString()}));
+      localStorage.setItem('uiuxPlaygroundCurrentScreenContext', JSON.stringify(c));
     }
     updateContextBadge();
   }
 
   function restoreContext(){
-    const ctx = storedContext();
+    const c = storedContext();
+    const map = {
+      uxcProject:c.project || c.uxcProject,
+      uxcScreen:c.screen || c.uxcScreen,
+      uxcPhase:c.phase || c.uxcPhase,
+      uxcVersion:c.version || c.uxcVersion,
+      uxcGoal:c.goal || c.uxcGoal,
+      uxcUsers:c.users || c.uxcUsers
+    };
     FIELD_IDS.forEach(id => {
       const el = document.getElementById(id);
-      if(el && ctx[id] && !el.value) el.value = ctx[id];
+      if(el && map[id] && !el.value) el.value = map[id];
     });
     updateContextBadge();
   }
@@ -44,7 +53,7 @@
       badge = document.createElement('span');
       badge.id = 'hacharaContextBadge';
       badge.style.cssText = 'margin-left:auto;padding:4px 9px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.08);font-size:11px;cursor:pointer;';
-      badge.title = 'Saved project context. Click to open Unified UX Context.';
+      badge.title = 'Saved Unified UX Context. Click to open it.';
       strip.appendChild(badge);
       badge.addEventListener('click', function(){
         const section = document.getElementById('unified_ux_context');
@@ -55,18 +64,17 @@
         }
       });
     }
-    const ctx = storedContext();
-    const project = (ctx.uxcProject || '').trim();
-    const phase = (ctx.uxcPhase || '').trim();
-    badge.textContent = project ? `Context: ${project}${phase ? ' · '+phase : ''}` : 'Context: not set';
+    const c = storedContext();
+    const project = String(c.project || c.uxcProject || '').trim();
+    const screen = String(c.screen || c.uxcScreen || '').trim();
+    badge.textContent = project ? `Context: ${project}${screen ? ' · '+screen : ''}` : 'Context: not set';
   }
 
   function boot(){
     restoreContext();
     FIELD_IDS.forEach(id => {
       const el = document.getElementById(id);
-      if(el) el.addEventListener('input', writeContext);
-      if(el) el.addEventListener('change', writeContext);
+      if(el){ el.addEventListener('input', writeContext); el.addEventListener('change', writeContext); }
     });
     updateContextBadge();
   }
@@ -75,18 +83,19 @@
   else boot();
 
   window.HACHARA_CONTEXT = {
-    version: '0.2.0',
+    version: '0.3.0',
     key: KEY,
     get: storedContext,
     save: writeContext,
     restore: restoreContext,
-    clear: function(){ localStorage.removeItem(KEY); updateContextBadge(); }
+    clear: function(){ localStorage.removeItem(KEY); localStorage.removeItem('uiuxPlaygroundCurrentScreenContext'); updateContextBadge(); }
   };
 
   window.HACHARA_RUNTIME = {
-    version: '0.2.0',
+    version: '0.3.0',
     bootstrap: 'safe',
-    continuity: 'enabled'
+    continuity: 'enabled',
+    unifiedContext: 'connected'
   };
 
   function loadReviewFlow(){
