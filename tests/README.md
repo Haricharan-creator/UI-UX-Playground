@@ -1,0 +1,1 @@
+Browser smoke tests run in GitHub Actions against the current HACHARA application. They validate page rendering, runtime initialization, and browser console health.
