@@ -21,3 +21,5 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Run browser smoke test
         run: node tests/smoke.mjs
+      - name: Run interaction smoke test
+        run: node tests/interaction.mjs
