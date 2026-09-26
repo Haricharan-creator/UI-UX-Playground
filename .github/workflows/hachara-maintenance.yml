@@ -73,7 +73,18 @@ jobs:
           dna = Path('design-dna-runtime.js').read_text(encoding='utf-8')
           if 'window.HACHARA_DNA' not in dna or 'wireframeCanvas' not in dna or 'uiBuilderCanvas' not in dna:
               raise SystemExit('design-dna-runtime.js is missing required canvas bindings.')
+          review = Path('design-review-flow-runtime.js').read_text(encoding='utf-8')
+          if 'window.HACHARA_REVIEW_FLOW' not in review or 'Finding → Correction → Before / After → Test' not in review:
+              raise SystemExit('design-review-flow-runtime.js is missing the review-flow runtime marker.')
           print('HACHARA runtime validation passed.')
+
+      - name: Validate JavaScript syntax
+        shell: bash
+        run: |
+          node --check runtime-fix.js
+          node --check design-dna-runtime.js
+          node --check design-review-flow-runtime.js
+          echo "HACHARA JavaScript syntax validation passed."
 
       - name: Commit repair if needed
         shell: bash
