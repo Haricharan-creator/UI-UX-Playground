@@ -1,0 +1,50 @@
+name: Add Modern UI footer signature
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  footer-signature:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add footer signature if missing
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('modern.html')
+          text = path.read_text(encoding='utf-8')
+          marker = 'HACHARA · Learn · Think · Create · Grow'
+
+          if marker in text:
+              raise SystemExit(0)
+
+          footer = '''\n<footer class="hacharaFooter"><span>HACHARA · Learn · Think · Create · Grow</span></footer>\n'''
+          css = '''\n<style>\n.hacharaFooter{margin-top:18px;padding:18px 4px 6px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;align-items:center;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-align:right}.hacharaFooter span{opacity:.9}@media(max-width:760px){.hacharaFooter{justify-content:center;text-align:center}}\n</style>\n'''
+
+          if '</head>' not in text or '</body>' not in text:
+              raise SystemExit('modern.html structure not found; no change made')
+
+          text = text.replace('</head>', css + '</head>', 1)
+          text = text.replace('</body>', footer + '</body>', 1)
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit footer change
+        run: |
+          if git diff --quiet -- modern.html; then
+            echo "Footer signature already present; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add modern.html
+          git commit -m "Add HACHARA signature to Modern UI footer"
+          git push
