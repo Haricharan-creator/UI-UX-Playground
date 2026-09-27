@@ -1,0 +1,23 @@
+{
+  "version":"1.0",
+  "status":"active",
+  "states":["not-started","in-progress","submitted","under-review","needs-rework","resubmitted","ready-for-validation","validated"],
+  "transitions":{
+    "not-started":["in-progress"],
+    "in-progress":["submitted"],
+    "submitted":["under-review"],
+    "under-review":["needs-rework","ready-for-validation"],
+    "needs-rework":["resubmitted"],
+    "resubmitted":["under-review"],
+    "ready-for-validation":["validated","needs-rework"],
+    "validated":[]
+  },
+  "guards":{
+    "submitted":"required evidence exists",
+    "under-review":"review context exists",
+    "resubmitted":"V1 preserved and V2 changes recorded",
+    "ready-for-validation":"review findings resolved or explicitly accepted with evidence",
+    "validated":"validation criteria satisfied"
+  },
+  "rule":"No state may skip required evidence, review, rework or validation gates. Human approval remains required for ambiguous or consequential decisions."
+}
