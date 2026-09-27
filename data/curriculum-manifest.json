@@ -1,8 +1,15 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "product": "HACHARA UI/UX Playground",
+  "benchmark": {
+    "version": "1.0",
+    "safe_benchmark": "docs/HACHARA-SAFE-BENCHMARK-v1.0.md",
+    "architecture_lock": "docs/HACHARA-ARCHITECTURE-LOCK-v1.0.md",
+    "output_contract": "docs/HACHARA-OUTPUT-CONTRACT-v1.0.md"
+  },
   "source_of_truth": {
-    "architecture": "CURRICULUM-BUNDLE-MASTER.md",
+    "architecture": "docs/HACHARA-ARCHITECTURE-LOCK-v1.0.md",
+    "bundle_master": "CURRICULUM-BUNDLE-MASTER.md",
     "file_registry": "LESSON-REGISTRY.md",
     "manifest": "data/curriculum-manifest.json"
   },
@@ -32,10 +39,21 @@
   "tools": ["Figma","Framer"],
   "automation": {
     "inventory": true,
+    "mapping_assistance": true,
     "validation": true,
     "reporting": true,
+    "regression_checks": true,
+    "repetitive_scaffolding": true,
     "automatic_content_deletion": false,
     "automatic_curriculum_merging": false,
+    "automatic_architecture_changes": false,
     "human_approval_for_major_changes": true
+  },
+  "counting_policy": {
+    "file_count": "report separately",
+    "curriculum_lesson_count": "report separately",
+    "bundle_count": "report separately",
+    "module_count": "report separately",
+    "skill_count": "report separately"
   }
 }
