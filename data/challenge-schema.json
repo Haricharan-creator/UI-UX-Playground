@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"HACHARA Studio Challenge",
+  "type":"object",
+  "required":["id","title","curriculumId","skills","brief","evidenceRequired"],
+  "properties":{
+    "id":{"type":"string"},
+    "title":{"type":"string"},
+    "curriculumId":{"type":"string"},
+    "bundleId":{"type":"string"},
+    "skills":{"type":"array","items":{"type":"string"}},
+    "brief":{"type":"string"},
+    "constraints":{"type":"array","items":{"type":"string"}},
+    "tools":{"type":"array","items":{"enum":["figma","framer","any"]}},
+    "evidenceRequired":{"type":"array","items":{"enum":["screenshot","prototype","observation","test-result","reflection"]}},
+    "reviewRequired":{"type":"boolean"},
+    "reworkRequired":{"type":"boolean"},
+    "validationRequired":{"type":"boolean"},
+    "status":{"enum":["not-started","in-progress","submitted","needs-rework","validated"]}
+  },
+  "additionalProperties":false
+}
