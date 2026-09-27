@@ -1,0 +1,18 @@
+{
+  "version":"1.0",
+  "status":"active",
+  "primaryNavigation":[
+    {"id":"academy","label":"Academy","path":"bundle-dashboard.html","purpose":"Bundle-first learning journey"},
+    {"id":"studio","label":"Studio","path":"studio.html","purpose":"Practical challenges and evidence creation"},
+    {"id":"review","label":"Review","path":"review.html","purpose":"Structured evidence review and rework"},
+    {"id":"progress","label":"Progress","path":"progress.html","purpose":"Capability and evidence progress"}
+  ],
+  "reservedAreas":["tool-lab","project-workspace","knowledge-base"],
+  "navigationRules":[
+    "Bundles remain the primary learning entry point.",
+    "Every learner-facing workflow must have a clear return path to the bundle context.",
+    "Studio, Review and Progress must preserve curriculum and skill context.",
+    "New modules must register through data contracts before becoming primary navigation.",
+    "Existing application entry points remain protected until integration QA passes."
+  ]
+}
