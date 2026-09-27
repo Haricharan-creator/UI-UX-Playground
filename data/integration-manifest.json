@@ -1,0 +1,25 @@
+{
+  "version":"1.0",
+  "status":"active",
+  "surfaces":[
+    {"id":"academy","entry":"bundle-dashboard.html","role":"bundle-first learning"},
+    {"id":"studio","entry":"studio.html","role":"challenge and evidence capture"},
+    {"id":"review","entry":"review.html","role":"structured review and rework"},
+    {"id":"progress","entry":"progress.html","role":"capability and evidence progress"}
+  ],
+  "contracts":[
+    "data/curriculum-manifest.json",
+    "data/skill-taxonomy.json",
+    "data/skill-evidence-schema.json",
+    "data/review-rubric.json",
+    "data/progress-model.json",
+    "data/bundle-progress-schema.json",
+    "data/challenge-schema.json",
+    "data/rework-schema.json",
+    "data/workflow-state-machine.json",
+    "data/navigation-contract.json"
+  ],
+  "flow":["academy","studio","review","progress"],
+  "integrationRule":"All learner-facing surfaces must use the shared workflow states and data contracts; no surface may invent conflicting completion semantics.",
+  "preservation":"Existing curriculum and legacy application remain intact until integration QA passes."
+}
