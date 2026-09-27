@@ -19,3 +19,5 @@ jobs:
         run: python3 scripts/validate_links.py
       - name: Validate identifiers and cross-references
         run: python3 scripts/validate_ids.py
+      - name: Validate HTML structure
+        run: python3 scripts/validate_html_structure.py
