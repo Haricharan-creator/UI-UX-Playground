@@ -1,0 +1,14 @@
+{
+  "version":"1.0",
+  "status":"active",
+  "dimensions":[
+    {"id":"ux","name":"UX","checks":["goal clarity","user need","task flow","information architecture","decision support"]},
+    {"id":"ui","name":"UI","checks":["hierarchy","typography","layout","spacing","colour","component consistency"]},
+    {"id":"accessibility","name":"Accessibility","checks":["contrast","target size","keyboard/focus","semantics","readability","inclusive alternatives"]},
+    {"id":"interaction","name":"Interaction","checks":["affordance","feedback","states","error recovery","loading","empty/success states"]},
+    {"id":"visual","name":"Visual Quality","checks":["alignment","consistency","density","visual balance","responsive behaviour"]}
+  ],
+  "finding":{"required":["dimension","severity","confidence","evidence","principle","impact","recommendation"],"severity":["low","medium","high"],"confidence":["low","medium","high"],"evidence":["observed","submitted-artifact","test-result","principle-based","inferred"]},
+  "workflow":["submitted","reviewed","needs-rework","resubmitted","validated"],
+  "guardrails":["Do not silently replace learner work","Do not treat one design as universally correct","Separate observation from interpretation","Preserve V1 when creating V2","Require evidence for validation"]
+}
