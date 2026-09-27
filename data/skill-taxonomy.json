@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "status": "active",
+  "skills": [
+    {"id":"ux-foundations","name":"UX Foundations","category":"ux"},
+    {"id":"user-research","name":"User Research","category":"research"},
+    {"id":"problem-definition","name":"Problem Definition","category":"strategy"},
+    {"id":"information-architecture","name":"Information Architecture","category":"structure"},
+    {"id":"interaction-design","name":"Interaction Design","category":"interaction"},
+    {"id":"visual-hierarchy","name":"Visual Hierarchy","category":"ui"},
+    {"id":"typography","name":"Typography","category":"ui"},
+    {"id":"layout-spacing","name":"Layout & Spacing","category":"ui"},
+    {"id":"responsive-design","name":"Responsive Design","category":"cross-device"},
+    {"id":"accessibility","name":"Accessibility & Inclusive Design","category":"accessibility"},
+    {"id":"usability-testing","name":"Usability Testing","category":"evaluation"},
+    {"id":"ux-metrics","name":"UX Metrics & Measurement","category":"analytics"},
+    {"id":"design-systems","name":"Design Systems","category":"systems"},
+    {"id":"figma","name":"Figma Practice","category":"tools"},
+    {"id":"framer","name":"Framer Practice","category":"tools"},
+    {"id":"design-reasoning","name":"Design Reasoning & Decision Making","category":"meta"},
+    {"id":"portfolio-case-study","name":"Portfolio & Case Study","category":"career"}
+  ],
+  "proficiencyStates": ["not-started","exposed","practiced","demonstrated","validated"],
+  "rule": "Proficiency must be supported by evidence; lesson completion alone does not establish validated capability."
+}
