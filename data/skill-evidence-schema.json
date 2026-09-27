@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HACHARA Skill Evidence Record",
+  "type": "object",
+  "required": ["id", "curriculumId", "skillIds", "evidenceType", "status"],
+  "properties": {
+    "id": {"type": "string"},
+    "curriculumId": {"type": "string"},
+    "bundleId": {"type": "string"},
+    "moduleId": {"type": "string"},
+    "skillIds": {"type": "array", "items": {"type": "string"}},
+    "evidenceType": {"enum": ["knowledge-check", "exercise", "screenshot", "prototype", "observation", "test-result", "reflection", "case-study"]},
+    "source": {"enum": ["lesson", "challenge", "project", "tool-lab", "assessment"]},
+    "status": {"enum": ["not-started", "in-progress", "submitted", "needs-rework", "validated"]},
+    "review": {
+      "type": "object",
+      "properties": {
+        "ux": {"type": "string"},
+        "ui": {"type": "string"},
+        "accessibility": {"type": "string"},
+        "interaction": {"type": "string"},
+        "visual": {"type": "string"},
+        "confidence": {"enum": ["low", "medium", "high"]}
+      },
+      "additionalProperties": true
+    },
+    "rework": {
+      "type": "object",
+      "properties": {
+        "version": {"type": "string"},
+        "feedback": {"type": "array", "items": {"type": "string"}},
+        "changes": {"type": "array", "items": {"type": "string"}},
+        "validation": {"type": "string"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
