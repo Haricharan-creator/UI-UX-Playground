@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"HACHARA Bundle Progress",
+  "type":"object",
+  "required":["bundleId","status","learning","skills","evidence"],
+  "properties":{
+    "bundleId":{"type":"string"},
+    "status":{"enum":["not-started","in-progress","ready-for-validation","validated"]},
+    "learning":{"type":"object","properties":{"required":{"type":"integer","minimum":0},"completed":{"type":"integer","minimum":0}},"required":["required","completed"]},
+    "skills":{"type":"array","items":{"type":"object","required":["skillId","state"],"properties":{"skillId":{"type":"string"},"state":{"enum":["not-started","exposed","practiced","demonstrated","validated"]}}}},
+    "evidence":{"type":"array","items":{"type":"object","required":["evidenceId","status"],"properties":{"evidenceId":{"type":"string"},"status":{"enum":["not-started","in-progress","submitted","needs-rework","validated"]}}}},
+    "completionRules":{"type":"object","properties":{"allRequiredLearning":{"type":"boolean"},"requiredSkillsValidated":{"type":"boolean"},"requiredEvidenceValidated":{"type":"boolean"}},"additionalProperties":false}
+  },
+  "additionalProperties":false
+}
