@@ -21,3 +21,5 @@ jobs:
         run: python3 scripts/validate_ids.py
       - name: Validate HTML structure
         run: python3 scripts/validate_html_structure.py
+      - name: Validate navigation contract
+        run: python3 scripts/validate_navigation.py
