@@ -1,0 +1,28 @@
+name: HACHARA Playground Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Validate curriculum and lesson structure
+        run: python3 scripts/validate_playground.py
+
+      - name: Build inventory report
+        run: |
+          echo "## HACHARA build inventory" >> "$GITHUB_STEP_SUMMARY"
+          echo "Lesson HTML files: $(find . -maxdepth 1 -type f -name 'lesson*.html' | wc -l)" >> "$GITHUB_STEP_SUMMARY"
+          echo "Bundle manifest: data/curriculum-manifest.json" >> "$GITHUB_STEP_SUMMARY"
+          echo "Architecture: CURRICULUM-BUNDLE-MASTER.md" >> "$GITHUB_STEP_SUMMARY"
+          echo "File registry: LESSON-REGISTRY.md" >> "$GITHUB_STEP_SUMMARY"
