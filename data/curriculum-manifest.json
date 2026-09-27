@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "product": "HACHARA UI/UX Playground",
+  "source_of_truth": {
+    "architecture": "CURRICULUM-BUNDLE-MASTER.md",
+    "file_registry": "LESSON-REGISTRY.md",
+    "manifest": "data/curriculum-manifest.json"
+  },
+  "progress_rule": "Lesson completion is not proficiency; capability-oriented progress requires practical evidence.",
+  "bundles": [
+    {"id":"B01","title":"UX Foundations","status":"defined","lessons":[]},
+    {"id":"B02","title":"UI Foundations","status":"defined","lessons":[]},
+    {"id":"B03","title":"User Research & Discovery","status":"defined","lessons":[]},
+    {"id":"B04","title":"Information Architecture & User Flows","status":"defined","lessons":[]},
+    {"id":"B05","title":"Interaction Design","status":"defined","lessons":[]},
+    {"id":"B06","title":"Wireframing & Prototyping","status":"defined","lessons":[]},
+    {"id":"B07","title":"Accessibility & Inclusive UX","status":"defined","lessons":[]},
+    {"id":"B08","title":"Responsive & Cross-Device UX","status":"defined","lessons":[]},
+    {"id":"B09","title":"Design Systems & Component Thinking","status":"defined","lessons":[]},
+    {"id":"B10","title":"Usability Testing & UX Evaluation","status":"defined","lessons":[]},
+    {"id":"B11","title":"UX Content & Communication","status":"defined","lessons":[]},
+    {"id":"B12","title":"UX Measurement & Product Analytics","status":"defined","lessons":[]},
+    {"id":"B13","title":"Figma Industry Practice","status":"defined","lessons":[]},
+    {"id":"B14","title":"Framer Industry Practice","status":"defined","lessons":[]},
+    {"id":"B15","title":"Design Review & Rework Studio","status":"defined","lessons":[]},
+    {"id":"B16","title":"Real Product Challenges","status":"defined","lessons":[]},
+    {"id":"B17","title":"Portfolio & Case Study","status":"defined","lessons":[]}
+  ],
+  "lesson_statuses": ["core","supporting","overlap-candidate","reference-template","unmapped"],
+  "evidence_types": ["figma-link","framer-link","screenshot","prototype","observation","reflection","review","rework","validation"],
+  "platforms": ["macOS","Windows","iOS/iPadOS","Android"],
+  "tools": ["Figma","Framer"],
+  "automation": {
+    "inventory": true,
+    "validation": true,
+    "reporting": true,
+    "automatic_content_deletion": false,
+    "automatic_curriculum_merging": false,
+    "human_approval_for_major_changes": true
+  }
+}
