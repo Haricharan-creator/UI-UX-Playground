@@ -1,0 +1,11 @@
+{
+  "version":"1.0",
+  "status":"active",
+  "dimensions":["lesson","module","bundle","skill","challenge","evidence","project","portfolio"],
+  "lessonStates":["not-started","in-progress","completed"],
+  "evidenceStates":["not-started","in-progress","submitted","needs-rework","validated"],
+  "skillStates":["not-started","exposed","practiced","demonstrated","validated"],
+  "bundleCompletionRule":"A bundle is complete only when its required learning and practical evidence criteria are satisfied.",
+  "skillValidationRule":"A skill becomes validated only when required evidence has passed review and any required rework has been completed.",
+  "principle":"Progress measures demonstrated capability, not page views or lesson clicks alone."
+}
