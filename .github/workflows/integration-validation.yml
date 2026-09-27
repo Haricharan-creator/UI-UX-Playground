@@ -17,3 +17,5 @@ jobs:
         run: python3 scripts/validate_integration.py
       - name: Validate local page links
         run: python3 scripts/validate_links.py
+      - name: Validate identifiers and cross-references
+        run: python3 scripts/validate_ids.py
