@@ -1,0 +1,29 @@
+{
+  "version":"1.0",
+  "status":"locked-direction",
+  "purpose":"Define the authoritative Bundle -> Module -> Lesson -> Practice -> Tool Task -> Evidence -> Review -> Validation learning unit without deleting or rewriting existing lesson content.",
+  "learningUnit":{
+    "bundle":"Capability-level container and primary learner entry point.",
+    "module":"Coherent capability section inside a bundle.",
+    "lesson":"Existing authored learning content. Source content remains authoritative and immutable during mapping.",
+    "practice":"Structured application activity linked to one or more lessons and skills.",
+    "toolTask":"Practical Figma or Framer task where applicable.",
+    "evidence":"Observable submission proving application of the target skill.",
+    "review":"Evidence-based feedback and decision.",
+    "rework":"V1-preserving improvement cycle producing V2 or later.",
+    "validation":"Defined gate confirming demonstrated capability."
+  },
+  "sourceOfTruthRules":[
+    "Existing lesson content must never be deleted, silently rewritten, or replaced by generated summaries.",
+    "Every mapped lesson must retain a stable lessonId and source reference.",
+    "If a lesson cannot yet be mapped confidently, mark mappingStatus as source-gap instead of guessing.",
+    "Bundle and module structure may be additive while source lesson content remains unchanged.",
+    "Completion of a lesson is not equivalent to capability validation."
+  ],
+  "requiredMappingFields":["bundleId","moduleId","lessonId","sourceRef","mappingStatus","skillIds"],
+  "mappingStatuses":["mapped","needs-review","source-gap","deprecated-only"],
+  "requiredGates":["practice","evidence","review","validation"],
+  "toolModes":["figma","framer","none"],
+  "humanDecisionPoints":["ambiguous lesson mapping","skill assignment disagreement","destructive content change","validation exception"],
+  "preservation":"Additive implementation only until full source mapping and regression QA pass."
+}
