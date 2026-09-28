@@ -1,0 +1,19 @@
+{
+  "version":"1.0",
+  "status":"locked",
+  "sourceOfTruth":"117-lesson master registry",
+  "rules":[
+    "Every lesson keeps its stable lesson ID and original sequence number.",
+    "Bundle and module grouping is organizational metadata and must not rewrite lesson content.",
+    "A lesson may belong to one primary module and may have secondary skill mappings.",
+    "Source gaps must remain explicitly marked as source-gap until authoritative content is recovered.",
+    "No invented lesson text, examples, exercises, answers, or source references.",
+    "Existing completion state remains preserved while capability validation is tracked separately.",
+    "Mapping changes must be additive and auditable.",
+    "Any ambiguous mapping is flagged for review rather than silently resolved."
+  ],
+  "requiredRecordFields":["lessonId","lessonNumber","title","bundleId","moduleId","sourceStatus","completionStatus"],
+  "sourceStatusValues":["verified","source-gap","pending-reconciliation"],
+  "completionStatusValues":["complete","in-progress","not-started"],
+  "safeBenchmark":"Protected; mapping metadata must not alter the locked lesson source."
+}
