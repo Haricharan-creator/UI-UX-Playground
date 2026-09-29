@@ -181,3 +181,81 @@ Reason: the authoritative mapping contract explicitly requires stable source ref
 No source lesson content has been deleted, merged, or silently rewritten by this audit.
 
 **Current validation:** physical inventory reconciled; content reconciliation in progress; final curriculum count and bundle mapping intentionally unresolved.
+
+
+## Stage 2 — numbered lesson generation review
+
+A direct content-structure review of the numbered lesson generation confirms that lessons **61–92 are authored learning units**, not merely empty placeholders. Most contain a consistent learning/practice/check/rework structure, with several later lessons using Figma/Framer tool practice.
+
+The following numbered lessons currently have clearly distinct stated objectives and are therefore **not being treated as duplicates solely because adjacent or older lessons cover related domains**:
+
+- 61 Designing for Older Adults
+- 62 Designing for Children
+- 63 Designing for Language & Literacy
+- 64 Localization & Internationalization
+- 65 RTL & Bidirectional UX
+- 66 Responsive Accessible Layouts
+- 67 Touch Targets & Mobile UX
+- 68 Voice & Conversational Accessibility
+- 69 Multimodal Accessibility
+- 70 Accessibility Design Review
+- 71 Designing for Stress & Uncertainty
+- 72 Progressive Disclosure
+- 73 Empty, Loading & Success States
+- 74 Designing for Recovery
+- 75 Feedback & System Status
+- 76 Interruption & Resumption
+- 77 Mobile Contexts & Gestures
+- 78 Data Entry Efficiency
+- 79 Search, Discovery & Findability
+- 80 Design Critique & Iteration
+- 81 UX Content Strategy
+- 82 Design Systems
+- 83 Design Tokens
+- 84 Component Anatomy
+- 85 Component States
+- 86 Responsive Components
+- 87 Component Documentation
+- 88 Design Handoff
+- 89 Design QA
+- 92 Usability Testing Metrics
+
+### Specific reconciliation notes
+
+**61–70 — inclusive/accessibility capability expansion**
+
+These lessons form a more granular capability layer than the older broad accessibility lessons. They should therefore remain physical source units while curriculum relationships are evaluated.
+
+**71–80 — interaction/context/practice expansion**
+
+These lessons introduce distinct interaction and practice capabilities such as progressive disclosure, system states, recovery, interruption/resumption, mobile context, data entry, search/findability, and critique/iteration.
+
+**81–89 — design-system and delivery capability expansion**
+
+The sequence separates UX content strategy, design systems, tokens, component anatomy/states, responsive components, documentation, handoff, and design QA. These are sufficiently differentiated to avoid automatic consolidation.
+
+**90 vs 91 — explicit overlap candidate**
+
+- `lesson-090-ux-metrics.html` is a concise UX Metrics lesson with Learn/Check/Tool practice.
+- `lesson-091-ux-metrics-and-measurement.html` is a more developed UX Metrics & Measurement lesson with measurement essentials, knowledge check, Figma/Framer measurement-plan practice, and rework loop.
+
+**Current classification:** overlap-candidate. Preserve both. Do not declare 90 deprecated or 91 a replacement until the complete lesson content and intended curriculum role are compared.
+
+**92 — usability testing metrics**
+
+`lesson-092-usability-testing-metrics.html` has a distinct measurement focus within usability testing, including testing measurement essentials and a Figma/Framer exercise. It should not be automatically collapsed into the broader usability-testing lessons.
+
+## Stage 2 conclusion
+
+The numbered generation contains substantial **capability expansion**, not evidence of wholesale duplication. The strongest current consolidation candidates remain the previously identified overlap families plus the 90/91 metrics pair.
+
+The correct next task is therefore **curriculum-role mapping**, not file deletion.
+
+## Current classification confidence
+
+- **High confidence distinct:** most numbered 61–89 and 92 units based on their stated objectives and structure.
+- **High confidence reference/template:** `lesson.html`.
+- **Explicit overlap candidates:** the nine families documented above, including 90/91.
+- **Still requiring full objective/content comparison:** relationships between newer numbered units and older similarly themed lessons.
+
+**Validation status:** Stage 2 numbered-lesson structural/content review completed; source files preserved.
