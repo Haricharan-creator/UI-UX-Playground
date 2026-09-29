@@ -1,12 +1,14 @@
 {
   "version":"1.0",
-  "status":"mapping-scaffold",
+  "status":"inventory-imported",
   "rule":"This file is a mapping layer only. It does not contain or replace lesson content.",
+  "sourceInventoryRef":"data/lesson-source-inventory-v1.json",
+  "sourceInventoryStatus":"96 physical lesson files inventoried; curriculum-topic mapping remains pending.",
   "bundles":[
     {"bundleId":"B01","moduleIds":[]},{"bundleId":"B02","moduleIds":[]},{"bundleId":"B03","moduleIds":[]},{"bundleId":"B04","moduleIds":[]},{"bundleId":"B05","moduleIds":[]},{"bundleId":"B06","moduleIds":[]},{"bundleId":"B07","moduleIds":[]},{"bundleId":"B08","moduleIds":[]},{"bundleId":"B09","moduleIds":[]},{"bundleId":"B10","moduleIds":[]},{"bundleId":"B11","moduleIds":[]},{"bundleId":"B12","moduleIds":[]},{"bundleId":"B13","moduleIds":[]},{"bundleId":"B14","moduleIds":[]},{"bundleId":"B15","moduleIds":[]},{"bundleId":"B16","moduleIds":[]},{"bundleId":"B17","moduleIds":[]}
   ],
   "modules":[],
   "lessons":[],
-  "mappingStatus":"awaiting-authoritative-source-import",
-  "sourceGapPolicy":"Do not invent lesson-to-module relationships. Import the authoritative lesson inventory first, then map each lesson with stable IDs and source references."
+  "mappingStatus":"awaiting-content-level-module-mapping",
+  "sourceGapPolicy":"Do not invent lesson-to-module relationships. Use the authoritative source inventory first, then map each lesson with stable IDs and source references. Ambiguous relationships remain needs-review or source-gap."
 }
