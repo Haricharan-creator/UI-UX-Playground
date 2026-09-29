@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-29  
 **Status:** IN PROGRESS  
-**Purpose:** Reconcile the 93 physical lesson files into curriculum identities without deleting, merging, or rewriting source lesson content.
+**Purpose:** Reconcile the 96 physical lesson files into curriculum identities without deleting, merging, or rewriting source lesson content.
 
 ## Authority
 
@@ -16,7 +16,7 @@ The lesson files themselves remain the authoritative authored content. This docu
 
 ## Physical inventory
 
-Current repository inventory: **93 physical lesson files**.
+Current repository inventory: **96 physical lesson files**.
 
 Physical count and curriculum-topic count are intentionally separate.
 
