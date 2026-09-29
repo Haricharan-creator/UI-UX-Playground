@@ -2,13 +2,13 @@
 
 **Registry status:** Reconciled against the `main` branch repository tree.
 
-**File-level lesson count: 93 (current physical repository inventory)**
+**File-level lesson count: 96 (current physical repository inventory)**
 
 This registry separates the **number of lesson files that currently exist** from the **number of distinct curriculum topics**. No existing lesson file is deleted or overwritten by this reconciliation.
 
 ## Corrected count
 
-The current repository tree contains **93 files whose names begin with `lesson-` plus `lesson.html`**, giving a total of **93 physical lesson files**. The previous 63-file statement was an incomplete registry inventory, not the current repository total. The 63-file inventory and its overlap notes are preserved below as historical reconciliation context.
+The current repository tree contains **96 files matching the lesson-file rule**, giving a total of **96 physical lesson files**. The previous 63-file statement was an incomplete registry inventory, not the current repository total. The earlier 63-file inventory and its overlap notes are preserved below as historical reconciliation context.
 
 ## Existing lesson files
 
@@ -156,16 +156,17 @@ The following 30 lesson files were present in the current repository tree but we
 | 93 | `lesson-090-ux-metrics.html` | UX Measurement | Existing physical lesson; curriculum role pending reconciliation |
 | 94 | `lesson-091-ux-metrics-and-measurement.html` | UX Measurement | Overlap candidate with UX metrics; preserve pending content audit |
 | 95 | `lesson-092-usability-testing-metrics.html` | Usability / Measurement | Existing physical lesson; curriculum role pending reconciliation |
+| 96 | `lesson-designing-for-empty-loading-and-error-states.html` | Interaction / States | Existing physical lesson; curriculum role pending reconciliation |
 
 **Registry numbering note:** the numbers in this table are registry-row numbers for the newly added inventory entries, not curriculum lesson numbers. The filenames themselves contain historical/sequence numbers that must not be treated as the final curriculum numbering.
 
 ### Physical inventory rule
 
-The authoritative physical inventory is now **93 lesson files**. The earlier 63-file statement remains useful as historical registry state but is no longer the current repository count.
+The authoritative physical inventory is now **96 lesson files**. The earlier 63-file statement remains useful as historical registry state but is no longer the current repository count.
 
 The distinction remains:
 
-- **Repository count:** 93 physical lesson files currently present.
+- **Repository count:** 96 physical lesson files currently present.
 - **Curriculum count:** not yet finalized; requires content-level reconciliation.
 - **Build sequence:** not inferred from filenames.
 - **Existing content:** preserved.
