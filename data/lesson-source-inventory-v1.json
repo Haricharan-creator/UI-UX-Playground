@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "product": "HACHARA UI/UX Playground",
+  "purpose": "Stable source inventory for the existing physical lesson files.",
+  "sourceOfTruth": {
+    "repository": "Haricharan-creator/UI-UX-Playground",
+    "branch": "main",
+    "inventoryRule": "All files beginning with lesson- plus lesson.html",
+    "physicalLessonCount": 96
+  },
+  "rules": [
+    "lessonId is derived from the existing filename.",
+    "sourceRef is the exact repository path.",
+    "Physical lesson count is not the curriculum-topic count.",
+    "mappingStatus remains needs-review until content-level mapping is complete.",
+    "Existing lesson content is immutable during mapping."
+  ]
+}
