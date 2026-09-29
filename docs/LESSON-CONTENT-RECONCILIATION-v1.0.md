@@ -259,3 +259,89 @@ The correct next task is therefore **curriculum-role mapping**, not file deletio
 - **Still requiring full objective/content comparison:** relationships between newer numbered units and older similarly themed lessons.
 
 **Validation status:** Stage 2 numbered-lesson structural/content review completed; source files preserved.
+
+
+## Stage 3 — older/newer lesson relationship review
+
+Direct content comparison of representative older/newer pairs shows that several newer numbered lessons are **refined or expanded treatments of an existing topic**, rather than automatic replacements.
+
+### Accessibility foundations
+- `lesson-accessibility.html` introduces accessibility as a UX foundation across visual, motor, hearing and cognitive needs.
+- `lesson-accessibility-foundations.html` expands the foundation into perceivable, operable, understandable, robust, focus and related considerations.
+- `lesson-inclusive-design-foundations.html` broadens the frame from accessibility to inclusion across abilities, contexts, language, technology and temporary circumstances.
+
+**Current role hypothesis:** layered foundation/supporting units. Do not merge or delete.
+
+### Responsive design
+- `lesson-responsive-design.html` establishes responsive adaptation across screen sizes, input contexts and content constraints.
+- `lesson-inclusive-responsive-design.html` adds reflow, text scaling, touch targets, content priority and orientation/input variation.
+- `lesson-66-responsive-accessible-layouts.html` is the newer numbered capability unit focused on responsive accessibility.
+
+**Current role hypothesis:** foundation → inclusive extension → specialized capability. Preserve all pending final curriculum sequencing.
+
+### Mobile touch
+- `lesson-accessible-mobile-touch-targets.html` focuses on target size, spacing, gesture alternatives, orientation and different input methods.
+- `lesson-67-touch-targets-mobile-ux.html` is the numbered specialized capability unit.
+
+**Current role:** overlap-candidate/supporting relationship requires final objective comparison; preserve both.
+
+### UX content strategy
+- `lesson-content-strategy.html` establishes content as part of the interface, including labels, headings, instructions, errors, empty states and calls to action.
+- `lesson-081-ux-content-strategy.html` moves into content mapping, purpose/audience, information hierarchy, states, ownership and a practical flow exercise.
+
+**Current role hypothesis:** foundation → applied content-strategy practice. Preserve both.
+
+### Design systems
+- `lesson-design-systems.html` introduces reusable components, styles, tokens, rules, documentation and governance.
+- `lesson-082-design-systems.html` provides a more applied system workflow involving tokens, components, patterns, documentation, governance and refactoring.
+
+**Current role hypothesis:** foundation → applied practice. Preserve both.
+
+### Design tokens
+- `lesson-design-tokens.html` explains named reusable values and token categories.
+- `lesson-083-design-tokens.html` adds semantic naming, primitive/semantic/component mapping, theme modes and controlled propagation.
+
+**Current role hypothesis:** foundation → deeper implementation practice. Preserve both.
+
+### Design handoff
+- `lesson-design-handoff.html` covers flow, component states, responsive behaviour, interaction, content and accessibility considerations.
+- `lesson-088-design-handoff.html` turns this into a practical handoff package and review loop.
+
+**Current role hypothesis:** foundation → applied handoff practice. Preserve both.
+
+### Design critique
+- `lesson-design-critique.html` establishes evidence-based critique using observation → impact/evidence → principle/goal → action.
+- The numbered design-critique/iteration unit is intended as a broader practice/rework capability.
+
+**Current role hypothesis:** foundation → iterative critique/rework. Preserve both pending direct full-content comparison.
+
+## Reconciliation principle established
+
+The evidence supports a **layered curriculum model** in several areas:
+
+**Foundation → Extension → Specialized Practice**
+
+This is preferable to treating every related lesson as a duplicate.
+
+A newer lesson may therefore:
+- deepen an existing concept,
+- specialize it for a context,
+- convert it into practical tool work,
+- add evidence/rework/validation,
+- or combine several existing concepts into a capability exercise.
+
+Only genuine content duplication should eventually be considered for consolidation.
+
+## Current classification consequence
+
+The curriculum should retain source lessons as separate physical knowledge units while allowing the curriculum layer to designate:
+- **core foundation**
+- **supporting/deepening**
+- **specialized capability**
+- **practice/rework**
+- **overlap-candidate**
+- **reference/template**
+
+This gives the 17-bundle architecture enough flexibility without destroying historical or authored knowledge.
+
+**Validation status:** representative older/newer relationships reviewed directly; layered relationships identified; final all-93 classification remains in progress.
