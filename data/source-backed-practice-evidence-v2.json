@@ -1,0 +1,528 @@
+{
+  "version": "1.0",
+  "status": "provisional-source-backed-practice-evidence",
+  "purpose": "Extend source-backed Module -> Practice -> Tool Task -> Evidence -> Review -> Rework -> Validation definitions from existing lesson activities.",
+  "sourceBasis": [
+    "Existing lesson files in UI-UX-Playground",
+    "data/bundle-engine-contract.json",
+    "data/progress-model.json",
+    "CURRICULUM-BUNDLE-MASTER.md"
+  ],
+  "rules": [
+    "Existing lesson content is unchanged.",
+    "Definitions below translate existing Apply/Tool practice and Rework sections into gates.",
+    "No missing lesson content is invented.",
+    "Validation remains provisional until curriculum-level review."
+  ],
+  "modules": [
+    {
+      "moduleId": "B09-M01",
+      "bundleId": "B09",
+      "sourceLessons": [
+        [
+          "lesson-design-systems",
+          "lesson-design-systems.html",
+          "design-systems"
+        ],
+        [
+          "lesson-design-tokens",
+          "lesson-design-tokens.html",
+          "design-tokens"
+        ],
+        [
+          "lesson-082-design-systems",
+          "lesson-082-design-systems.html",
+          "design-systems"
+        ],
+        [
+          "lesson-083-design-tokens",
+          "lesson-083-design-tokens.html",
+          "design-tokens"
+        ],
+        [
+          "lesson-084-component-anatomy",
+          "lesson-084-component-anatomy.html",
+          "component-anatomy"
+        ]
+      ],
+      "practice": "Create/audit reusable patterns, tokens and components for one product flow; define purpose, anatomy and reusable decisions.",
+      "toolTask": "In Figma or Framer, build a mini system and/or audit five repeated patterns; extract tokens, define component states, document usage and refactor one flow.",
+      "evidence": [
+        "Reusable components/patterns",
+        "Named token set",
+        "Component anatomy",
+        "Usage guidance",
+        "Before/after refactor",
+        "Reflection"
+      ],
+      "review": [
+        "Reuse is purposeful",
+        "Tokens express reusable decisions",
+        "Component anatomy covers behaviour/states/accessibility",
+        "System supports context rather than forcing identical screens"
+      ],
+      "rework": [
+        "V1",
+        "Review duplication/inconsistency",
+        "V2",
+        "Compare reuse and usability",
+        "Reflect"
+      ],
+      "validation": "Learner can create and explain reusable design foundations and apply them consistently in context."
+    },
+    {
+      "moduleId": "B09-M02",
+      "bundleId": "B09",
+      "sourceLessons": [
+        [
+          "lesson-085-component-states",
+          "lesson-085-component-states.html",
+          "component-states"
+        ],
+        [
+          "lesson-086-responsive-components",
+          "lesson-086-responsive-components.html",
+          "responsive-components"
+        ],
+        [
+          "lesson-087-component-documentation",
+          "lesson-087-component-documentation.html",
+          "component-documentation"
+        ]
+      ],
+      "practice": "Define meaningful component states, responsive behaviour and documentation for one production component.",
+      "toolTask": "Create a state matrix, prototype transitions, test keyboard/touch/error paths, then document purpose, variants, states, constraints and accessibility.",
+      "evidence": [
+        "State matrix",
+        "Responsive versions",
+        "Prototype transitions",
+        "Documentation",
+        "Accessibility expectations",
+        "Real-content test"
+      ],
+      "review": [
+        "States are meaningful",
+        "Behaviour is predictable",
+        "Responsive adaptation preserves meaning/usability",
+        "Documentation explains purpose and constraints"
+      ],
+      "rework": [
+        "V1",
+        "Review states/responsiveness/docs",
+        "V2",
+        "Retest",
+        "Reflect"
+      ],
+      "validation": "Learner can specify a component's behaviour across states, contexts and responsive conditions and communicate it to another designer/builder."
+    },
+    {
+      "moduleId": "B09-M03",
+      "bundleId": "B09",
+      "sourceLessons": [
+        [
+          "lesson-088-design-handoff",
+          "lesson-088-design-handoff.html",
+          "design-handoff"
+        ],
+        [
+          "lesson-089-design-qa",
+          "lesson-089-design-qa.html",
+          "design-qa"
+        ],
+        [
+          "lesson-design-handoff",
+          "lesson-design-handoff.html",
+          "design-handoff"
+        ]
+      ],
+      "practice": "Prepare a handoff package and perform design QA against intended design and implementation/prototype.",
+      "toolTask": "Create handoff for one flow in Figma/Framer; include context, states, responsive rules, assets, edge cases and open questions. Compare with implementation/prototype and maintain a QA log.",
+      "evidence": [
+        "Handoff package",
+        "QA findings",
+        "Expected vs actual behaviour",
+        "Reproduction details",
+        "Impact",
+        "Retest evidence"
+      ],
+      "review": [
+        "Intent and behaviour are communicated",
+        "Open questions are explicit",
+        "QA findings are reproducible",
+        "Responsive/accessibility/content behaviour are checked"
+      ],
+      "rework": [
+        "V1",
+        "Review/QA",
+        "V2",
+        "Retest fixes",
+        "Reflect"
+      ],
+      "validation": "Learner can transfer design intent clearly and conduct actionable design QA beyond pixel comparison."
+    },
+    {
+      "moduleId": "B10-M01",
+      "bundleId": "B10",
+      "sourceLessons": [
+        [
+          "lesson-usability-test-plan",
+          "lesson-usability-test-plan.html",
+          "usability-test-planning"
+        ],
+        [
+          "lesson-usability-testing",
+          "lesson-usability-testing.html",
+          "usability-testing"
+        ],
+        [
+          "lesson-usability-moderation",
+          "lesson-usability-moderation.html",
+          "usability-moderation"
+        ]
+      ],
+      "practice": "Turn a design question into a focused usability study and moderate a realistic task without leading participants.",
+      "toolTask": "Use a Figma/Framer prototype; create objective, participant/context, realistic task, neutral prompt, observation plan, debrief and moderator guide; pilot it.",
+      "evidence": [
+        "Test plan",
+        "Moderator guide",
+        "Observation notes",
+        "Pilot reflection",
+        "Prototype/test context"
+      ],
+      "review": [
+        "Question is explicit",
+        "Task is realistic",
+        "Prompts are neutral",
+        "Observed behaviour is separated from interpretation",
+        "Leading/rescue moments are identified"
+      ],
+      "rework": [
+        "V1",
+        "Pilot",
+        "Identify leading prompts",
+        "V2",
+        "Compare evidence quality",
+        "Reflect"
+      ],
+      "validation": "Learner can plan and moderate a focused usability session while protecting the quality of evidence."
+    },
+    {
+      "moduleId": "B10-M02",
+      "bundleId": "B10",
+      "sourceLessons": [
+        [
+          "lesson-usability-findings",
+          "lesson-usability-findings.html",
+          "usability-findings"
+        ],
+        [
+          "lesson-usability-prioritisation",
+          "lesson-usability-prioritisation.html",
+          "usability-prioritisation"
+        ],
+        [
+          "lesson-design-critique",
+          "lesson-design-critique.html",
+          "design-critique"
+        ],
+        [
+          "lesson-80-design-critique-and-iteration",
+          "lesson-80-design-critique-and-iteration.html",
+          "design-critique-iteration"
+        ]
+      ],
+      "practice": "Turn observations into traceable findings, make an explicit prioritisation decision, and conduct evidence-based critique/rework.",
+      "toolTask": "Synthesize a Figma/Framer test into 3–5 findings; define prioritisation criteria and trade-offs; critique a screen/flow and create V2.",
+      "evidence": [
+        "3–5 traceable findings",
+        "Evidence/pattern/impact/scope/opportunity",
+        "Prioritisation criteria and trade-offs",
+        "Three critiques",
+        "V2 with rationale"
+      ],
+      "review": [
+        "Evidence separated from interpretation",
+        "Criteria are explicit",
+        "Trade-offs documented",
+        "Critique connects observation/impact/principle/action",
+        "Designer retains decision ownership"
+      ],
+      "rework": [
+        "Observations",
+        "Synthesis",
+        "Decision",
+        "V2",
+        "Validate",
+        "Reflect"
+      ],
+      "validation": "Learner can transform research evidence into defensible findings, transparent decisions and actionable design rework."
+    },
+    {
+      "moduleId": "B10-M03",
+      "bundleId": "B10",
+      "sourceLessons": [
+        [
+          "lesson-092-usability-testing-metrics",
+          "lesson-092-usability-testing-metrics.html",
+          "usability-testing-metrics"
+        ]
+      ],
+      "practice": "Define task success, time, meaningful errors, assistance and confidence measures before testing a prototype.",
+      "toolTask": "Run a usability measurement exercise in Figma/Framer and create an observation sheet; separate evidence from interpretation and proposed changes.",
+      "evidence": [
+        "Task definition",
+        "Success criteria",
+        "Measurement sheet",
+        "Observation notes",
+        "Participant feedback",
+        "Limitations"
+      ],
+      "review": [
+        "Measures are defined consistently",
+        "Metrics are interpreted with behaviour/context",
+        "Small sample is not overgeneralised",
+        "Further validation needs are explicit"
+      ],
+      "rework": [
+        "Define test",
+        "Observe",
+        "Refine design",
+        "Retest",
+        "Reflect"
+      ],
+      "validation": "Learner can use task-based usability measures alongside observation and participant feedback to identify patterns and questions."
+    },
+    {
+      "moduleId": "B11-M01",
+      "bundleId": "B11",
+      "sourceLessons": [
+        [
+          "lesson-081-ux-content-strategy",
+          "lesson-081-ux-content-strategy.html",
+          "ux-content-strategy"
+        ],
+        [
+          "lesson-content-strategy",
+          "lesson-content-strategy.html",
+          "content-strategy"
+        ],
+        [
+          "lesson-content-hierarchy",
+          "lesson-content-hierarchy.html",
+          "content-hierarchy"
+        ]
+      ],
+      "practice": "Map content to user tasks, audit hierarchy and identify missing/error/empty states before polishing copy.",
+      "toolTask": "Create a content map for one flow, prototype improved hierarchy and compare V1/V2 with a short usability check.",
+      "evidence": [
+        "Content map",
+        "Task-to-information mapping",
+        "State coverage",
+        "Hierarchy map",
+        "V2 prototype",
+        "Usability check"
+      ],
+      "review": [
+        "Content supports user task",
+        "Hierarchy is clear",
+        "States are covered",
+        "Uncertainty/ambiguity is reduced",
+        "Ownership/maintenance considered where applicable"
+      ],
+      "rework": [
+        "V1",
+        "Review evidence/uncertainty",
+        "V2",
+        "Compare comprehension",
+        "Reflect"
+      ],
+      "validation": "Learner can treat content as part of the interface and structure information around user needs."
+    },
+    {
+      "moduleId": "B11-M02",
+      "bundleId": "B11",
+      "sourceLessons": [
+        [
+          "lesson-microcopy",
+          "lesson-microcopy.html",
+          "microcopy"
+        ],
+        [
+          "lesson-plain-language",
+          "lesson-plain-language.html",
+          "plain-language"
+        ]
+      ],
+      "practice": "Audit and rewrite interface labels/messages for action, context, consequence, tone, accessibility and task clarity.",
+      "toolTask": "In Figma/Framer, identify five microcopy items (CTA, hint, error, confirmation, empty state), rewrite them and test realistic lengths.",
+      "evidence": [
+        "Five before/after examples",
+        "Rationale per change",
+        "Realistic-length UI evidence",
+        "Consistency check"
+      ],
+      "review": [
+        "Language is clear and contextual",
+        "Actions/consequences are understandable",
+        "Jargon/vagueness reduced",
+        "Copy remains usable at realistic lengths"
+      ],
+      "rework": [
+        "V1",
+        "Copy review",
+        "V2",
+        "Readability/comprehension check",
+        "Reflect"
+      ],
+      "validation": "Learner can produce task-focused interface language that reduces uncertainty and remains usable in context."
+    },
+    {
+      "moduleId": "B12-M01",
+      "bundleId": "B12",
+      "sourceLessons": [
+        [
+          "lesson-090-ux-metrics",
+          "lesson-090-ux-metrics.html",
+          "ux-metrics"
+        ],
+        [
+          "lesson-091-ux-metrics-and-measurement",
+          "lesson-091-ux-metrics-and-measurement.html",
+          "ux-metrics-measurement"
+        ]
+      ],
+      "practice": "Choose a product task, define the UX question and outcome, then select quantitative and qualitative evidence with baseline/context and guardrails.",
+      "toolTask": "Create an annotated Figma/Framer flow showing where evidence could be collected and what result would trigger investigation.",
+      "evidence": [
+        "UX question",
+        "Outcome",
+        "Primary quantitative signal",
+        "Qualitative signal",
+        "Baseline/context",
+        "Guardrail",
+        "Annotated flow",
+        "Interpretation limits"
+      ],
+      "review": [
+        "Metric aligns to question",
+        "Population/context/method considered",
+        "Qualitative and quantitative evidence complement each other",
+        "Correlation is not treated as causation"
+      ],
+      "rework": [
+        "V1",
+        "Review metric fit",
+        "V2",
+        "Refine evidence",
+        "Validate signals",
+        "Reflect"
+      ],
+      "validation": "Learner can connect UX questions to appropriate evidence and avoid treating a single metric as proof of design success."
+    },
+    {
+      "moduleId": "B07-M01",
+      "bundleId": "B07",
+      "sourceLessons": [
+        [
+          "lesson-accessibility-foundations",
+          "lesson-accessibility-foundations.html",
+          "accessibility-foundations"
+        ],
+        [
+          "lesson-accessibility",
+          "lesson-accessibility.html",
+          "accessibility-foundations"
+        ],
+        [
+          "lesson-inclusive-design-foundations",
+          "lesson-inclusive-design-foundations.html",
+          "inclusive-design-foundations"
+        ],
+        [
+          "lesson-accessible-color-contrast",
+          "lesson-accessible-color-contrast.html",
+          "color-contrast"
+        ],
+        [
+          "lesson-cognitive-accessibility",
+          "lesson-cognitive-accessibility.html",
+          "cognitive-accessibility"
+        ],
+        [
+          "lesson-designing-for-cognitive-accessibility",
+          "lesson-designing-for-cognitive-accessibility.html",
+          "cognitive-accessibility"
+        ]
+      ],
+      "practice": "Audit a previously designed flow for broad accessibility and inclusive-design considerations, then rework identified barriers.",
+      "toolTask": "Use Figma/Framer to annotate perceivable/operable/understandable/robust considerations, contrast, cognitive load and inclusive needs.",
+      "evidence": [
+        "Accessibility audit",
+        "Annotated screens",
+        "Contrast/state evidence",
+        "Inclusive-design rationale",
+        "V2 changes",
+        "Unvalidated items"
+      ],
+      "review": [
+        "Accessibility considered throughout design",
+        "Evidence is specific",
+        "Inclusive considerations are tied to user/context needs",
+        "Assumptions are distinguished from validated findings"
+      ],
+      "rework": [
+        "V1 audit",
+        "Review",
+        "V2 rework",
+        "Validate",
+        "Reflect"
+      ],
+      "validation": "Learner demonstrates accessibility/inclusive design reasoning in an actual interface rather than only recalling principles."
+    },
+    {
+      "moduleId": "B07-M02",
+      "bundleId": "B07",
+      "sourceLessons": [
+        [
+          "lesson-accessibility-testing-validation",
+          "lesson-accessibility-testing-validation.html",
+          "accessibility-testing-validation"
+        ],
+        [
+          "lesson-accessible-keyboard-navigation",
+          "lesson-accessible-keyboard-navigation.html",
+          "keyboard-navigation"
+        ],
+        [
+          "lesson-accessible-screen-reader-content",
+          "lesson-accessible-screen-reader-content.html",
+          "screen-reader-content"
+        ]
+      ],
+      "practice": "Create and execute a multi-method accessibility validation plan for a key product flow.",
+      "toolTask": "Map focus order and semantic/content structure in Figma/Framer; define automated, keyboard, zoom/text, assistive-technology and user-evidence checks where applicable.",
+      "evidence": [
+        "Validation plan",
+        "Focus map",
+        "Semantic/content map",
+        "Method-specific findings",
+        "Confirmed vs assumed issues",
+        "Unvalidated scope"
+      ],
+      "review": [
+        "Each method's limits are documented",
+        "Keyboard path is logical",
+        "Semantic names/reading order are coherent",
+        "Claims match available evidence"
+      ],
+      "rework": [
+        "Plan",
+        "Test",
+        "Separate facts/assumptions",
+        "Rework",
+        "Retest"
+      ],
+      "validation": "Learner can plan and interpret multi-method accessibility validation without overclaiming from a single test."
+    }
+  ]
+}
