@@ -1,7 +1,8 @@
 {
-  "version":"1.0",
-  "status":"locked",
-  "sourceOfTruth":"117-lesson master registry",
+  "version":"1.1",
+  "status":"locked-current-inventory",
+  "sourceOfTruth":"Current HACHARA UI/UX lesson registry: 96 physical lesson files, comprising 95 curriculum lesson units plus 1 reference/template (lesson.html).",
+  "historicalContext":"Earlier 117-lesson and 63-file references are historical reconciliation states and are not the current UI/UX source-of-truth count.",
   "rules":[
     "Every lesson keeps its stable lesson ID and original sequence number.",
     "Bundle and module grouping is organizational metadata and must not rewrite lesson content.",
