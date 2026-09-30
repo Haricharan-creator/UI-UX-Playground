@@ -1,0 +1,82 @@
+{
+  "version": "1.0",
+  "status": "provisional-source-backed-practice-evidence",
+  "purpose": "Extend the source-backed Module -> Practice -> Tool Task -> Evidence -> Review -> Rework -> Validation architecture for the remaining lesson-backed accessibility module. Tool-workflow modules without dedicated source lessons remain explicit source gaps.",
+  "sourceBasis": [
+    "Existing lesson files in UI-UX-Playground",
+    "data/provisional-module-candidates-v1.json",
+    "data/provisional-lesson-module-map-v1.json",
+    "data/bundle-engine-contract.json",
+    "data/progress-model.json",
+    "CURRICULUM-BUNDLE-MASTER.md"
+  ],
+  "rules": [
+    "Existing lesson content is unchanged.",
+    "Definitions below translate existing lesson Learn/Check/Figma or Framer Practice/Rework sections into gates.",
+    "No missing lesson content is invented.",
+    "Validation remains provisional until curriculum-level review.",
+    "B13-M01 and B14-M01 remain source gaps because the current lesson set does not contain dedicated Figma- or Framer-industry-workflow source lessons."
+  ],
+  "modules": [
+    {
+      "moduleId": "B07-M03",
+      "bundleId": "B07",
+      "sourceLessons": [
+        ["lesson-61-designing-for-older-adults", "lesson-61-designing-for-older-adults.html", "older-adult-inclusive-design"],
+        ["lesson-62-designing-for-children", "lesson-62-designing-for-children.html", "children-inclusive-design"],
+        ["lesson-63-designing-for-language-literacy", "lesson-63-designing-for-language-literacy.html", "language-literacy-inclusive-design"],
+        ["lesson-64-localization-internationalization", "lesson-64-localization-internationalization.html", "localization-internationalization"],
+        ["lesson-65-rtl-bidirectional-ux", "lesson-65-rtl-bidirectional-ux.html", "rtl-bidirectional-ux"],
+        ["lesson-68-voice-conversational-accessibility", "lesson-68-voice-conversational-accessibility.html", "voice-conversational-accessibility"],
+        ["lesson-69-multimodal-accessibility", "lesson-69-multimodal-accessibility.html", "multimodal-accessibility"],
+        ["lesson-accessible-multilingual-content", "lesson-accessible-multilingual-content.html", "accessible-multilingual-content"],
+        ["lesson-low-vision-design", "lesson-low-vision-design.html", "low-vision-design"],
+        ["lesson-motor-accessibility", "lesson-motor-accessibility.html", "motor-accessibility"],
+        ["lesson-neurodiversity-inclusive-ux", "lesson-neurodiversity-inclusive-ux.html", "neurodiversity-inclusive-ux"]
+      ],
+      "practice": "Apply specialized inclusive and accessibility considerations to a real interface context, accounting for varied abilities, developmental context, language/literacy, locale and writing direction, sensory/input alternatives, magnification, motor effort and cognitive or sensory load.",
+      "toolTask": "Choose one Figma/Framer flow and create targeted variants or stress states for the relevant context: older-adult needs, child/developmental context, language/literacy, localization/RTL, voice/conversational fallback, multimodal alternatives, low vision, motor access or neurodiversity. Document what changes, what remains consistent and why.",
+      "evidence": [
+        "Context and user-need statement",
+        "Annotated V1",
+        "Specialized stress/variant states",
+        "V2 design changes",
+        "Rationale tied to the selected capability",
+        "Unvalidated assumptions and limitations"
+      ],
+      "review": [
+        "The selected capability is relevant to the task/context",
+        "Design changes respond to concrete barriers rather than stereotypes",
+        "Alternative perception/input paths are provided where required",
+        "Language, locale, direction or content variation is handled without fragile fixed layouts",
+        "Safety, privacy, recovery or user-control considerations are explicit where relevant",
+        "Claims are separated from validated evidence"
+      ],
+      "rework": [
+        "V1",
+        "Specialized accessibility/inclusion review",
+        "Stress or variant test",
+        "V2",
+        "Validate",
+        "Reflect"
+      ],
+      "validation": "Learner can apply a specialized inclusive or accessibility capability to an interface, explain the context-specific design reasoning, and identify what still requires testing or validation."
+    }
+  ],
+  "sourceGaps": [
+    {
+      "moduleId": "B13-M01",
+      "bundleId": "B13",
+      "status": "source-gap",
+      "reason": "The current physical lesson inventory contains Figma/Framer practice embedded across lessons, but no dedicated source lesson set defining a complete Figma industry workflow module.",
+      "requiredNextStep": "Define or import an authoritative Figma workflow source before creating final module-level practice/evidence gates."
+    },
+    {
+      "moduleId": "B14-M01",
+      "bundleId": "B14",
+      "status": "source-gap",
+      "reason": "The current physical lesson inventory contains Figma/Framer practice embedded across lessons, but no dedicated source lesson set defining a complete Framer industry workflow module.",
+      "requiredNextStep": "Define or import an authoritative Framer workflow source before creating final module-level practice/evidence gates."
+    }
+  ]
+}
