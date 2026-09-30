@@ -1,10 +1,19 @@
-# HACHARA Repository Source of Truth v1.0
+# HACHARA Repository Source of Truth v1.1
 
 ## Audit date
-2026-09-29
+2026-09-30
 
 ## Decision
 `Haricharan-creator/UI-UX-Playground` is the active source-of-truth repository for the HACHARA UI/UX Playbook and learning/capability build.
+
+## Current authoritative inventory
+The current verified repository inventory contains **96 physical lesson files**:
+- **95 curriculum lesson units**
+- **1 reference/template:** `lesson.html`
+
+The curriculum-topic count and module mapping remain provisional where explicitly marked; physical file count is not the same as learner proficiency or final curriculum completion.
+
+Earlier **117-lesson** and **63-file** references are retained only as historical reconciliation states. They are not the current UI/UX source-of-truth counts.
 
 ## Repository audit
 | Repository | Status | Decision |
@@ -15,12 +24,11 @@
 ## Correct curriculum-source statement
 The UI/UX project has its **own** curriculum and lesson inventory. It must not inherit lesson counts, lesson content, numbering, or curriculum records from the separate **A Grammar Playbook by GSR** project.
 
-The current UI/UX repository registry records **63 lesson files** (including the lesson template). This is a repository file count, **not yet a deduplicated curriculum-topic count**. Several topic overlaps remain candidates for content-level review. Existing files are preserved while that reconciliation is performed.
-
 ## Authoritative UI/UX sources
 - `CURRICULUM-BUNDLE-MASTER.md` — authoritative UI/UX learning architecture and 17 bundle definitions.
 - `LESSON-REGISTRY.md` — authoritative inventory of existing UI/UX lesson files and their reconciliation status.
 - Bundle/data contracts — implementation schemas for the learning workflow.
+- `data/curriculum-mapping-policy.json` — current mapping-policy rules and current inventory source-of-truth statement.
 
 ## Latest authoritative architectural commitments
 - Lessons remain the authoritative UI/UX knowledge units.
