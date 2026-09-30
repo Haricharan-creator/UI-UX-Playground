@@ -1,0 +1,1183 @@
+{
+  "version": "1.0",
+  "status": "provisional-practice-evidence-scaffold",
+  "purpose": "Additive scaffold for Module -> Practice -> Tool Task -> Evidence -> Review -> Rework -> Validation. It does not rewrite, merge, delete, or replace existing lesson content.",
+  "sourceOfTruth": [
+    "CURRICULUM-BUNDLE-MASTER.md",
+    "data/bundle-engine-contract.json",
+    "data/progress-model.json",
+    "data/provisional-module-candidates-v1.json",
+    "data/provisional-lesson-module-map-v1.json",
+    "docs/BUNDLE-MODULE-COVERAGE-AUDIT-v1.0.md"
+  ],
+  "rules": [
+    "Existing lesson content remains authoritative and immutable.",
+    "Practice must link to existing lessonIds and skillIds when defined; unknown mappings remain explicit gaps.",
+    "Tool tasks use figma, framer, or none only where supported by the curriculum architecture.",
+    "Evidence must be observable and submitted before capability validation.",
+    "Review must produce an evidence-based decision; rework is used when required.",
+    "Validation confirms demonstrated capability and does not equal lesson completion.",
+    "Do not invent source lessons or silently fill identified curriculum gaps."
+  ],
+  "requiredGates": [
+    "practice",
+    "evidence",
+    "review",
+    "validation"
+  ],
+  "toolModes": [
+    "figma",
+    "framer",
+    "none"
+  ],
+  "modules": [
+    {
+      "moduleId": "B01-M01",
+      "bundleId": "B01",
+      "title": "UX Thinking, Users and Decision Foundations",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": [
+        "Source coverage audit identified this module as a genuine curriculum-source gap; do not invent lesson content to fill it."
+      ]
+    },
+    {
+      "moduleId": "B01-M02",
+      "bundleId": "B01",
+      "title": "Heuristics and Evidence-Based UX Evaluation",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B02-M01",
+      "bundleId": "B02",
+      "title": "Visual Hierarchy, Layout, Spacing and Typography",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B02-M02",
+      "bundleId": "B02",
+      "title": "Colour and Visual Accessibility Foundations",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B03-M01",
+      "bundleId": "B03",
+      "title": "Research, Personas and Empathy",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B03-M02",
+      "bundleId": "B03",
+      "title": "Research Synthesis and Inclusive Research",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B04-M01",
+      "bundleId": "B04",
+      "title": "Information Architecture, Navigation and Findability",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B04-M02",
+      "bundleId": "B04",
+      "title": "User Flows and Content Structure",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B05-M01",
+      "bundleId": "B05",
+      "title": "Interaction Patterns, States and Feedback",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B05-M02",
+      "bundleId": "B05",
+      "title": "Forms, Errors, Recovery and Interruption",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B05-M03",
+      "bundleId": "B05",
+      "title": "Dialogs, Overlays, Motion and Notifications",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B06-M01",
+      "bundleId": "B06",
+      "title": "Wireframing and Prototype Communication",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": [
+        "Source coverage audit identified a prototype-content gap within this module; existing wireframing source is preserved and prototype scope remains to be defined."
+      ]
+    },
+    {
+      "moduleId": "B07-M01",
+      "bundleId": "B07",
+      "title": "Accessibility Foundations and Inclusive Design",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B07-M02",
+      "bundleId": "B07",
+      "title": "Accessible Interaction, Content and Assistive Technology",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B07-M03",
+      "bundleId": "B07",
+      "title": "Specialized Inclusive and Accessibility Capabilities",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B08-M01",
+      "bundleId": "B08",
+      "title": "Responsive and Cross-Device Foundations",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B08-M02",
+      "bundleId": "B08",
+      "title": "Responsive Accessibility and Mobile Interaction",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B09-M01",
+      "bundleId": "B09",
+      "title": "Design Systems, Tokens and Components",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B09-M02",
+      "bundleId": "B09",
+      "title": "Component States, Responsiveness and Documentation",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B09-M03",
+      "bundleId": "B09",
+      "title": "Design Handoff and Design QA",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B10-M01",
+      "bundleId": "B10",
+      "title": "Usability Testing Planning and Moderation",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B10-M02",
+      "bundleId": "B10",
+      "title": "Findings, Prioritisation, Critique and Iteration",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B10-M03",
+      "bundleId": "B10",
+      "title": "Usability Measurement",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B11-M01",
+      "bundleId": "B11",
+      "title": "Content Hierarchy, Strategy and Plain Language",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B11-M02",
+      "bundleId": "B11",
+      "title": "Microcopy, Accessibility and UX Content Practice",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B12-M01",
+      "bundleId": "B12",
+      "title": "UX Metrics and Measurement",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B13-M01",
+      "bundleId": "B13",
+      "title": "Figma Industry Workflow",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": [
+        "Tool-practice layer; source-empty by design in the current lesson mapping."
+      ]
+    },
+    {
+      "moduleId": "B14-M01",
+      "bundleId": "B14",
+      "title": "Framer Industry Workflow",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": [
+        "Tool-practice layer; source-empty by design in the current lesson mapping."
+      ]
+    }
+  ],
+  "coverage": {
+    "moduleCount": 28,
+    "sourceMappedCurriculumLessons": 95,
+    "referenceTemplates": 1,
+    "sourceGapModules": [
+      "B01-M01"
+    ],
+    "sourceGapAreas": [
+      "B06 prototype portion"
+    ],
+    "intentionallySourceEmptyToolModules": [
+      "B13-M01",
+      "B14-M01"
+    ],
+    "evidenceReworkChallengeLayers": [
+      "B15",
+      "B16",
+      "B17"
+    ]
+  }
+}
