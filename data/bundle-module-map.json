@@ -1,14 +1,16 @@
 {
-  "version":"1.0",
-  "status":"inventory-imported",
+  "version":"1.1",
+  "status":"provisional-content-mapping-available",
   "rule":"This file is a mapping layer only. It does not contain or replace lesson content.",
   "sourceInventoryRef":"data/lesson-source-inventory-v1.json",
-  "sourceInventoryStatus":"96 physical lesson files inventoried; curriculum-topic mapping remains pending.",
+  "sourceInventoryStatus":"96 physical lesson files inventoried; 95 curriculum lesson units provisionally mapped and lesson.html retained as reference/template.",
+  "mappingRef":"data/provisional-lesson-module-map-v1.json",
   "bundles":[
-    {"bundleId":"B01","moduleIds":[]},{"bundleId":"B02","moduleIds":[]},{"bundleId":"B03","moduleIds":[]},{"bundleId":"B04","moduleIds":[]},{"bundleId":"B05","moduleIds":[]},{"bundleId":"B06","moduleIds":[]},{"bundleId":"B07","moduleIds":[]},{"bundleId":"B08","moduleIds":[]},{"bundleId":"B09","moduleIds":[]},{"bundleId":"B10","moduleIds":[]},{"bundleId":"B11","moduleIds":[]},{"bundleId":"B12","moduleIds":[]},{"bundleId":"B13","moduleIds":[]},{"bundleId":"B14","moduleIds":[]},{"bundleId":"B15","moduleIds":[]},{"bundleId":"B16","moduleIds":[]},{"bundleId":"B17","moduleIds":[]}
+    {"bundleId":"B01","moduleIds":["B01-M01","B01-M02"]},{"bundleId":"B02","moduleIds":["B02-M01","B02-M02"]},{"bundleId":"B03","moduleIds":["B03-M01","B03-M02"]},{"bundleId":"B04","moduleIds":["B04-M01","B04-M02"]},{"bundleId":"B05","moduleIds":["B05-M01","B05-M02","B05-M03"]},{"bundleId":"B06","moduleIds":["B06-M01"]},{"bundleId":"B07","moduleIds":["B07-M01","B07-M02","B07-M03"]},{"bundleId":"B08","moduleIds":["B08-M01","B08-M02"]},{"bundleId":"B09","moduleIds":["B09-M01","B09-M02","B09-M03"]},{"bundleId":"B10","moduleIds":["B10-M01","B10-M02","B10-M03"]},{"bundleId":"B11","moduleIds":["B11-M01","B11-M02"]},{"bundleId":"B12","moduleIds":["B12-M01"]},{"bundleId":"B13","moduleIds":["B13-M01"]},{"bundleId":"B14","moduleIds":["B14-M01"]},{"bundleId":"B15","moduleIds":[]},{"bundleId":"B16","moduleIds":[]},{"bundleId":"B17","moduleIds":[]}
   ],
   "modules":[],
-  "lessons":[],
-  "mappingStatus":"awaiting-content-level-module-mapping",
-  "sourceGapPolicy":"Do not invent lesson-to-module relationships. Use the authoritative source inventory first, then map each lesson with stable IDs and source references. Ambiguous relationships remain needs-review or source-gap."
+  "lessonsRef":"data/provisional-lesson-module-map-v1.json",
+  "mappingStatus":"provisional",
+  "sourceGapPolicy":"Do not invent lesson-to-module relationships. Use the authoritative source inventory first, then map each lesson with stable IDs and source references. Ambiguous relationships remain needs-review or source-gap.",
+  "validationNote":"95 curriculum lesson mappings are mapped provisionally; lesson.html remains needs-review as a reference/template. This is not final curriculum approval."
 }
