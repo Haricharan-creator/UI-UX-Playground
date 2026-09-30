@@ -1,0 +1,394 @@
+{
+  "version": "1.0",
+  "status": "provisional-source-backed-practice-evidence",
+  "purpose": "Source-backed practice/evidence definitions extracted from existing lesson content. This is additive and does not rewrite or replace lesson sources.",
+  "sourceBasis": [
+    "data/provisional-lesson-module-map-v1.json",
+    "data/bundle-engine-contract.json",
+    "data/progress-model.json",
+    "CURRICULUM-BUNDLE-MASTER.md"
+  ],
+  "rules": [
+    "Tasks below are grounded in the existing lesson Apply and Improve sections.",
+    "Evidence and validation fields translate those existing activities into the Bundle Engine gates; they are provisional until full curriculum review.",
+    "No new lesson content is created by this file.",
+    "Unreviewed modules remain in the scaffold with needs-definition status."
+  ],
+  "modules": [
+    {
+      "moduleId": "B01-M02",
+      "bundleId": "B01",
+      "status": "source-backed-provisional",
+      "sourceLessons": [
+        {
+          "lessonId": "lesson-heuristics",
+          "sourceRef": "lesson-heuristics.html",
+          "skillId": "heuristic-evaluation"
+        }
+      ],
+      "practice": {
+        "status": "defined-from-source",
+        "activity": "Audit one screen and identify at least five potential usability issues using recognised heuristics.",
+        "sourceRef": "lesson-heuristics.html"
+      },
+      "toolTask": {
+        "status": "defined-from-source",
+        "toolMode": "figma-or-framer",
+        "task": "Choose one screen and perform the heuristic audit in Figma or Framer."
+      },
+      "evidence": {
+        "status": "provisional",
+        "types": [
+          "screenshot",
+          "observation",
+          "reflection"
+        ],
+        "required": [
+          "At least five findings",
+          "Evidence for each finding",
+          "Heuristic for each finding",
+          "Affected user/task",
+          "Severity rationale",
+          "Recommendation"
+        ],
+        "sourceRule": "Keep finding, evidence and recommendation separate; uncertain observations are hypotheses."
+      },
+      "review": {
+        "status": "provisional",
+        "criteria": [
+          "Specific and observable finding",
+          "Evidence is separated from recommendation",
+          "Heuristic is identified",
+          "Severity rationale is explained",
+          "Recommendation is actionable"
+        ]
+      },
+      "rework": {
+        "status": "defined-from-source",
+        "cycle": [
+          "V1 audit",
+          "Prioritise findings",
+          "V2 fix selected issues",
+          "Compare whether the issue is addressed",
+          "Reflect on evidence"
+        ]
+      },
+      "validation": {
+        "status": "provisional",
+        "gate": "Learner can produce an evidence-based heuristic finding set and explain the reasoning behind selected changes."
+      }
+    },
+    {
+      "moduleId": "B02-M01",
+      "bundleId": "B02",
+      "status": "source-backed-provisional",
+      "sourceLessons": [
+        {
+          "lessonId": "lesson-visual-hierarchy",
+          "sourceRef": "lesson-visual-hierarchy.html",
+          "skillId": "visual-hierarchy"
+        },
+        {
+          "lessonId": "lesson-spacing-layout",
+          "sourceRef": "lesson-spacing-layout.html",
+          "skillId": "spacing-layout"
+        },
+        {
+          "lessonId": "lesson-typography",
+          "sourceRef": "lesson-typography.html",
+          "skillId": "typography"
+        }
+      ],
+      "practice": {
+        "status": "defined-from-source",
+        "activity": "Build an interface screen using deliberate hierarchy, spacing/grouping, alignment and a small type system."
+      },
+      "toolTask": {
+        "status": "defined-from-source",
+        "toolMode": "figma-or-framer",
+        "task": "Create a settings/profile or login screen; use layout capabilities, reusable spacing rules and reusable text styles rather than independently styling every element."
+      },
+      "evidence": {
+        "status": "provisional",
+        "types": [
+          "screenshot",
+          "prototype",
+          "reflection"
+        ],
+        "required": [
+          "Clear reading order",
+          "Intentional grouping and alignment",
+          "Consistent spacing approach",
+          "Defined type roles",
+          "Desktop and mobile versions",
+          "Explanation of key design decisions"
+        ]
+      },
+      "review": {
+        "status": "provisional",
+        "criteria": [
+          "Hierarchy communicates what to notice first",
+          "Spacing communicates relationships",
+          "Typography supports scanning/readability",
+          "Reusable rules are used where appropriate",
+          "Responsive versions preserve intended structure"
+        ]
+      },
+      "rework": {
+        "status": "defined-from-source",
+        "cycle": [
+          "V1 build",
+          "Review hierarchy/layout/type",
+          "V2 rework",
+          "Compare meaningful changes",
+          "Reflect on decisions"
+        ]
+      },
+      "validation": {
+        "status": "provisional",
+        "gate": "Learner demonstrates that hierarchy, spacing/layout and typography are intentional communication systems rather than isolated visual decoration."
+      }
+    },
+    {
+      "moduleId": "B02-M02",
+      "bundleId": "B02",
+      "status": "source-backed-provisional",
+      "sourceLessons": [
+        {
+          "lessonId": "lesson-color-contrast",
+          "sourceRef": "lesson-color-contrast.html",
+          "skillId": "color-contrast"
+        }
+      ],
+      "practice": {
+        "status": "defined-from-source",
+        "activity": "Create a small form with default, focus, success and error states while ensuring readable contrast and non-color-only state communication."
+      },
+      "toolTask": {
+        "status": "defined-from-source",
+        "toolMode": "figma-or-framer",
+        "task": "Build the four states and use reusable color styles/tokens; test the states consistently across desktop and mobile."
+      },
+      "evidence": {
+        "status": "provisional",
+        "types": [
+          "screenshot",
+          "prototype",
+          "reflection"
+        ],
+        "required": [
+          "Default/focus/success/error states",
+          "Readable contrast",
+          "Additional signal beyond color where needed",
+          "Consistent reusable color system",
+          "Desktop and mobile evidence"
+        ]
+      },
+      "review": {
+        "status": "provisional",
+        "criteria": [
+          "Color communicates state appropriately",
+          "Contrast supports readability",
+          "State meaning remains understandable without relying only on color",
+          "Color decisions are applied consistently"
+        ]
+      },
+      "rework": {
+        "status": "defined-from-source",
+        "cycle": [
+          "V1 color states",
+          "Review contrast and meaning",
+          "V2 refine system",
+          "Compare improvements",
+          "Reflect on color decisions"
+        ]
+      },
+      "validation": {
+        "status": "provisional",
+        "gate": "Learner demonstrates that color supports hierarchy/state communication without becoming the sole signal."
+      }
+    },
+    {
+      "moduleId": "B04-M01",
+      "bundleId": "B04",
+      "status": "source-backed-provisional",
+      "sourceLessons": [
+        {
+          "lessonId": "lesson-information-architecture",
+          "sourceRef": "lesson-information-architecture.html",
+          "skillId": "information-architecture"
+        }
+      ],
+      "practice": {
+        "status": "defined-from-source",
+        "activity": "Create a simple sitemap and navigation for a learning product with Home, Courses, Practice, Progress and Profile."
+      },
+      "toolTask": {
+        "status": "defined-from-source",
+        "toolMode": "figma",
+        "task": "Build the information architecture, then turn it into navigation and a screen flow in Figma or Framer."
+      },
+      "evidence": {
+        "status": "provisional",
+        "types": [
+          "screenshot",
+          "prototype",
+          "reflection"
+        ],
+        "required": [
+          "Sitemap",
+          "Navigation structure",
+          "Meaningful labels",
+          "Explanation of category placement",
+          "Prediction test for three common tasks"
+        ]
+      },
+      "review": {
+        "status": "provisional",
+        "criteria": [
+          "Labels are meaningful",
+          "Categories are predictable",
+          "Structure reflects user needs",
+          "Overlapping/vague categories are identified"
+        ]
+      },
+      "rework": {
+        "status": "defined-from-source",
+        "cycle": [
+          "V1 organise content",
+          "Review vague/overlapping categories",
+          "V2 refine labels/structure",
+          "Compare predictability",
+          "Reflect on user need"
+        ]
+      },
+      "validation": {
+        "status": "provisional",
+        "gate": "Learner can organise and label information so users can understand, find and predict content or actions."
+      }
+    },
+    {
+      "moduleId": "B04-M02",
+      "bundleId": "B04",
+      "status": "source-backed-provisional",
+      "sourceLessons": [
+        {
+          "lessonId": "lesson-user-flows",
+          "sourceRef": "lesson-user-flows.html",
+          "skillId": "user-flows"
+        }
+      ],
+      "practice": {
+        "status": "defined-from-source",
+        "activity": "Map the flow for a user who wants to reset a forgotten password and return to the product."
+      },
+      "toolTask": {
+        "status": "defined-from-source",
+        "toolMode": "figma",
+        "task": "Include starting goal, entry point, actions, validation, error state, recovery, success confirmation and final destination; then turn the flow into low-fidelity screens."
+      },
+      "evidence": {
+        "status": "provisional",
+        "types": [
+          "screenshot",
+          "prototype",
+          "reflection"
+        ],
+        "required": [
+          "Goal",
+          "Entry point",
+          "Actions",
+          "Decision/validation",
+          "Error state",
+          "Recovery",
+          "Success confirmation",
+          "Final destination"
+        ]
+      },
+      "review": {
+        "status": "provisional",
+        "criteria": [
+          "Goal is explicit",
+          "Important decisions are represented",
+          "Alternate/recovery path exists",
+          "States and feedback are represented",
+          "Final outcome is clear"
+        ]
+      },
+      "rework": {
+        "status": "defined-from-source",
+        "cycle": [
+          "V1 map",
+          "Review missing decisions/states",
+          "V2 add recovery/clarity",
+          "Compare path",
+          "Reflect on decisions"
+        ]
+      },
+      "validation": {
+        "status": "provisional",
+        "gate": "Learner can model a task flow including goals, actions, decisions, states and relevant recovery paths."
+      }
+    },
+    {
+      "moduleId": "B06-M01",
+      "bundleId": "B06",
+      "status": "source-backed-provisional-with-gap",
+      "sourceLessons": [
+        {
+          "lessonId": "lesson-wireframing",
+          "sourceRef": "lesson-wireframing.html",
+          "skillId": "wireframing"
+        }
+      ],
+      "practice": {
+        "status": "defined-from-source",
+        "activity": "Create a low-fidelity checkout, onboarding or settings flow with three connected screens."
+      },
+      "toolTask": {
+        "status": "defined-from-source",
+        "toolMode": "figma-or-framer",
+        "task": "Focus on content hierarchy, navigation, actions and states; avoid final colors, imagery or decorative effects. Then create a higher-fidelity version and explain which structural decisions survived the transition."
+      },
+      "evidence": {
+        "status": "provisional",
+        "types": [
+          "screenshot",
+          "prototype",
+          "reflection"
+        ],
+        "required": [
+          "Three connected low-fidelity screens",
+          "Clear structure",
+          "Navigation/actions/states",
+          "Higher-fidelity version",
+          "Reflection on structural decisions"
+        ]
+      },
+      "review": {
+        "status": "provisional",
+        "criteria": [
+          "Structure communicates purpose without visual polish",
+          "Key paths are understandable",
+          "Important content/actions are represented",
+          "Low-to-higher fidelity transition preserves justified structure"
+        ]
+      },
+      "rework": {
+        "status": "defined-from-source",
+        "cycle": [
+          "V1 structure",
+          "Review unclear hierarchy/paths",
+          "V2 rework structure",
+          "Compare clarity",
+          "Reflect on intentional omissions"
+        ]
+      },
+      "validation": {
+        "status": "provisional",
+        "gate": "Learner demonstrates structural exploration through wireframes and can explain design decisions that persist into higher fidelity."
+      },
+      "gapNote": "The source supports wireframing strongly; the broader B06 prototype scope remains a curriculum/practice gap identified by the coverage audit."
+    }
+  ]
+}
