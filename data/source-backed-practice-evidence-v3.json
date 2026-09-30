@@ -1,0 +1,406 @@
+{
+  "version": "1.0",
+  "status": "provisional-source-backed-practice-evidence",
+  "modules": [
+    {
+      "moduleId": "B01-M02",
+      "bundleId": "B01",
+      "sourceLessons": [
+        "lesson-heuristics.html"
+      ],
+      "practice": "Inspect an interface against usability principles and turn concrete evidence into actionable findings.",
+      "toolTask": "Evaluate a Figma/Framer screen or flow; record issue, evidence, affected users/context, principle and recommendation.",
+      "evidence": [
+        "Heuristic findings",
+        "Evidence",
+        "Principle mapping",
+        "Recommendations"
+      ],
+      "review": [
+        "Concrete evidence",
+        "Usability principle identified",
+        "Impact/context explained",
+        "Actionable recommendation"
+      ],
+      "rework": [
+        "Audit",
+        "Review findings",
+        "Rework",
+        "Validate"
+      ],
+      "validation": "Learner can perform a systematic heuristic evaluation without treating it as a substitute for user research."
+    },
+    {
+      "moduleId": "B03-M01",
+      "bundleId": "B03",
+      "sourceLessons": [
+        "lesson-user-research.html",
+        "lesson-personas.html",
+        "lesson-empathy-journey-mapping.html"
+      ],
+      "practice": "Frame a research question, choose a method, represent meaningful patterns and map the experience using evidence.",
+      "toolTask": "Create a research plan and evidence-based persona/journey map supporting a Figma/Framer design decision.",
+      "evidence": [
+        "Research question",
+        "Method rationale",
+        "Evidence notes",
+        "Persona",
+        "Journey map",
+        "Design implication"
+      ],
+      "review": [
+        "Method matches question",
+        "Evidence separated from assumption",
+        "Persona grounded in patterns",
+        "Journey connects goals/behaviour/friction/opportunities"
+      ],
+      "rework": [
+        "V1",
+        "Review evidence",
+        "V2",
+        "Validate with available evidence",
+        "Reflect"
+      ],
+      "validation": "Learner can connect research evidence to a defensible UX design decision."
+    },
+    {
+      "moduleId": "B03-M02",
+      "bundleId": "B03",
+      "sourceLessons": [
+        "lesson-inclusive-research-and-testing.html"
+      ],
+      "practice": "Plan research/testing that considers inclusion and appropriate participant/context needs.",
+      "toolTask": "Create an inclusive research/testing plan around a Figma/Framer flow, documenting participant considerations, method, evidence and limitations.",
+      "evidence": [
+        "Inclusive research plan",
+        "Participant/context considerations",
+        "Evidence",
+        "Limitations",
+        "Design implications"
+      ],
+      "review": [
+        "Inclusion considerations are explicit",
+        "Method fits question",
+        "Claims match evidence",
+        "Limitations documented"
+      ],
+      "rework": [
+        "Plan",
+        "Review",
+        "Revise",
+        "Validate",
+        "Reflect"
+      ],
+      "validation": "Learner can plan research/testing with explicit inclusion and evidence boundaries."
+    },
+    {
+      "moduleId": "B04-M01",
+      "bundleId": "B04",
+      "sourceLessons": [
+        "lesson-information-architecture.html",
+        "lesson-79-search-discovery-and-findability.html"
+      ],
+      "practice": "Organize content, navigation and findability around user goals and tasks.",
+      "toolTask": "Create an IA/navigation or findability exercise for a Figma/Framer flow; document hierarchy, labels, search/discovery decisions and task paths.",
+      "evidence": [
+        "IA map",
+        "Navigation model",
+        "Findability decisions",
+        "Task path",
+        "Rationale"
+      ],
+      "review": [
+        "Structure supports user goals",
+        "Labels are understandable",
+        "Findability issues evidenced",
+        "Task paths are coherent"
+      ],
+      "rework": [
+        "V1",
+        "Review",
+        "V2",
+        "Validate task paths",
+        "Reflect"
+      ],
+      "validation": "Learner can structure and evaluate information access around user tasks."
+    },
+    {
+      "moduleId": "B04-M02",
+      "bundleId": "B04",
+      "sourceLessons": [
+        "lesson-user-flows.html"
+      ],
+      "practice": "Model a user's task as a clear flow from goal through actions, decisions and outcomes.",
+      "toolTask": "Create and prototype a key user flow in Figma/Framer, including meaningful decision/error paths.",
+      "evidence": [
+        "User flow",
+        "Prototype",
+        "Decision points",
+        "Edge paths",
+        "Rationale"
+      ],
+      "review": [
+        "Goal is explicit",
+        "Steps support task",
+        "Decision points are clear",
+        "Edge paths accounted for"
+      ],
+      "rework": [
+        "V1",
+        "Review",
+        "V2",
+        "Walkthrough",
+        "Reflect"
+      ],
+      "validation": "Learner can create and explain a task-oriented user flow."
+    },
+    {
+      "moduleId": "B06-M01",
+      "bundleId": "B06",
+      "sourceLessons": [
+        "lesson-wireframing.html"
+      ],
+      "practice": "Communicate structure and interaction intent through wireframes while preserving the source gap around standalone prototype instruction.",
+      "toolTask": "Create low/mid-fidelity wireframes in Figma or Framer for a defined flow; show hierarchy, layout, states and task progression.",
+      "evidence": [
+        "Wireframes",
+        "Flow/context",
+        "State notes",
+        "Interaction intent",
+        "Rationale"
+      ],
+      "review": [
+        "Structure communicates task",
+        "Hierarchy is understandable",
+        "Important states are represented",
+        "Fidelity is appropriate"
+      ],
+      "rework": [
+        "V1",
+        "Review",
+        "V2",
+        "Walkthrough",
+        "Reflect"
+      ],
+      "validation": "Learner can use wireframes to communicate structure and intended interaction. Standalone prototype mastery remains a source-gap requiring future definition."
+    },
+    {
+      "moduleId": "B05-M01",
+      "bundleId": "B05",
+      "sourceLessons": [
+        "lesson-75-feedback-and-system-status.html",
+        "lesson-73-empty-loading-success-states.html"
+      ],
+      "practice": "Design interaction feedback and meaningful system states so users understand what is happening and what to do next.",
+      "toolTask": "Prototype loading, empty, success and status-feedback states in Figma/Framer for one flow.",
+      "evidence": [
+        "State map",
+        "Prototype states",
+        "Feedback copy",
+        "Recovery/next-step rationale"
+      ],
+      "review": [
+        "Status is visible/understandable",
+        "States are relevant",
+        "Feedback supports task",
+        "Important status is not dependent on one sensory channel"
+      ],
+      "rework": [
+        "V1",
+        "Review states",
+        "V2",
+        "Retest",
+        "Reflect"
+      ],
+      "validation": "Learner can design meaningful feedback and system states around user tasks."
+    },
+    {
+      "moduleId": "B05-M02",
+      "bundleId": "B05",
+      "sourceLessons": [
+        "lesson-74-designing-for-recovery.html",
+        "lesson-76-designing-for-interruption-and-resumption.html"
+      ],
+      "practice": "Design error recovery and interruption/resumption paths that help users recover without losing task context.",
+      "toolTask": "Prototype an error/recovery and interruption scenario in Figma/Framer, including recovery actions and preserved context.",
+      "evidence": [
+        "Error path",
+        "Recovery design",
+        "Interruption/resumption flow",
+        "Prototype",
+        "Rationale"
+      ],
+      "review": [
+        "Failure is explained",
+        "Recovery action is clear",
+        "Context/progress preserved where appropriate",
+        "Rework responds to evidence"
+      ],
+      "rework": [
+        "V1",
+        "Test failure path",
+        "V2",
+        "Retest",
+        "Reflect"
+      ],
+      "validation": "Learner can design recoverable interactions for failure and interruption scenarios."
+    },
+    {
+      "moduleId": "B05-M03",
+      "bundleId": "B05",
+      "sourceLessons": [
+        "lesson-accessible-dialogs-modals.html",
+        "lesson-accessible-dialogs-overlays.html",
+        "lesson-accessible-notifications-status.html",
+        "lesson-accessible-motion-animation.html"
+      ],
+      "practice": "Design dialogs, overlays, notifications and motion with clear purpose, status, control and accessibility considerations.",
+      "toolTask": "Prototype one dialog/overlay and one status/transition pattern in Figma/Framer; document focus/exit, priority, persistence and reduced-motion considerations where relevant.",
+      "evidence": [
+        "Interaction states",
+        "Focus/exit notes",
+        "Notification/status behaviour",
+        "Motion rationale",
+        "Accessibility notes"
+      ],
+      "review": [
+        "User control is clear",
+        "Important status is perceivable",
+        "Interruption level matches importance",
+        "Motion does not carry essential meaning alone"
+      ],
+      "rework": [
+        "V1",
+        "Review interaction",
+        "V2",
+        "Validate",
+        "Reflect"
+      ],
+      "validation": "Learner can specify contextual overlays/status/motion behaviour with appropriate accessibility considerations."
+    },
+    {
+      "moduleId": "B02-M01",
+      "bundleId": "B02",
+      "sourceLessons": [
+        "lesson-content-hierarchy.html",
+        "lesson-spacing-layout.html",
+        "lesson-typography.html",
+        "lesson-visual-hierarchy.html"
+      ],
+      "practice": "Create clear visual hierarchy using layout, spacing, typography and grouping to communicate purpose and priority.",
+      "toolTask": "Take a cluttered screen in Figma/Framer, map primary/supporting/secondary information, then create V2 and perform a three-second scan.",
+      "evidence": [
+        "Hierarchy map",
+        "V1/V2",
+        "Three-second scan result",
+        "Design rationale"
+      ],
+      "review": [
+        "Primary purpose is apparent",
+        "Relationships are clear",
+        "Emphasis is meaningful",
+        "Spacing/type support hierarchy"
+      ],
+      "rework": [
+        "V1",
+        "Hierarchy map",
+        "V2",
+        "Three-second scan",
+        "Reflect"
+      ],
+      "validation": "Learner can use visual structure to communicate priority and task clarity."
+    },
+    {
+      "moduleId": "B02-M02",
+      "bundleId": "B02",
+      "sourceLessons": [
+        "lesson-color-contrast.html"
+      ],
+      "practice": "Apply colour and contrast decisions that support readable, distinguishable UI without making colour the sole carrier of meaning.",
+      "toolTask": "Audit and rework a Figma/Framer flow for colour/contrast and state communication.",
+      "evidence": [
+        "Contrast audit",
+        "State examples",
+        "V2 screens",
+        "Rationale"
+      ],
+      "review": [
+        "Contrast considered in context",
+        "Meaning is not colour-only",
+        "States remain distinguishable",
+        "Changes preserve hierarchy"
+      ],
+      "rework": [
+        "V1",
+        "Audit",
+        "V2",
+        "Validate",
+        "Reflect"
+      ],
+      "validation": "Learner can make and explain colour/contrast decisions in interface context."
+    },
+    {
+      "moduleId": "B08-M01",
+      "bundleId": "B08",
+      "sourceLessons": [
+        "lesson-responsive-design.html"
+      ],
+      "practice": "Adapt an interface across screen sizes, input contexts and content constraints while preserving user goals.",
+      "toolTask": "Prototype a key flow across mobile/tablet/desktop in Figma/Framer and test realistic content.",
+      "evidence": [
+        "Responsive variants",
+        "Content stress test",
+        "Input considerations",
+        "Rationale"
+      ],
+      "review": [
+        "Task remains clear",
+        "Layout adapts",
+        "Content constraints considered",
+        "Interaction remains usable"
+      ],
+      "rework": [
+        "V1",
+        "Stress test",
+        "V2",
+        "Retest",
+        "Reflect"
+      ],
+      "validation": "Learner can design responsive behaviour around task continuity rather than pixel matching."
+    },
+    {
+      "moduleId": "B08-M02",
+      "bundleId": "B08",
+      "sourceLessons": [
+        "lesson-inclusive-responsive-design.html",
+        "lesson-66-responsive-accessible-layouts.html",
+        "lesson-67-touch-targets-mobile-ux.html"
+      ],
+      "practice": "Stress-test responsive accessibility across viewport, zoom/text, orientation and mobile input constraints.",
+      "toolTask": "Prototype desktop/tablet/mobile states and test long content, larger text, portrait/landscape and touch-target/interaction constraints.",
+      "evidence": [
+        "Responsive states",
+        "Stress-test evidence",
+        "Touch-target review",
+        "Zoom/text review",
+        "Orientation review",
+        "V2"
+      ],
+      "review": [
+        "Essential content retained",
+        "Reflow works",
+        "Targets/spacing support interaction",
+        "Input methods considered",
+        "Clipping/overlap avoided"
+      ],
+      "rework": [
+        "V1",
+        "Stress test",
+        "V2",
+        "Validate",
+        "Reflect"
+      ],
+      "validation": "Learner can create responsive interfaces that remain usable under varied access and device conditions."
+    }
+  ]
+}
