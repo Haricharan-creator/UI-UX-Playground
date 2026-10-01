@@ -57,6 +57,51 @@ try {
   const counts = ['finding','correction','before-after','test'].map(type => trace.filter(x => x.type === type).length);
   if (counts.join(',') !== '1,1,1,1') throw new Error(`Trace persistence mismatch: ${counts.join(',')}`);
 
+  // Studio -> Review -> Rework -> Validation smoke using shared local workflow state.
+  await page.goto('http://127.0.0.1:4173/studio.html', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(500);
+  if (await page.locator('#module option').count() < 2) throw new Error('Studio did not load mapped modules.');
+  await page.selectOption('#module', 'B01-M01');
+  if (!(await page.locator('#moduleMeta').innerText()).includes('Source gap')) throw new Error('Studio source-gap state did not render.');
+  await page.selectOption('#module', 'B01-M02');
+  await page.locator('#work').fill('Audit the interface against usability principles and record evidence.');
+  for (const id of ['screenshot','prototype','reflection']) await page.locator('#'+id).check();
+  await page.locator('#submit').click();
+  if (!(await page.locator('#notice').innerText()).includes('Submission saved')) throw new Error('Studio submission did not save.');
+  const studioSubmission = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaStudioSubmission') || 'null'));
+  if (!studioSubmission || studioSubmission.moduleId !== 'B01-M02' || studioSubmission.state !== 'Submitted') throw new Error('Studio submission persistence mismatch.');
+
+  await page.goto('http://127.0.0.1:4173/review.html', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(500);
+  if ((await page.locator('#moduleTitle').innerText()).indexOf('B01-M02') !== 0) throw new Error('Review did not load the Studio module.');
+  if (!(await page.locator('#criteria').innerText()).includes('evidence')) throw new Error('Review criteria did not load from the shared scaffold.');
+
+  await page.selectOption('#decision', 'rework');
+  await page.locator('#preserveV1').check();
+  await page.locator('#v2summary').fill('Increase hierarchy and verify accessibility measurements.');
+  await page.locator('#feedback').fill('f1: modify — strengthen primary action hierarchy.');
+  await page.locator('#note').fill('Evidence-based rework is required.');
+  await page.locator('#apply').click();
+  let reviewRecord = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
+  if (!reviewRecord || reviewRecord.workflowState !== 'needs-rework' || reviewRecord.v1Preserved !== true) throw new Error('Needs Rework transition did not persist correctly.');
+  if (await page.locator('#resubmit').count() !== 1 || await page.locator('#resubmit').isHidden()) throw new Error('Resubmit V2 control did not appear.');
+  await page.locator('#resubmit').click();
+  reviewRecord = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
+  if (!reviewRecord || reviewRecord.workflowState !== 'resubmitted' || reviewRecord.rework.versions.length !== 2) throw new Error('Resubmitted state did not persist V1/V2 records.');
+
+  await page.selectOption('#decision', 'ready-for-validation');
+  await page.locator('#findingsResolved').check();
+  await page.locator('#apply').click();
+  reviewRecord = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
+  if (!reviewRecord || reviewRecord.workflowState !== 'ready-for-validation') throw new Error('Ready-for-validation transition did not persist.');
+  await page.locator('#validationNote').fill('Human review confirms the submitted evidence meets the defined validation gate.');
+  await page.locator('#apply').click();
+  reviewRecord = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
+  if (!reviewRecord || reviewRecord.workflowState !== 'validated' || !reviewRecord.validation) throw new Error('Validated state did not persist.');
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForTimeout(300);
+  if (!(await page.locator('#state').innerText()).includes('Validated')) throw new Error('Validated state did not survive reload.');
+
   // Bundle Dashboard interaction smoke: filters -> bundle -> coverage -> lesson -> repeat.
   await page.goto('http://127.0.0.1:4173/bundle-dashboard.html', { waitUntil: 'networkidle' });
   await page.waitForTimeout(500);
