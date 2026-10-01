@@ -143,6 +143,8 @@ try {
   await page.waitForLoadState('domcontentloaded');
   if (!page.url().includes('lesson-')) throw new Error('Open lesson did not navigate to the expected lesson page.');
   await page.goBack({ waitUntil: 'domcontentloaded' });
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForTimeout(700);
   await page.waitForSelector('#bundles .bundle[data-id="B01"]');
 
   await page.locator('[data-filter="all"]').click();
