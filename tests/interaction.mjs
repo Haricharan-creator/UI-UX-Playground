@@ -77,10 +77,13 @@ try {
   const lessonLink = coverage.locator('a').first();
   if (await lessonLink.count() !== 1) throw new Error('Bundle coverage did not expose an Open lesson link.');
 
-  const lessonPage = await page.waitForEvent('popup', () => lessonLink.click());
-  await lessonPage.waitForLoadState('domcontentloaded');
-  if (!lessonPage.url().includes('lesson-')) throw new Error('Open lesson did not open the expected lesson page.');
-  await lessonPage.close();
+  // Exercise the lesson link and browser Back path in the same tab.
+  await lessonLink.evaluate(el => el.removeAttribute('target'));
+  await lessonLink.click();
+  await page.waitForLoadState('domcontentloaded');
+  if (!page.url().includes('lesson-')) throw new Error('Open lesson did not navigate to the expected lesson page.');
+  await page.goBack({ waitUntil: 'domcontentloaded' });
+  await page.waitForSelector('#bundles .bundle[data-id="B01"]');
 
   await page.locator('[data-filter="all"]').click();
   await page.locator('#bundles .bundle[data-id="B01"]').press(' ');
