@@ -102,6 +102,13 @@ try {
   await page.waitForTimeout(300);
   if (!(await page.locator('#state').innerText()).includes('Validated')) throw new Error('Validated state did not survive reload.');
 
+  await page.goto('http://127.0.0.1:4173/progress.html', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(300);
+  if (await page.locator('#validatedCount').innerText() !== '1') throw new Error('Progress did not derive validated evidence from the shared review record.');
+  if (await page.locator('#validatedPipeline').innerText() !== '1') throw new Error('Progress validated pipeline count is incorrect.');
+  if ((await page.locator('#currentEvidence').innerText()).indexOf('B01-M02') === -1) throw new Error('Progress did not show the current module evidence.');
+  if ((await page.locator('main').innerText()).includes('63') || (await page.locator('main').innerText()).includes('4 validated skills')) throw new Error('Progress retained stale hardcoded completion claims.');
+
   // Bundle Dashboard interaction smoke: filters -> bundle -> coverage -> lesson -> repeat.
   await page.goto('http://127.0.0.1:4173/bundle-dashboard.html', { waitUntil: 'networkidle' });
   await page.waitForTimeout(500);
