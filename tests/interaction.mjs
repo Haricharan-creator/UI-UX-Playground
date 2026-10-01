@@ -68,6 +68,7 @@ try {
   for (const id of ['screenshot','prototype','reflection']) await page.locator('#'+id).check();
   await page.locator('#submit').click();
   if (!(await page.locator('#notice').innerText()).includes('Submission saved')) throw new Error('Studio submission did not save.');
+  if (await page.locator('#reviewLink').evaluate(el => getComputedStyle(el).display === 'none')) throw new Error('Studio did not expose Review navigation after submission.');
   const studioSubmission = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaStudioSubmission') || 'null'));
   if (!studioSubmission || studioSubmission.moduleId !== 'B01-M02' || studioSubmission.state !== 'Submitted') throw new Error('Studio submission persistence mismatch.');
 
