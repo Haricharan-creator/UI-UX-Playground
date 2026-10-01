@@ -1790,8 +1790,16 @@ select[multiple]{min-height:95px}
 
 <div class="card section">
 <h2>5. Project handoff</h2>
-<p class="muted">Export the active project's linked records as a portable JSON package. This does not delete anything from the Playground.</p>
-<button class="btn primary" onclick="exportProjectWorkspace()">Export project package</button>
+<p class="muted">Create a clean copy/paste handoff for another AI tool, search engine, developer, reviewer, or team member. It uses the active project context and linked records without deleting anything from the Playground.</p>
+<div class="toolbar">
+<button class="btn primary" onclick="generateHandoffScript()">Generate handoff script</button>
+<button class="btn ghost" onclick="copyHandoffScript()">Copy handoff script</button>
+<button class="btn ghost" onclick="pasteHandoffScript()">Paste from clipboard</button>
+<button class="btn ghost" onclick="clearHandoffScript()">Clear</button>
+<button class="btn ghost" onclick="exportProjectWorkspace()">Export project package</button>
+</div>
+<textarea id="handoffScript" style="min-height:260px;margin-top:12px" placeholder="Click “Generate handoff script” to create a copy/paste-ready handoff…"></textarea>
+<div id="handoffStatus" class="muted" style="margin-top:8px">Ready. Generate the handoff when you want to transfer this project context.</div>
 </div>
 </section>
 
@@ -4982,6 +4990,99 @@ function exportUnifiedUXContext(){
 }
 
 function saveWorkflow(){const d={project:document.getElementById("wfProject").value,goal:document.getElementById("wfGoal").value,stage:document.getElementById("wfStage").value,next:document.getElementById("wfNext").value,updated:new Date().toLocaleString()};localStorage.setItem("uiuxPlaygroundWorkflow",JSON.stringify(d));alert("HACHARA workflow saved locally.");}
+function getHandoffProjectData(){
+  const project=JSON.parse(localStorage.getItem('uiuxPlaygroundProjectWorkspace')||'{}');
+  const context=JSON.parse(localStorage.getItem('uiuxPlaygroundUnifiedUXContext')||'{}');
+  const trace=JSON.parse(localStorage.getItem('uiuxPlaygroundProjectTrace')||'[]');
+  const reviews=JSON.parse(localStorage.getItem('uiuxPlaygroundContextualReviews')||'[]');
+  const rework=JSON.parse(localStorage.getItem('uiuxPlaygroundReworkCycles')||'[]');
+  const validation=JSON.parse(localStorage.getItem('uiuxPlaygroundValidationRecords')||'[]');
+  const learning=JSON.parse(localStorage.getItem('uiuxPlaygroundKnowledgeLibrary')||'[]');
+  return {project,context,trace,reviews,rework,validation,learning};
+}
+function generateHandoffScript(){
+  const d=getHandoffProjectData();
+  const name=d.project?.name||d.context?.project||'UI/UX project';
+  const script=`HACHARA UI/UX PROJECT HANDOFF
+================================
+
+PURPOSE
+Continue this project from the existing evidence and context. Preserve approved work. Do not invent missing information. Ask before making material changes.
+
+ACTIVE PROJECT
+Project: ${name}
+Status: ${d.project?.status||'Not specified'}
+Goal: ${d.project?.goal||d.context?.goal||'Not specified'}
+
+CURRENT UX CONTEXT
+Screen: ${d.context?.screen||'Not specified'}
+Phase: ${d.context?.phase||'Not specified'}
+Version: ${d.context?.version||'Not specified'}
+Users: ${d.context?.users||'Not specified'}
+Devices: ${(d.context?.devices||[]).join(', ')||'Not specified'}
+Constraints: ${d.context?.constraints||'Not specified'}
+
+WORKING RULES
+1. Preserve existing approved content, decisions, structure and evidence.
+2. Change only what is explicitly requested or what is necessary to fix a confirmed issue.
+3. Keep the designer in control of important UX decisions.
+4. Separate facts, observations, recommendations and assumptions.
+5. If source information conflicts, stop and ask which source is authoritative.
+6. Do not claim something is tested unless it was actually tested.
+7. Record corrections with problem, root cause, corrected approach and validation status.
+8. Before major or destructive changes, provide a SAFE STOP checkpoint.
+
+PROJECT TRACE
+${d.trace.length?d.trace.slice(-20).map((x,i)=>`${i+1}. [${x.stage||'Stage'}] ${x.problem||''} — ${x.entry||''}`).join('\n'):'No project trace captured yet.'}
+
+REVIEWS
+${d.reviews.length?JSON.stringify(d.reviews.slice(0,10),null,2):'No saved reviews.'}
+
+REWORK
+${d.rework.length?JSON.stringify(d.rework.slice(0,10),null,2):'No saved rework cycles.'}
+
+VALIDATION
+${d.validation.length?JSON.stringify(d.validation.slice(0,10),null,2):'No saved validation records.'}
+
+REUSABLE LEARNING
+${d.learning.length?JSON.stringify(d.learning.slice(0,10),null,2):'No saved learning items.'}
+
+NEXT ACTION
+First, summarize the current state from the information above. Then identify what is completed, in progress, pending, blocked, needs my input, and the safest next action. Do not silently change direction.
+
+END OF HANDOFF
+`;
+  const el=document.getElementById('handoffScript');
+  if(el)el.value=script;
+  const st=document.getElementById('handoffStatus');
+  if(st)st.textContent='Handoff generated. Review it, then copy/paste it into the target tool.';
+}
+function copyHandoffScript(){
+  const el=document.getElementById('handoffScript');
+  if(!el?.value.trim()){generateHandoffScript();}
+  const text=el?.value||'';
+  navigator.clipboard?.writeText(text).then(()=>{
+    const st=document.getElementById('handoffStatus');if(st)st.textContent='Copied. Paste the handoff into the target AI/tool.';
+  }).catch(()=>{
+    el?.select();document.execCommand('copy');
+    const st=document.getElementById('handoffStatus');if(st)st.textContent='Copied using browser fallback. Paste it into the target tool.';
+  });
+}
+async function pasteHandoffScript(){
+  const el=document.getElementById('handoffScript');if(!el)return;
+  try{
+    el.value=await navigator.clipboard.readText();
+    const st=document.getElementById('handoffStatus');if(st)st.textContent='Clipboard content pasted into the handoff box. Review before using it.';
+  }catch(e){
+    el.focus();
+    const st=document.getElementById('handoffStatus');if(st)st.textContent='Browser permission blocked direct clipboard read. Click inside the box and paste with ⌘V / Ctrl+V.';
+  }
+}
+function clearHandoffScript(){
+  const el=document.getElementById('handoffScript');if(el)el.value='';
+  const st=document.getElementById('handoffStatus');if(st)st.textContent='Handoff cleared.';
+}
+
 function exportWorkflow(){const b={workflow:JSON.parse(localStorage.getItem("uiuxPlaygroundWorkflow")||"{}"),curriculum:JSON.parse(localStorage.getItem("uiuxPlaygroundCurriculum")||"{}"),research:JSON.parse(localStorage.getItem("uiuxPlaygroundResearch")||"[]"),ideas:JSON.parse(localStorage.getItem("uiuxPlaygroundIdeas")||"[]"),wireframe:JSON.parse(localStorage.getItem("uiuxPlaygroundWireframe")||"[]"),critiques:JSON.parse(localStorage.getItem("uiuxPlaygroundCritiques")||"[]")};const u=URL.createObjectURL(new Blob([JSON.stringify(b,null,2)],{type:"application/json"}));const a=document.createElement("a");a.href=u;a.download="ui-ux-playground-project.json";a.click();URL.revokeObjectURL(u);}
 </script></body>
 </html>
