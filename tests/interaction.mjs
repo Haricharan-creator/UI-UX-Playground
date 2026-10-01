@@ -71,7 +71,10 @@ try {
   await b01.press('Enter');
   await page.waitForTimeout(250);
 
-  if (await page.locator('#detail.hidden').count() !== 0) throw new Error('Bundle Dashboard keyboard activation did not open bundle detail.');
+  if (await page.locator('#detail.hidden').count() !== 0) throw new Error('Bundle Dashboard keyboard activation did not open bundle detail.');\n  if (await page.locator('#detail .moduleCoverage').count() !== 1) throw new Error('Module practice/evidence coverage did not render.');
+  const moduleCoverageText = await page.locator('#detail .moduleCoverage').innerText();
+  if (!moduleCoverageText.includes('B01-M01')) throw new Error('B01 module coverage did not render.');
+  if (!moduleCoverageText.includes('source-gap')) throw new Error('B01 source-gap state did not render.');
   const coverage = page.locator('#detail .coverage');
   if (await coverage.count() !== 1) throw new Error('Source lesson coverage did not render.');
   const lessonLink = coverage.locator('a').first();
