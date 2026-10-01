@@ -1,0 +1,854 @@
+{
+  "version": "1.0",
+  "status": "provisional-module-practice-evidence-integration",
+  "purpose": "Additive integration manifest connecting the authoritative lesson-to-module mapping with the consolidated Module -> Practice -> Tool Task -> Evidence -> Review -> Rework -> Validation scaffold.",
+  "sourceOfTruth": [
+    "data/bundle-engine-contract.json",
+    "data/bundle-module-map.json",
+    "data/provisional-lesson-module-map-v1.json",
+    "data/module-practice-evidence-scaffold-v2.json",
+    "data/progress-model.json"
+  ],
+  "rules": [
+    "Lesson mapping remains authoritative for lessonId, sourceRef, bundleId, moduleId, mappingStatus and skillId.",
+    "Practice/evidence definitions remain additive and do not modify lesson content.",
+    "A source-gap remains explicit when a module has no source-backed lesson mapping.",
+    "Validation is not inferred from lesson completion.",
+    "B15-B17 remain downstream evidence/rework/challenge/portfolio layers rather than lesson containers."
+  ],
+  "requiredGates": [
+    "practice",
+    "evidence",
+    "review",
+    "validation"
+  ],
+  "modules": [
+    {
+      "bundleId": "B01",
+      "moduleId": "B01-M01",
+      "mappingStatus": "source-gap",
+      "lessonIds": [],
+      "sourceRefs": [],
+      "skillIds": [],
+      "practiceStatus": "needs-definition",
+      "evidenceStatus": "needs-definition",
+      "reviewStatus": "needs-definition",
+      "validationStatus": "needs-definition",
+      "toolMode": "none",
+      "gaps": [
+        "Source coverage audit identified this module as a genuine curriculum-source gap; do not invent lesson content to fill it."
+      ]
+    },
+    {
+      "bundleId": "B01",
+      "moduleId": "B01-M02",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-heuristics"
+      ],
+      "sourceRefs": [
+        "lesson-heuristics.html"
+      ],
+      "skillIds": [
+        "heuristic-evaluation"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B02",
+      "moduleId": "B02-M01",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-spacing-layout",
+        "lesson-typography",
+        "lesson-visual-hierarchy"
+      ],
+      "sourceRefs": [
+        "lesson-spacing-layout.html",
+        "lesson-typography.html",
+        "lesson-visual-hierarchy.html"
+      ],
+      "skillIds": [
+        "spacing-layout",
+        "typography",
+        "visual-hierarchy"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B02",
+      "moduleId": "B02-M02",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-accessible-typography-readability",
+        "lesson-color-contrast"
+      ],
+      "sourceRefs": [
+        "lesson-accessible-typography-readability.html",
+        "lesson-color-contrast.html"
+      ],
+      "skillIds": [
+        "accessible-typography",
+        "color-contrast"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B03",
+      "moduleId": "B03-M01",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-empathy-journey-mapping",
+        "lesson-personas",
+        "lesson-user-research"
+      ],
+      "sourceRefs": [
+        "lesson-empathy-journey-mapping.html",
+        "lesson-personas.html",
+        "lesson-user-research.html"
+      ],
+      "skillIds": [
+        "empathy-journey-mapping",
+        "personas",
+        "user-research"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B03",
+      "moduleId": "B03-M02",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-inclusive-research-and-testing"
+      ],
+      "sourceRefs": [
+        "lesson-inclusive-research-and-testing.html"
+      ],
+      "skillIds": [
+        "inclusive-research-testing"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B04",
+      "moduleId": "B04-M01",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-79-search-discovery-and-findability",
+        "lesson-accessible-navigation-landmarks",
+        "lesson-accessible-navigation-patterns",
+        "lesson-accessible-navigation",
+        "lesson-accessible-search-and-filter",
+        "lesson-information-architecture"
+      ],
+      "sourceRefs": [
+        "lesson-79-search-discovery-and-findability.html",
+        "lesson-accessible-navigation-landmarks.html",
+        "lesson-accessible-navigation-patterns.html",
+        "lesson-accessible-navigation.html",
+        "lesson-accessible-search-and-filter.html",
+        "lesson-information-architecture.html"
+      ],
+      "skillIds": [
+        "search-discovery-findability",
+        "navigation-landmarks",
+        "navigation-patterns",
+        "accessible-navigation",
+        "accessible-search-filter",
+        "information-architecture"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B04",
+      "moduleId": "B04-M02",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-user-flows"
+      ],
+      "sourceRefs": [
+        "lesson-user-flows.html"
+      ],
+      "skillIds": [
+        "user-flows"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B05",
+      "moduleId": "B05-M01",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-71-designing-for-stress-and-uncertainty",
+        "lesson-72-progressive-disclosure",
+        "lesson-73-empty-loading-success-states",
+        "lesson-75-feedback-and-system-status",
+        "lesson-designing-for-empty-loading-and-error-states"
+      ],
+      "sourceRefs": [
+        "lesson-71-designing-for-stress-and-uncertainty.html",
+        "lesson-72-progressive-disclosure.html",
+        "lesson-73-empty-loading-success-states.html",
+        "lesson-75-feedback-and-system-status.html",
+        "lesson-designing-for-empty-loading-and-error-states.html"
+      ],
+      "skillIds": [
+        "stress-uncertainty",
+        "progressive-disclosure",
+        "system-states",
+        "feedback-system-status",
+        "empty-loading-error-states"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B05",
+      "moduleId": "B05-M02",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-74-designing-for-recovery",
+        "lesson-76-designing-for-interruption-and-resumption",
+        "lesson-78-data-entry-efficiency",
+        "lesson-accessible-error-prevention-recovery",
+        "lesson-accessible-error-recovery",
+        "lesson-accessible-forms-inputs",
+        "lesson-accessible-forms-validation",
+        "lesson-accessible-forms"
+      ],
+      "sourceRefs": [
+        "lesson-74-designing-for-recovery.html",
+        "lesson-76-designing-for-interruption-and-resumption.html",
+        "lesson-78-data-entry-efficiency.html",
+        "lesson-accessible-error-prevention-recovery.html",
+        "lesson-accessible-error-recovery.html",
+        "lesson-accessible-forms-inputs.html",
+        "lesson-accessible-forms-validation.html",
+        "lesson-accessible-forms.html"
+      ],
+      "skillIds": [
+        "recovery",
+        "interruption-resumption",
+        "data-entry-efficiency",
+        "error-prevention-recovery",
+        "error-recovery",
+        "form-inputs",
+        "form-validation",
+        "forms"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B05",
+      "moduleId": "B05-M03",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-accessible-dialogs-modals",
+        "lesson-accessible-dialogs-overlays",
+        "lesson-accessible-notifications-status"
+      ],
+      "sourceRefs": [
+        "lesson-accessible-dialogs-modals.html",
+        "lesson-accessible-dialogs-overlays.html",
+        "lesson-accessible-notifications-status.html"
+      ],
+      "skillIds": [
+        "dialogs-modals",
+        "dialogs-overlays",
+        "notifications-status"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B06",
+      "moduleId": "B06-M01",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-wireframing"
+      ],
+      "sourceRefs": [
+        "lesson-wireframing.html"
+      ],
+      "skillIds": [
+        "wireframing"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged.",
+        "Standalone prototype mastery remains a source-gap requiring future definition."
+      ]
+    },
+    {
+      "bundleId": "B07",
+      "moduleId": "B07-M01",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-accessibility-foundations",
+        "lesson-accessibility",
+        "lesson-accessible-color-contrast",
+        "lesson-cognitive-accessibility",
+        "lesson-designing-for-cognitive-accessibility",
+        "lesson-inclusive-design-foundations"
+      ],
+      "sourceRefs": [
+        "lesson-accessibility-foundations.html",
+        "lesson-accessibility.html",
+        "lesson-accessible-color-contrast.html",
+        "lesson-cognitive-accessibility.html",
+        "lesson-designing-for-cognitive-accessibility.html",
+        "lesson-inclusive-design-foundations.html"
+      ],
+      "skillIds": [
+        "accessibility-foundations",
+        "accessibility-foundations",
+        "color-contrast",
+        "cognitive-accessibility",
+        "cognitive-accessibility",
+        "inclusive-design-foundations"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B07",
+      "moduleId": "B07-M02",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-70-accessibility-design-review",
+        "lesson-accessibility-testing-validation",
+        "lesson-accessible-audio-media-controls",
+        "lesson-accessible-components-states",
+        "lesson-accessible-content-media",
+        "lesson-accessible-data-visualization",
+        "lesson-accessible-keyboard-navigation",
+        "lesson-accessible-motion-animation",
+        "lesson-accessible-screen-reader-content",
+        "lesson-accessible-tables-data",
+        "lesson-screen-reader-ux"
+      ],
+      "sourceRefs": [
+        "lesson-70-accessibility-design-review.html",
+        "lesson-accessibility-testing-validation.html",
+        "lesson-accessible-audio-media-controls.html",
+        "lesson-accessible-components-states.html",
+        "lesson-accessible-content-media.html",
+        "lesson-accessible-data-visualization.html",
+        "lesson-accessible-keyboard-navigation.html",
+        "lesson-accessible-motion-animation.html",
+        "lesson-accessible-screen-reader-content.html",
+        "lesson-accessible-tables-data.html",
+        "lesson-screen-reader-ux.html"
+      ],
+      "skillIds": [
+        "accessibility-design-review",
+        "accessibility-testing-validation",
+        "accessible-audio-media",
+        "accessible-component-states",
+        "accessible-content-media",
+        "accessible-data-visualization",
+        "keyboard-navigation",
+        "motion-animation-accessibility",
+        "screen-reader-content",
+        "accessible-tables-data",
+        "screen-reader-ux"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B07",
+      "moduleId": "B07-M03",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-61-designing-for-older-adults",
+        "lesson-62-designing-for-children",
+        "lesson-63-designing-for-language-literacy",
+        "lesson-64-localization-internationalization",
+        "lesson-65-rtl-bidirectional-ux",
+        "lesson-68-voice-conversational-accessibility",
+        "lesson-69-multimodal-accessibility",
+        "lesson-accessible-multilingual-content",
+        "lesson-low-vision-design",
+        "lesson-motor-accessibility",
+        "lesson-neurodiversity-inclusive-ux"
+      ],
+      "sourceRefs": [
+        "lesson-61-designing-for-older-adults.html",
+        "lesson-62-designing-for-children.html",
+        "lesson-63-designing-for-language-literacy.html",
+        "lesson-64-localization-internationalization.html",
+        "lesson-65-rtl-bidirectional-ux.html",
+        "lesson-68-voice-conversational-accessibility.html",
+        "lesson-69-multimodal-accessibility.html",
+        "lesson-accessible-multilingual-content.html",
+        "lesson-low-vision-design.html",
+        "lesson-motor-accessibility.html",
+        "lesson-neurodiversity-inclusive-ux.html"
+      ],
+      "skillIds": [
+        "older-adult-inclusive-design",
+        "children-inclusive-design",
+        "language-literacy-inclusive-design",
+        "localization-internationalization",
+        "rtl-bidirectional-ux",
+        "voice-conversational-accessibility",
+        "multimodal-accessibility",
+        "accessible-multilingual-content",
+        "low-vision-design",
+        "motor-accessibility",
+        "neurodiversity-inclusive-ux"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from mapped source lessons; no new lesson content was created.",
+        "Specialized scope remains contextual: not every specialized condition is required for every product."
+      ]
+    },
+    {
+      "bundleId": "B08",
+      "moduleId": "B08-M01",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-responsive-design"
+      ],
+      "sourceRefs": [
+        "lesson-responsive-design.html"
+      ],
+      "skillIds": [
+        "responsive-design"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B08",
+      "moduleId": "B08-M02",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-66-responsive-accessible-layouts",
+        "lesson-67-touch-targets-mobile-ux",
+        "lesson-77-mobile-contexts-and-gestures",
+        "lesson-accessible-mobile-touch-targets",
+        "lesson-inclusive-responsive-design"
+      ],
+      "sourceRefs": [
+        "lesson-66-responsive-accessible-layouts.html",
+        "lesson-67-touch-targets-mobile-ux.html",
+        "lesson-77-mobile-contexts-and-gestures.html",
+        "lesson-accessible-mobile-touch-targets.html",
+        "lesson-inclusive-responsive-design.html"
+      ],
+      "skillIds": [
+        "responsive-accessibility",
+        "mobile-touch-targets",
+        "mobile-contexts-gestures",
+        "mobile-touch-targets",
+        "inclusive-responsive-design"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B09",
+      "moduleId": "B09-M01",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-082-design-systems",
+        "lesson-083-design-tokens",
+        "lesson-084-component-anatomy",
+        "lesson-design-systems",
+        "lesson-design-tokens"
+      ],
+      "sourceRefs": [
+        "lesson-082-design-systems.html",
+        "lesson-083-design-tokens.html",
+        "lesson-084-component-anatomy.html",
+        "lesson-design-systems.html",
+        "lesson-design-tokens.html"
+      ],
+      "skillIds": [
+        "design-systems",
+        "design-tokens",
+        "component-anatomy",
+        "design-systems",
+        "design-tokens"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B09",
+      "moduleId": "B09-M02",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-085-component-states",
+        "lesson-086-responsive-components",
+        "lesson-087-component-documentation"
+      ],
+      "sourceRefs": [
+        "lesson-085-component-states.html",
+        "lesson-086-responsive-components.html",
+        "lesson-087-component-documentation.html"
+      ],
+      "skillIds": [
+        "component-states",
+        "responsive-components",
+        "component-documentation"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B09",
+      "moduleId": "B09-M03",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-088-design-handoff",
+        "lesson-089-design-qa",
+        "lesson-design-handoff"
+      ],
+      "sourceRefs": [
+        "lesson-088-design-handoff.html",
+        "lesson-089-design-qa.html",
+        "lesson-design-handoff.html"
+      ],
+      "skillIds": [
+        "design-handoff",
+        "design-qa",
+        "design-handoff"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B10",
+      "moduleId": "B10-M01",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-usability-moderation",
+        "lesson-usability-test-plan",
+        "lesson-usability-testing"
+      ],
+      "sourceRefs": [
+        "lesson-usability-moderation.html",
+        "lesson-usability-test-plan.html",
+        "lesson-usability-testing.html"
+      ],
+      "skillIds": [
+        "usability-moderation",
+        "usability-test-plan",
+        "usability-testing"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B10",
+      "moduleId": "B10-M02",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-80-design-critique-and-iteration",
+        "lesson-design-critique",
+        "lesson-inclusive-ux-audit",
+        "lesson-usability-findings",
+        "lesson-usability-prioritisation"
+      ],
+      "sourceRefs": [
+        "lesson-80-design-critique-and-iteration.html",
+        "lesson-design-critique.html",
+        "lesson-inclusive-ux-audit.html",
+        "lesson-usability-findings.html",
+        "lesson-usability-prioritisation.html"
+      ],
+      "skillIds": [
+        "design-critique-iteration",
+        "design-critique",
+        "inclusive-ux-audit",
+        "usability-findings",
+        "usability-prioritisation"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B10",
+      "moduleId": "B10-M03",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-092-usability-testing-metrics"
+      ],
+      "sourceRefs": [
+        "lesson-092-usability-testing-metrics.html"
+      ],
+      "skillIds": [
+        "usability-testing-metrics"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B11",
+      "moduleId": "B11-M01",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-081-ux-content-strategy",
+        "lesson-content-hierarchy",
+        "lesson-content-strategy"
+      ],
+      "sourceRefs": [
+        "lesson-081-ux-content-strategy.html",
+        "lesson-content-hierarchy.html",
+        "lesson-content-strategy.html"
+      ],
+      "skillIds": [
+        "ux-content-strategy",
+        "content-hierarchy",
+        "content-strategy"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B11",
+      "moduleId": "B11-M02",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-microcopy",
+        "lesson-plain-language"
+      ],
+      "sourceRefs": [
+        "lesson-microcopy.html",
+        "lesson-plain-language.html"
+      ],
+      "skillIds": [
+        "microcopy",
+        "plain-language"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B12",
+      "moduleId": "B12-M01",
+      "mappingStatus": "mapped",
+      "lessonIds": [
+        "lesson-090-ux-metrics",
+        "lesson-091-ux-metrics-and-measurement"
+      ],
+      "sourceRefs": [
+        "lesson-090-ux-metrics.html",
+        "lesson-091-ux-metrics-and-measurement.html"
+      ],
+      "skillIds": [
+        "ux-metrics",
+        "ux-metrics-measurement"
+      ],
+      "practiceStatus": "defined",
+      "evidenceStatus": "defined",
+      "reviewStatus": "defined",
+      "validationStatus": "defined",
+      "toolMode": "figma",
+      "gaps": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "bundleId": "B13",
+      "moduleId": "B13-M01",
+      "mappingStatus": "source-gap",
+      "lessonIds": [],
+      "sourceRefs": [],
+      "skillIds": [],
+      "practiceStatus": "needs-definition",
+      "evidenceStatus": "needs-definition",
+      "reviewStatus": "needs-definition",
+      "validationStatus": "needs-definition",
+      "toolMode": "none",
+      "gaps": [
+        "Tool-practice layer; source-empty by design in the current lesson mapping."
+      ]
+    },
+    {
+      "bundleId": "B14",
+      "moduleId": "B14-M01",
+      "mappingStatus": "source-gap",
+      "lessonIds": [],
+      "sourceRefs": [],
+      "skillIds": [],
+      "practiceStatus": "needs-definition",
+      "evidenceStatus": "needs-definition",
+      "reviewStatus": "needs-definition",
+      "validationStatus": "needs-definition",
+      "toolMode": "none",
+      "gaps": [
+        "Tool-practice layer; source-empty by design in the current lesson mapping."
+      ]
+    }
+  ],
+  "validation": {
+    "totalModules": 28,
+    "mappedModules": 25,
+    "sourceGapModules": 3,
+    "sourceBackedPracticeModules": 25,
+    "completeGateModules": 25,
+    "lessonMappingNeedsReview": [
+      "lesson-template"
+    ],
+    "sourceLessonChanges": 0
+  },
+  "preservation": {
+    "lessonContentChanged": false,
+    "lessonFilesDeleted": 0,
+    "lessonFilesRenamed": 0,
+    "lessonFilesMerged": 0
+  }
+}
