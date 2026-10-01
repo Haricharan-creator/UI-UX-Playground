@@ -83,7 +83,9 @@
       "sourceLessonIds": [
         "lesson-heuristics"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "heuristic-evaluation"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -162,7 +164,11 @@
         "lesson-typography",
         "lesson-visual-hierarchy"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "spacing-layout",
+        "typography",
+        "visual-hierarchy"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -242,7 +248,10 @@
       "sourceLessonIds": [
         "lesson-color-contrast"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "accessible-typography",
+        "color-contrast"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -321,7 +330,11 @@
         "lesson-personas",
         "lesson-empathy-journey-mapping"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "empathy-journey-mapping",
+        "personas",
+        "user-research"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -402,7 +415,9 @@
       "sourceLessonIds": [
         "lesson-inclusive-research-and-testing"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "inclusive-research-testing"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -481,7 +496,14 @@
         "lesson-information-architecture",
         "lesson-79-search-discovery-and-findability"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "search-discovery-findability",
+        "navigation-landmarks",
+        "navigation-patterns",
+        "accessible-navigation",
+        "accessible-search-filter",
+        "information-architecture"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -560,7 +582,9 @@
       "sourceLessonIds": [
         "lesson-user-flows"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "user-flows"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -639,7 +663,13 @@
         "lesson-75-feedback-and-system-status",
         "lesson-73-empty-loading-success-states"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "stress-uncertainty",
+        "progressive-disclosure",
+        "system-states",
+        "feedback-system-status",
+        "empty-loading-error-states"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -718,7 +748,16 @@
         "lesson-74-designing-for-recovery",
         "lesson-76-designing-for-interruption-and-resumption"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "recovery",
+        "interruption-resumption",
+        "data-entry-efficiency",
+        "error-prevention-recovery",
+        "error-recovery",
+        "form-inputs",
+        "form-validation",
+        "forms"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -800,7 +839,11 @@
         "lesson-accessible-notifications-status",
         "lesson-accessible-motion-animation"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "dialogs-modals",
+        "dialogs-overlays",
+        "notifications-status"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -881,7 +924,9 @@
       "sourceLessonIds": [
         "lesson-wireframing"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "wireframing"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -965,7 +1010,12 @@
         "lesson-cognitive-accessibility",
         "lesson-designing-for-cognitive-accessibility"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "accessibility-foundations",
+        "color-contrast",
+        "cognitive-accessibility",
+        "inclusive-design-foundations"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -1051,7 +1101,19 @@
         "lesson-accessible-keyboard-navigation",
         "lesson-accessible-screen-reader-content"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "accessibility-design-review",
+        "accessibility-testing-validation",
+        "accessible-audio-media",
+        "accessible-component-states",
+        "accessible-content-media",
+        "accessible-data-visualization",
+        "keyboard-navigation",
+        "motion-animation-accessibility",
+        "screen-reader-content",
+        "accessible-tables-data",
+        "screen-reader-ux"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -1142,7 +1204,19 @@
         "lesson-motor-accessibility",
         "lesson-neurodiversity-inclusive-ux"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "older-adult-inclusive-design",
+        "children-inclusive-design",
+        "language-literacy-inclusive-design",
+        "localization-internationalization",
+        "rtl-bidirectional-ux",
+        "voice-conversational-accessibility",
+        "multimodal-accessibility",
+        "accessible-multilingual-content",
+        "low-vision-design",
+        "motor-accessibility",
+        "neurodiversity-inclusive-ux"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -1235,7 +1309,9 @@
       "sourceLessonIds": [
         "lesson-responsive-design"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "responsive-design"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -1314,7 +1390,12 @@
         "lesson-66-responsive-accessible-layouts",
         "lesson-67-touch-targets-mobile-ux"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "responsive-accessibility",
+        "mobile-touch-targets",
+        "mobile-contexts-gestures",
+        "inclusive-responsive-design"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -1400,7 +1481,11 @@
         "lesson-083-design-tokens",
         "lesson-084-component-anatomy"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "design-systems",
+        "design-tokens",
+        "component-anatomy"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -1485,7 +1570,11 @@
         "lesson-086-responsive-components",
         "lesson-087-component-documentation"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "component-states",
+        "responsive-components",
+        "component-documentation"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -1568,7 +1657,10 @@
         "lesson-089-design-qa",
         "lesson-design-handoff"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "design-handoff",
+        "design-qa"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -1651,7 +1743,11 @@
         "lesson-usability-testing",
         "lesson-usability-moderation"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "usability-moderation",
+        "usability-test-plan",
+        "usability-testing"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -1736,7 +1832,13 @@
         "lesson-design-critique",
         "lesson-80-design-critique-and-iteration"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "design-critique-iteration",
+        "design-critique",
+        "inclusive-ux-audit",
+        "usability-findings",
+        "usability-prioritisation"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -1819,7 +1921,9 @@
       "sourceLessonIds": [
         "lesson-092-usability-testing-metrics"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "usability-testing-metrics"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -1900,7 +2004,11 @@
         "lesson-content-strategy",
         "lesson-content-hierarchy"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "ux-content-strategy",
+        "content-hierarchy",
+        "content-strategy"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -1983,7 +2091,10 @@
         "lesson-microcopy",
         "lesson-plain-language"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "microcopy",
+        "plain-language"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
@@ -2062,7 +2173,10 @@
         "lesson-090-ux-metrics",
         "lesson-091-ux-metrics-and-measurement"
       ],
-      "skillIds": [],
+      "skillIds": [
+        "ux-metrics",
+        "ux-metrics-measurement"
+      ],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
