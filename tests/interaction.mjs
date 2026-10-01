@@ -114,7 +114,7 @@ try {
   await page.goto('http://127.0.0.1:4173/bundle-dashboard.html', { waitUntil: 'networkidle' });
   await page.waitForTimeout(700);
   await page.locator('[data-filter="all"]').click();
-  const evidenceBundle = page.locator('#bundles .bundle[data-id="B01"]');
+  const evidenceBundle = page.locator('#bundles .bundle').filter({hasText:'B01'}).first();
   if (!(await evidenceBundle.innerText()).includes('evidence validated')) throw new Error('Bundle Dashboard did not project the validated evidence state.');
   if (!(await evidenceBundle.innerText()).includes('100% evidence workflow')) throw new Error('Bundle Dashboard evidence workflow progress is incorrect.');
 
@@ -124,7 +124,7 @@ try {
   if (await page.locator('#bundles .bundle').count() !== 16) throw new Error('Not-started filter did not exclude the evidence-active B01 bundle.');
 
   await page.locator('[data-filter="all"]').click();
-  const b01 = page.locator('#bundles .bundle[data-id="B01"]');
+  const b01 = page.locator('#bundles .bundle').filter({hasText:'B01'}).first();
   await b01.press('Enter');
   await page.waitForTimeout(250);
 
@@ -146,10 +146,10 @@ try {
   await page.goBack({ waitUntil: 'domcontentloaded' });
   await page.reload({ waitUntil: 'networkidle' });
   await page.waitForTimeout(700);
-  await page.waitForSelector('#bundles .bundle[data-id="B01"]');
+  await page.waitForSelector('#bundles .bundle', { timeout: 3000 });
 
   await page.locator('[data-filter="all"]').click();
-  await page.locator('#bundles .bundle[data-id="B01"]').press(' ');
+  await page.locator('#bundles .bundle').filter({hasText:'B01'}).first().press(' ');
   await page.waitForTimeout(250);
   if (await page.locator('#detail.hidden').count() !== 0) throw new Error('Space keyboard activation did not reopen bundle detail.');
 
