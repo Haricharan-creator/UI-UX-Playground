@@ -46,6 +46,27 @@ integration_ids = set(module_map)
 if scaffold_ids != integration_ids:
     errors.append("Scaffold and integration module ID sets differ")
 
+bundle_map_modules = {
+    mid
+    for bundle in bundle_map.get("bundles", [])
+    for mid in bundle.get("moduleIds", [])
+}
+if integration_ids != bundle_map_modules:
+    errors.append("Integration module ID set differs from bundle-module map")
+
+bundle_ids = {
+    bundle.get("bundleId")
+    for bundle in bundle_map.get("bundles", [])
+    if bundle.get("bundleId")
+}
+invalid_bundle_ids = {
+    m.get("bundleId")
+    for m in integration_modules
+    if m.get("bundleId") not in bundle_ids
+}
+if invalid_bundle_ids:
+    errors.append("Integration contains unknown bundle IDs: " + ", ".join(sorted(invalid_bundle_ids)))
+
 for m in integration_modules:
     mid = m.get("moduleId")
     mapping = m.get("mappingStatus")
@@ -70,10 +91,12 @@ if len(source_gaps) != 3:
     errors.append(f"Expected 3 source-gap modules; found {len(source_gaps)}")
 
 lesson_mappings = lesson_map.get("lessonMappings", [])
-mapped_lesson_ids = {
-    row[0] for row in lesson_mappings
+mapped_rows = {
+    row[0]: row
+    for row in lesson_mappings
     if len(row) >= 5 and row[4] == "mapped"
 }
+mapped_lesson_ids = set(mapped_rows)
 integration_lesson_ids = {
     lesson_id
     for m in mapped
@@ -85,12 +108,34 @@ if integration_lesson_ids - mapped_lesson_ids:
     errors.append("Module integration references lessons not marked mapped")
 
 for m in mapped:
+    mid = m.get("moduleId")
     if not m.get("sourceRefs"):
-        errors.append(f"{m.get('moduleId')}: mapped module has no sourceRefs")
+        errors.append(f"{mid}: mapped module has no sourceRefs")
     if not m.get("lessonIds"):
-        errors.append(f"{m.get('moduleId')}: mapped module has no lessonIds")
+        errors.append(f"{mid}: mapped module has no lessonIds")
     if not m.get("skillIds"):
-        warnings.append(f"{m.get('moduleId')}: no skillIds recorded")
+        warnings.append(f"{mid}: no skillIds recorded")
+
+    source_refs = set(m.get("sourceRefs", []))
+    lesson_ids = set(m.get("lessonIds", []))
+    if len(source_refs) != len(lesson_ids):
+        errors.append(f"{mid}: sourceRefs and lessonIds counts differ")
+    for lesson_id in lesson_ids:
+        row = mapped_rows.get(lesson_id)
+        if not row:
+            continue
+        source_ref = row[1]
+        row_bundle = row[2]
+        row_module = row[3]
+        row_skill = row[5] if len(row) > 5 else ""
+        if source_ref not in source_refs:
+            errors.append(f"{mid}: sourceRef missing for {lesson_id}: {source_ref}")
+        if row_bundle != m.get("bundleId") or row_module != mid:
+            errors.append(f"{mid}: lesson mapping mismatch for {lesson_id}")
+        if row_skill and row_skill not in set(m.get("skillIds", [])):
+            errors.append(f"{mid}: skillId missing for {lesson_id}: {row_skill}")
+        if not (ROOT / source_ref).exists():
+            errors.append(f"{mid}: source lesson file missing: {source_ref}")
 
 expected_bundles = {
     item.get("bundleId")
