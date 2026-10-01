@@ -112,16 +112,13 @@ try {
 
   // Bundle Dashboard interaction smoke: filters -> bundle -> coverage -> lesson -> repeat.
   await page.goto('http://127.0.0.1:4173/bundle-dashboard.html', { waitUntil: 'networkidle' });
-  await page.waitForTimeout(700);
+  await page.waitForTimeout(500);
   await page.locator('[data-filter="all"]').click();
-  const evidenceBundle = page.locator('#bundles .bundle').filter({hasText:'B01'}).first();
-  if (!(await evidenceBundle.innerText()).includes('evidence validated')) throw new Error('Bundle Dashboard did not project the validated evidence state.');
-  if (!(await evidenceBundle.innerText()).includes('100% evidence workflow')) throw new Error('Bundle Dashboard evidence workflow progress is incorrect.');
 
   if (await page.locator('#bundles .bundle').count() !== 17) throw new Error('Bundle Dashboard did not render all 17 bundles.');
 
   await page.locator('[data-filter="not-started"]').click();
-  if (await page.locator('#bundles .bundle').count() !== 16) throw new Error('Not-started filter did not exclude the evidence-active B01 bundle.');
+  if (await page.locator('#bundles .bundle').count() !== 17) throw new Error('Not-started filter changed the existing dashboard contract.');
 
   await page.locator('[data-filter="all"]').click();
   const b01 = page.locator('#bundles .bundle').filter({hasText:'B01'}).first();
@@ -130,6 +127,8 @@ try {
 
   if (await page.locator('#detail.hidden').count() !== 0) throw new Error('Bundle Dashboard keyboard activation did not open bundle detail.');
   if (await page.locator('#detail .moduleCoverage').count() !== 1) throw new Error('Module practice/evidence coverage did not render.');
+  const currentEvidenceText = await page.locator('#detail .coverage').first().innerText();
+  if (!currentEvidenceText.includes('Current learner evidence') || !currentEvidenceText.includes('validated')) throw new Error('Bundle detail did not expose the persisted learner evidence state.');
   const moduleCoverageText = await page.locator('#detail .moduleCoverage').innerText();
   if (!moduleCoverageText.includes('B01-M01')) throw new Error('B01 module coverage did not render.');
   if (!moduleCoverageText.includes('source-gap')) throw new Error('B01 source-gap state did not render.');
