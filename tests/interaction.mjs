@@ -100,9 +100,7 @@ try {
   if (!reviewRecord || reviewRecord.workflowState !== 'validated' || !reviewRecord.validation) throw new Error('Validated state did not persist.');
   await page.reload({ waitUntil: 'networkidle' });
   await page.waitForSelector('#content:not(.hidden)', { timeout: 3000 });
-  const reloadedState = await page.locator('#state').innerText();
-  const reloadedRecord = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
-  if (!reloadedState.includes('Validated')) throw new Error('Validated state did not survive reload. UI state: '+reloadedState+'; stored state: '+(reloadedRecord?.workflowState||'missing'));
+  if (!(await page.locator('#state').innerText()).includes('Validated')) throw new Error('Validated state did not survive reload.');
 
   await page.goto('http://127.0.0.1:4173/progress.html', { waitUntil: 'networkidle' });
   await page.waitForTimeout(300);
