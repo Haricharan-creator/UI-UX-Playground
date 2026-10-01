@@ -18,6 +18,9 @@ for name in PAGES:
     for tag in re.findall(r'<input\b([^>]*)>',t,re.I):
         if not re.search(r'\bid=["\']',tag,re.I) and not re.search(r'\baria-label=["\']',tag,re.I): warnings.append(f'{name}: input without id/aria-label')
     if '<button' in low and 'cursor:pointer' not in low: warnings.append(f'{name}: buttons may need explicit interaction affordance review')
+    if name == 'bundle-dashboard.html' and 'class="bundle"' in low:
+        if 'tabindex="0"' not in low or 'role="button"' not in low: errors.append(f'{name}: interactive bundle cards must be keyboard focusable and expose button semantics')
+        if "addEventListener('keydown'" not in low or "e.key==='enter'" not in low or "e.key===' '" not in low: errors.append(f'{name}: interactive bundle cards must support Enter and Space keyboard activation')
 print('HACHARA Accessibility Smoke Validation')
 print(f'Errors: {len(errors)}')
 print(f'Warnings: {len(warnings)}')
