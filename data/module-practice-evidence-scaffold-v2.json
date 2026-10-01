@@ -1,0 +1,2192 @@
+{
+  "version": "2.0",
+  "status": "provisional-consolidated-source-backed-practice-evidence",
+  "purpose": "Unified additive scaffold for Module -> Practice -> Tool Task -> Evidence -> Review -> Rework -> Validation. It consolidates the existing source-backed v2/v3 work without rewriting, merging, deleting, or replacing lesson content.",
+  "sourceOfTruth": [
+    "CURRICULUM-BUNDLE-MASTER.md",
+    "data/bundle-engine-contract.json",
+    "data/progress-model.json",
+    "data/provisional-module-candidates-v1.json",
+    "data/provisional-lesson-module-map-v1.json",
+    "docs/BUNDLE-MODULE-COVERAGE-AUDIT-v1.0.md",
+    "data/source-backed-practice-evidence-v2.json",
+    "data/source-backed-practice-evidence-v3.json"
+  ],
+  "rules": [
+    "Existing lesson content remains authoritative and immutable.",
+    "Practice must link to existing lessonIds and skillIds when defined; unknown mappings remain explicit gaps.",
+    "Tool tasks use figma, framer, or none only where supported by the curriculum architecture.",
+    "Evidence must be observable and submitted before capability validation.",
+    "Review must produce an evidence-based decision; rework is used when required.",
+    "Validation confirms demonstrated capability and does not equal lesson completion.",
+    "Do not invent source lessons or silently fill identified curriculum gaps."
+  ],
+  "requiredGates": [
+    "practice",
+    "evidence",
+    "review",
+    "validation"
+  ],
+  "toolModes": [
+    "figma",
+    "framer",
+    "none"
+  ],
+  "modules": [
+    {
+      "moduleId": "B01-M01",
+      "bundleId": "B01",
+      "title": "UX Thinking, Users and Decision Foundations",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": [
+        "Source coverage audit identified this module as a genuine curriculum-source gap; do not invent lesson content to fill it."
+      ]
+    },
+    {
+      "moduleId": "B01-M02",
+      "bundleId": "B01",
+      "title": "Heuristics and Evidence-Based UX Evaluation",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-heuristics.html"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-heuristics.html"
+        ],
+        "activity": "Inspect an interface against usability principles and turn concrete evidence into actionable findings."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Evaluate a Figma/Framer screen or flow; record issue, evidence, affected users/context, principle and recommendation."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Heuristic findings",
+          "Evidence",
+          "Principle mapping",
+          "Recommendations"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Concrete evidence",
+          "Usability principle identified",
+          "Impact/context explained",
+          "Actionable recommendation"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "Audit",
+          "Review findings",
+          "Rework",
+          "Validate"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can perform a systematic heuristic evaluation without treating it as a substitute for user research."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B02-M01",
+      "bundleId": "B02",
+      "title": "Visual Hierarchy, Layout, Spacing and Typography",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-content-hierarchy.html",
+        "lesson-spacing-layout.html",
+        "lesson-typography.html",
+        "lesson-visual-hierarchy.html"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-content-hierarchy.html",
+          "lesson-spacing-layout.html",
+          "lesson-typography.html",
+          "lesson-visual-hierarchy.html"
+        ],
+        "activity": "Create clear visual hierarchy using layout, spacing, typography and grouping to communicate purpose and priority."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Take a cluttered screen in Figma/Framer, map primary/supporting/secondary information, then create V2 and perform a three-second scan."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Hierarchy map",
+          "V1/V2",
+          "Three-second scan result",
+          "Design rationale"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Primary purpose is apparent",
+          "Relationships are clear",
+          "Emphasis is meaningful",
+          "Spacing/type support hierarchy"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Hierarchy map",
+          "V2",
+          "Three-second scan",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can use visual structure to communicate priority and task clarity."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B02-M02",
+      "bundleId": "B02",
+      "title": "Colour and Visual Accessibility Foundations",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-color-contrast.html"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-color-contrast.html"
+        ],
+        "activity": "Apply colour and contrast decisions that support readable, distinguishable UI without making colour the sole carrier of meaning."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Audit and rework a Figma/Framer flow for colour/contrast and state communication."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Contrast audit",
+          "State examples",
+          "V2 screens",
+          "Rationale"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Contrast considered in context",
+          "Meaning is not colour-only",
+          "States remain distinguishable",
+          "Changes preserve hierarchy"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Audit",
+          "V2",
+          "Validate",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can make and explain colour/contrast decisions in interface context."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B03-M01",
+      "bundleId": "B03",
+      "title": "Research, Personas and Empathy",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-user-research.html",
+        "lesson-personas.html",
+        "lesson-empathy-journey-mapping.html"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-user-research.html",
+          "lesson-personas.html",
+          "lesson-empathy-journey-mapping.html"
+        ],
+        "activity": "Frame a research question, choose a method, represent meaningful patterns and map the experience using evidence."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Create a research plan and evidence-based persona/journey map supporting a Figma/Framer design decision."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Research question",
+          "Method rationale",
+          "Evidence notes",
+          "Persona",
+          "Journey map",
+          "Design implication"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Method matches question",
+          "Evidence separated from assumption",
+          "Persona grounded in patterns",
+          "Journey connects goals/behaviour/friction/opportunities"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Review evidence",
+          "V2",
+          "Validate with available evidence",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can connect research evidence to a defensible UX design decision."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B03-M02",
+      "bundleId": "B03",
+      "title": "Research Synthesis and Inclusive Research",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-inclusive-research-and-testing.html"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-inclusive-research-and-testing.html"
+        ],
+        "activity": "Plan research/testing that considers inclusion and appropriate participant/context needs."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Create an inclusive research/testing plan around a Figma/Framer flow, documenting participant considerations, method, evidence and limitations."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Inclusive research plan",
+          "Participant/context considerations",
+          "Evidence",
+          "Limitations",
+          "Design implications"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Inclusion considerations are explicit",
+          "Method fits question",
+          "Claims match evidence",
+          "Limitations documented"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "Plan",
+          "Review",
+          "Revise",
+          "Validate",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can plan research/testing with explicit inclusion and evidence boundaries."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B04-M01",
+      "bundleId": "B04",
+      "title": "Information Architecture, Navigation and Findability",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-information-architecture.html",
+        "lesson-79-search-discovery-and-findability.html"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-information-architecture.html",
+          "lesson-79-search-discovery-and-findability.html"
+        ],
+        "activity": "Organize content, navigation and findability around user goals and tasks."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Create an IA/navigation or findability exercise for a Figma/Framer flow; document hierarchy, labels, search/discovery decisions and task paths."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "IA map",
+          "Navigation model",
+          "Findability decisions",
+          "Task path",
+          "Rationale"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Structure supports user goals",
+          "Labels are understandable",
+          "Findability issues evidenced",
+          "Task paths are coherent"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Review",
+          "V2",
+          "Validate task paths",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can structure and evaluate information access around user tasks."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B04-M02",
+      "bundleId": "B04",
+      "title": "User Flows and Content Structure",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-user-flows.html"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-user-flows.html"
+        ],
+        "activity": "Model a user's task as a clear flow from goal through actions, decisions and outcomes."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Create and prototype a key user flow in Figma/Framer, including meaningful decision/error paths."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "User flow",
+          "Prototype",
+          "Decision points",
+          "Edge paths",
+          "Rationale"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Goal is explicit",
+          "Steps support task",
+          "Decision points are clear",
+          "Edge paths accounted for"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Review",
+          "V2",
+          "Walkthrough",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can create and explain a task-oriented user flow."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B05-M01",
+      "bundleId": "B05",
+      "title": "Interaction Patterns, States and Feedback",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-75-feedback-and-system-status.html",
+        "lesson-73-empty-loading-success-states.html"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-75-feedback-and-system-status.html",
+          "lesson-73-empty-loading-success-states.html"
+        ],
+        "activity": "Design interaction feedback and meaningful system states so users understand what is happening and what to do next."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Prototype loading, empty, success and status-feedback states in Figma/Framer for one flow."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "State map",
+          "Prototype states",
+          "Feedback copy",
+          "Recovery/next-step rationale"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Status is visible/understandable",
+          "States are relevant",
+          "Feedback supports task",
+          "Important status is not dependent on one sensory channel"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Review states",
+          "V2",
+          "Retest",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can design meaningful feedback and system states around user tasks."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B05-M02",
+      "bundleId": "B05",
+      "title": "Forms, Errors, Recovery and Interruption",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-74-designing-for-recovery.html",
+        "lesson-76-designing-for-interruption-and-resumption.html"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-74-designing-for-recovery.html",
+          "lesson-76-designing-for-interruption-and-resumption.html"
+        ],
+        "activity": "Design error recovery and interruption/resumption paths that help users recover without losing task context."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Prototype an error/recovery and interruption scenario in Figma/Framer, including recovery actions and preserved context."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Error path",
+          "Recovery design",
+          "Interruption/resumption flow",
+          "Prototype",
+          "Rationale"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Failure is explained",
+          "Recovery action is clear",
+          "Context/progress preserved where appropriate",
+          "Rework responds to evidence"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Test failure path",
+          "V2",
+          "Retest",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can design recoverable interactions for failure and interruption scenarios."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B05-M03",
+      "bundleId": "B05",
+      "title": "Dialogs, Overlays, Motion and Notifications",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-accessible-dialogs-modals.html",
+        "lesson-accessible-dialogs-overlays.html",
+        "lesson-accessible-notifications-status.html",
+        "lesson-accessible-motion-animation.html"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-accessible-dialogs-modals.html",
+          "lesson-accessible-dialogs-overlays.html",
+          "lesson-accessible-notifications-status.html",
+          "lesson-accessible-motion-animation.html"
+        ],
+        "activity": "Design dialogs, overlays, notifications and motion with clear purpose, status, control and accessibility considerations."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Prototype one dialog/overlay and one status/transition pattern in Figma/Framer; document focus/exit, priority, persistence and reduced-motion considerations where relevant."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Interaction states",
+          "Focus/exit notes",
+          "Notification/status behaviour",
+          "Motion rationale",
+          "Accessibility notes"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "User control is clear",
+          "Important status is perceivable",
+          "Interruption level matches importance",
+          "Motion does not carry essential meaning alone"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Review interaction",
+          "V2",
+          "Validate",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can specify contextual overlays/status/motion behaviour with appropriate accessibility considerations."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B06-M01",
+      "bundleId": "B06",
+      "title": "Wireframing and Prototype Communication",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-wireframing.html"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-wireframing.html"
+        ],
+        "activity": "Communicate structure and interaction intent through wireframes while preserving the source gap around standalone prototype instruction."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Create low/mid-fidelity wireframes in Figma or Framer for a defined flow; show hierarchy, layout, states and task progression."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Wireframes",
+          "Flow/context",
+          "State notes",
+          "Interaction intent",
+          "Rationale"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Structure communicates task",
+          "Hierarchy is understandable",
+          "Important states are represented",
+          "Fidelity is appropriate"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Review",
+          "V2",
+          "Walkthrough",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can use wireframes to communicate structure and intended interaction. Standalone prototype mastery remains a source-gap requiring future definition."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged.",
+        "Standalone prototype mastery remains a source-gap requiring future definition."
+      ]
+    },
+    {
+      "moduleId": "B07-M01",
+      "bundleId": "B07",
+      "title": "Accessibility Foundations and Inclusive Design",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-accessibility-foundations",
+        "lesson-accessibility",
+        "lesson-inclusive-design-foundations",
+        "lesson-accessible-color-contrast",
+        "lesson-cognitive-accessibility",
+        "lesson-designing-for-cognitive-accessibility"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-accessibility-foundations",
+          "lesson-accessibility",
+          "lesson-inclusive-design-foundations",
+          "lesson-accessible-color-contrast",
+          "lesson-cognitive-accessibility",
+          "lesson-designing-for-cognitive-accessibility"
+        ],
+        "activity": "Audit a previously designed flow for broad accessibility and inclusive-design considerations, then rework identified barriers."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Use Figma/Framer to annotate perceivable/operable/understandable/robust considerations, contrast, cognitive load and inclusive needs."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Accessibility audit",
+          "Annotated screens",
+          "Contrast/state evidence",
+          "Inclusive-design rationale",
+          "V2 changes",
+          "Unvalidated items"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Accessibility considered throughout design",
+          "Evidence is specific",
+          "Inclusive considerations are tied to user/context needs",
+          "Assumptions are distinguished from validated findings"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1 audit",
+          "Review",
+          "V2 rework",
+          "Validate",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner demonstrates accessibility/inclusive design reasoning in an actual interface rather than only recalling principles."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B07-M02",
+      "bundleId": "B07",
+      "title": "Accessible Interaction, Content and Assistive Technology",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-accessibility-testing-validation",
+        "lesson-accessible-keyboard-navigation",
+        "lesson-accessible-screen-reader-content"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-accessibility-testing-validation",
+          "lesson-accessible-keyboard-navigation",
+          "lesson-accessible-screen-reader-content"
+        ],
+        "activity": "Create and execute a multi-method accessibility validation plan for a key product flow."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Map focus order and semantic/content structure in Figma/Framer; define automated, keyboard, zoom/text, assistive-technology and user-evidence checks where applicable."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Validation plan",
+          "Focus map",
+          "Semantic/content map",
+          "Method-specific findings",
+          "Confirmed vs assumed issues",
+          "Unvalidated scope"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Each method's limits are documented",
+          "Keyboard path is logical",
+          "Semantic names/reading order are coherent",
+          "Claims match available evidence"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "Plan",
+          "Test",
+          "Separate facts/assumptions",
+          "Rework",
+          "Retest"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can plan and interpret multi-method accessibility validation without overclaiming from a single test."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B07-M03",
+      "bundleId": "B07",
+      "title": "Specialized Inclusive and Accessibility Capabilities",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": []
+    },
+    {
+      "moduleId": "B08-M01",
+      "bundleId": "B08",
+      "title": "Responsive and Cross-Device Foundations",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-responsive-design.html"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-responsive-design.html"
+        ],
+        "activity": "Adapt an interface across screen sizes, input contexts and content constraints while preserving user goals."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Prototype a key flow across mobile/tablet/desktop in Figma/Framer and test realistic content."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Responsive variants",
+          "Content stress test",
+          "Input considerations",
+          "Rationale"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Task remains clear",
+          "Layout adapts",
+          "Content constraints considered",
+          "Interaction remains usable"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Stress test",
+          "V2",
+          "Retest",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can design responsive behaviour around task continuity rather than pixel matching."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B08-M02",
+      "bundleId": "B08",
+      "title": "Responsive Accessibility and Mobile Interaction",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-inclusive-responsive-design.html",
+        "lesson-66-responsive-accessible-layouts.html",
+        "lesson-67-touch-targets-mobile-ux.html"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-inclusive-responsive-design.html",
+          "lesson-66-responsive-accessible-layouts.html",
+          "lesson-67-touch-targets-mobile-ux.html"
+        ],
+        "activity": "Stress-test responsive accessibility across viewport, zoom/text, orientation and mobile input constraints."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Prototype desktop/tablet/mobile states and test long content, larger text, portrait/landscape and touch-target/interaction constraints."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Responsive states",
+          "Stress-test evidence",
+          "Touch-target review",
+          "Zoom/text review",
+          "Orientation review",
+          "V2"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Essential content retained",
+          "Reflow works",
+          "Targets/spacing support interaction",
+          "Input methods considered",
+          "Clipping/overlap avoided"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Stress test",
+          "V2",
+          "Validate",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can create responsive interfaces that remain usable under varied access and device conditions."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B09-M01",
+      "bundleId": "B09",
+      "title": "Design Systems, Tokens and Components",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-design-systems",
+        "lesson-design-tokens",
+        "lesson-082-design-systems",
+        "lesson-083-design-tokens",
+        "lesson-084-component-anatomy"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-design-systems",
+          "lesson-design-tokens",
+          "lesson-082-design-systems",
+          "lesson-083-design-tokens",
+          "lesson-084-component-anatomy"
+        ],
+        "activity": "Create/audit reusable patterns, tokens and components for one product flow; define purpose, anatomy and reusable decisions."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "In Figma or Framer, build a mini system and/or audit five repeated patterns; extract tokens, define component states, document usage and refactor one flow."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Reusable components/patterns",
+          "Named token set",
+          "Component anatomy",
+          "Usage guidance",
+          "Before/after refactor",
+          "Reflection"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Reuse is purposeful",
+          "Tokens express reusable decisions",
+          "Component anatomy covers behaviour/states/accessibility",
+          "System supports context rather than forcing identical screens"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Review duplication/inconsistency",
+          "V2",
+          "Compare reuse and usability",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can create and explain reusable design foundations and apply them consistently in context."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B09-M02",
+      "bundleId": "B09",
+      "title": "Component States, Responsiveness and Documentation",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-085-component-states",
+        "lesson-086-responsive-components",
+        "lesson-087-component-documentation"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-085-component-states",
+          "lesson-086-responsive-components",
+          "lesson-087-component-documentation"
+        ],
+        "activity": "Define meaningful component states, responsive behaviour and documentation for one production component."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Create a state matrix, prototype transitions, test keyboard/touch/error paths, then document purpose, variants, states, constraints and accessibility."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "State matrix",
+          "Responsive versions",
+          "Prototype transitions",
+          "Documentation",
+          "Accessibility expectations",
+          "Real-content test"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "States are meaningful",
+          "Behaviour is predictable",
+          "Responsive adaptation preserves meaning/usability",
+          "Documentation explains purpose and constraints"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Review states/responsiveness/docs",
+          "V2",
+          "Retest",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can specify a component's behaviour across states, contexts and responsive conditions and communicate it to another designer/builder."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B09-M03",
+      "bundleId": "B09",
+      "title": "Design Handoff and Design QA",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-088-design-handoff",
+        "lesson-089-design-qa",
+        "lesson-design-handoff"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-088-design-handoff",
+          "lesson-089-design-qa",
+          "lesson-design-handoff"
+        ],
+        "activity": "Prepare a handoff package and perform design QA against intended design and implementation/prototype."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Create handoff for one flow in Figma/Framer; include context, states, responsive rules, assets, edge cases and open questions. Compare with implementation/prototype and maintain a QA log."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Handoff package",
+          "QA findings",
+          "Expected vs actual behaviour",
+          "Reproduction details",
+          "Impact",
+          "Retest evidence"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Intent and behaviour are communicated",
+          "Open questions are explicit",
+          "QA findings are reproducible",
+          "Responsive/accessibility/content behaviour are checked"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Review/QA",
+          "V2",
+          "Retest fixes",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can transfer design intent clearly and conduct actionable design QA beyond pixel comparison."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B10-M01",
+      "bundleId": "B10",
+      "title": "Usability Testing Planning and Moderation",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-usability-test-plan",
+        "lesson-usability-testing",
+        "lesson-usability-moderation"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-usability-test-plan",
+          "lesson-usability-testing",
+          "lesson-usability-moderation"
+        ],
+        "activity": "Turn a design question into a focused usability study and moderate a realistic task without leading participants."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Use a Figma/Framer prototype; create objective, participant/context, realistic task, neutral prompt, observation plan, debrief and moderator guide; pilot it."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Test plan",
+          "Moderator guide",
+          "Observation notes",
+          "Pilot reflection",
+          "Prototype/test context"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Question is explicit",
+          "Task is realistic",
+          "Prompts are neutral",
+          "Observed behaviour is separated from interpretation",
+          "Leading/rescue moments are identified"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Pilot",
+          "Identify leading prompts",
+          "V2",
+          "Compare evidence quality",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can plan and moderate a focused usability session while protecting the quality of evidence."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B10-M02",
+      "bundleId": "B10",
+      "title": "Findings, Prioritisation, Critique and Iteration",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-usability-findings",
+        "lesson-usability-prioritisation",
+        "lesson-design-critique",
+        "lesson-80-design-critique-and-iteration"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-usability-findings",
+          "lesson-usability-prioritisation",
+          "lesson-design-critique",
+          "lesson-80-design-critique-and-iteration"
+        ],
+        "activity": "Turn observations into traceable findings, make an explicit prioritisation decision, and conduct evidence-based critique/rework."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Synthesize a Figma/Framer test into 3–5 findings; define prioritisation criteria and trade-offs; critique a screen/flow and create V2."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "3–5 traceable findings",
+          "Evidence/pattern/impact/scope/opportunity",
+          "Prioritisation criteria and trade-offs",
+          "Three critiques",
+          "V2 with rationale"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Evidence separated from interpretation",
+          "Criteria are explicit",
+          "Trade-offs documented",
+          "Critique connects observation/impact/principle/action",
+          "Designer retains decision ownership"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "Observations",
+          "Synthesis",
+          "Decision",
+          "V2",
+          "Validate",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can transform research evidence into defensible findings, transparent decisions and actionable design rework."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B10-M03",
+      "bundleId": "B10",
+      "title": "Usability Measurement",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-092-usability-testing-metrics"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-092-usability-testing-metrics"
+        ],
+        "activity": "Define task success, time, meaningful errors, assistance and confidence measures before testing a prototype."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Run a usability measurement exercise in Figma/Framer and create an observation sheet; separate evidence from interpretation and proposed changes."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Task definition",
+          "Success criteria",
+          "Measurement sheet",
+          "Observation notes",
+          "Participant feedback",
+          "Limitations"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Measures are defined consistently",
+          "Metrics are interpreted with behaviour/context",
+          "Small sample is not overgeneralised",
+          "Further validation needs are explicit"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "Define test",
+          "Observe",
+          "Refine design",
+          "Retest",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can use task-based usability measures alongside observation and participant feedback to identify patterns and questions."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B11-M01",
+      "bundleId": "B11",
+      "title": "Content Hierarchy, Strategy and Plain Language",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-081-ux-content-strategy",
+        "lesson-content-strategy",
+        "lesson-content-hierarchy"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-081-ux-content-strategy",
+          "lesson-content-strategy",
+          "lesson-content-hierarchy"
+        ],
+        "activity": "Map content to user tasks, audit hierarchy and identify missing/error/empty states before polishing copy."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Create a content map for one flow, prototype improved hierarchy and compare V1/V2 with a short usability check."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Content map",
+          "Task-to-information mapping",
+          "State coverage",
+          "Hierarchy map",
+          "V2 prototype",
+          "Usability check"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Content supports user task",
+          "Hierarchy is clear",
+          "States are covered",
+          "Uncertainty/ambiguity is reduced",
+          "Ownership/maintenance considered where applicable"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Review evidence/uncertainty",
+          "V2",
+          "Compare comprehension",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can treat content as part of the interface and structure information around user needs."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B11-M02",
+      "bundleId": "B11",
+      "title": "Microcopy, Accessibility and UX Content Practice",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-microcopy",
+        "lesson-plain-language"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-microcopy",
+          "lesson-plain-language"
+        ],
+        "activity": "Audit and rewrite interface labels/messages for action, context, consequence, tone, accessibility and task clarity."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "In Figma/Framer, identify five microcopy items (CTA, hint, error, confirmation, empty state), rewrite them and test realistic lengths."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Five before/after examples",
+          "Rationale per change",
+          "Realistic-length UI evidence",
+          "Consistency check"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Language is clear and contextual",
+          "Actions/consequences are understandable",
+          "Jargon/vagueness reduced",
+          "Copy remains usable at realistic lengths"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Copy review",
+          "V2",
+          "Readability/comprehension check",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can produce task-focused interface language that reduces uncertainty and remains usable in context."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B12-M01",
+      "bundleId": "B12",
+      "title": "UX Metrics and Measurement",
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-090-ux-metrics",
+        "lesson-091-ux-metrics-and-measurement"
+      ],
+      "skillIds": [],
+      "practice": {
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-090-ux-metrics",
+          "lesson-091-ux-metrics-and-measurement"
+        ],
+        "activity": "Choose a product task, define the UX question and outcome, then select quantitative and qualitative evidence with baseline/context and guardrails."
+      },
+      "toolTask": {
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Create an annotated Figma/Framer flow showing where evidence could be collected and what result would trigger investigation."
+      },
+      "evidence": {
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "UX question",
+          "Outcome",
+          "Primary quantitative signal",
+          "Qualitative signal",
+          "Baseline/context",
+          "Guardrail",
+          "Annotated flow",
+          "Interpretation limits"
+        ]
+      },
+      "review": {
+        "status": "defined",
+        "criteria": [
+          "Metric aligns to question",
+          "Population/context/method considered",
+          "Qualitative and quantitative evidence complement each other",
+          "Correlation is not treated as causation"
+        ],
+        "decision": "human review required"
+      },
+      "rework": {
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Review metric fit",
+          "V2",
+          "Refine evidence",
+          "Validate signals",
+          "Reflect"
+        ]
+      },
+      "validation": {
+        "status": "defined",
+        "criteria": [
+          "Learner can connect UX questions to appropriate evidence and avoid treating a single metric as proof of design success."
+        ],
+        "gate": "required evidence + review + rework (when required)"
+      },
+      "humanDecisionPoints": [
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from source-backed practice/evidence architecture; existing lesson content is unchanged."
+      ]
+    },
+    {
+      "moduleId": "B13-M01",
+      "bundleId": "B13",
+      "title": "Figma Industry Workflow",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": [
+        "Tool-practice layer; source-empty by design in the current lesson mapping."
+      ]
+    },
+    {
+      "moduleId": "B14-M01",
+      "bundleId": "B14",
+      "title": "Framer Industry Workflow",
+      "status": "scaffold-needs-definition",
+      "sourceLessonIds": [],
+      "skillIds": [],
+      "practice": {
+        "status": "needs-definition",
+        "linkedLessonIds": [],
+        "activity": null
+      },
+      "toolTask": {
+        "status": "needs-definition",
+        "toolMode": "none",
+        "task": null
+      },
+      "evidence": {
+        "status": "needs-definition",
+        "types": [],
+        "submission": null
+      },
+      "review": {
+        "status": "needs-definition",
+        "criteria": [],
+        "decision": null
+      },
+      "rework": {
+        "status": "needs-definition",
+        "required": false,
+        "cycle": null
+      },
+      "validation": {
+        "status": "needs-definition",
+        "criteria": [],
+        "gate": null
+      },
+      "humanDecisionPoints": [],
+      "notes": [
+        "Tool-practice layer; source-empty by design in the current lesson mapping."
+      ]
+    }
+  ],
+  "consolidation": {
+    "sourcePasses": [
+      "v2",
+      "v3"
+    ],
+    "sourceBackedModuleCount": 24,
+    "totalCandidateModules": 28,
+    "needsDefinitionModuleIds": [
+      "B01-M01",
+      "B07-M03",
+      "B13-M01",
+      "B14-M01"
+    ],
+    "preservedGaps": [
+      "B01-M01 source coverage gap",
+      "B06-M01 standalone prototype mastery gap",
+      "B07-M03 practice/evidence definition not yet consolidated",
+      "B13-M01 and B14-M01 remain tool/workflow layers",
+      "B15-B17 remain evidence/rework/challenge/portfolio layers, not lesson containers"
+    ],
+    "lessonContentChanged": false
+  },
+  "humanDecisionPoints": [],
+  "preservation": {
+    "existingLessonContent": "immutable",
+    "sourceLessonsDeleted": 0,
+    "sourceLessonsRenamed": 0,
+    "sourceLessonsMerged": 0,
+    "curriculumGapsInvented": 0
+  }
+}
