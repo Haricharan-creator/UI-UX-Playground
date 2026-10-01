@@ -110,6 +110,23 @@ try {
   if ((await page.locator('#currentEvidence').innerText()).indexOf('B01-M02') === -1) throw new Error('Progress did not show the current module evidence.');
   if ((await page.locator('main').innerText()).includes('63') || (await page.locator('main').innerText()).includes('4 validated skills')) throw new Error('Progress retained stale hardcoded completion claims.');
 
+  // Dedicated capability evidence view uses the same persisted Studio/Review records.
+  await page.goto('http://127.0.0.1:4173/capability-evidence.html', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(500);
+  if ((await page.locator('#current').innerText()).indexOf('B01-M02') === -1) throw new Error('Capability Evidence did not load the current Studio submission.');
+  if (!(await page.locator('#workflow').innerText()).includes('Validated')) throw new Error('Capability Evidence did not render the shared validated workflow state.');
+  if (await page.locator('#moduleCount').innerText() !== '28 definitions') throw new Error('Capability Evidence did not load the 28 candidate module definitions.');
+  if ((await page.locator('#modules').innerText()).indexOf('B01-M01') === -1) throw new Error('Capability Evidence did not render source-gap module coverage.');
+  if ((await page.locator('#modules').innerText()).indexOf('B01-M02') === -1) throw new Error('Capability Evidence did not render mapped module coverage.');
+
+  // Responsive smoke for the isolated evidence view.
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForTimeout(300);
+  const mobileOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
+  if (mobileOverflow) throw new Error('Capability Evidence has horizontal overflow at mobile width.');
+  await page.setViewportSize({ width: 1440, height: 1000 });
+
   // Bundle Dashboard interaction smoke: filters -> bundle -> coverage -> lesson -> repeat.
   await page.goto('http://127.0.0.1:4173/bundle-dashboard.html', { waitUntil: 'networkidle' });
   await page.waitForTimeout(500);
