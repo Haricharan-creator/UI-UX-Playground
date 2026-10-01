@@ -113,6 +113,7 @@ try {
   // Bundle Dashboard interaction smoke: filters -> bundle -> coverage -> lesson -> repeat.
   await page.goto('http://127.0.0.1:4173/bundle-dashboard.html', { waitUntil: 'networkidle' });
   await page.waitForTimeout(700);
+  await page.locator('[data-filter="all"]').click();
   const evidenceBundle = page.locator('#bundles .bundle[data-id="B01"]');
   if (!(await evidenceBundle.innerText()).includes('evidence validated')) throw new Error('Bundle Dashboard did not project the validated evidence state.');
   if (!(await evidenceBundle.innerText()).includes('100% evidence workflow')) throw new Error('Bundle Dashboard evidence workflow progress is incorrect.');
