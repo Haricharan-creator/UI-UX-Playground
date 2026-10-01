@@ -95,10 +95,11 @@ for m in mapped:
 expected_bundles = {
     item.get("bundleId")
     for item in bundle_map.get("bundles", [])
+    if item.get("moduleIds")
 }
 actual_bundles = {m.get("bundleId") for m in integration_modules}
 if expected_bundles != actual_bundles:
-    errors.append("Bundle IDs in integration do not match bundle-module map")
+    errors.append("Module-bearing bundle IDs in integration do not match bundle-module map")
 
 validation = integration.get("validation", {})
 if validation.get("sourceLessonChanges") != 0:
