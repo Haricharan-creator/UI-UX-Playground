@@ -120,7 +120,7 @@ try {
   if (await page.locator('#bundles .bundle').count() !== 17) throw new Error('Bundle Dashboard did not render all 17 bundles.');
 
   await page.locator('[data-filter="not-started"]').click();
-  if (await page.locator('#bundles .bundle').count() !== 17) throw new Error('Not-started filter did not retain the expected bundles.');
+  if (await page.locator('#bundles .bundle').count() !== 16) throw new Error('Not-started filter did not exclude the evidence-active B01 bundle.');
 
   await page.locator('[data-filter="all"]').click();
   const b01 = page.locator('#bundles .bundle[data-id="B01"]');
