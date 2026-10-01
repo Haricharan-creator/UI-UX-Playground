@@ -115,7 +115,8 @@ try {
   await page.waitForTimeout(500);
   await page.locator('[data-filter="all"]').click();
 
-  if (await page.locator('#bundles .bundle').count() !== 17) throw new Error('Bundle Dashboard did not render all 17 bundles.');
+  const dashboardCount = await page.locator('#bundles .bundle').count();
+  if (dashboardCount !== 17) throw new Error('Bundle Dashboard rendered '+dashboardCount+' cards: '+(await page.locator('#bundles').innerText()));
 
   await page.locator('[data-filter="not-started"]').click();
   if (await page.locator('#bundles .bundle').count() !== 17) throw new Error('Not-started filter changed the existing dashboard contract.');
