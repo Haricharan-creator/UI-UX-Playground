@@ -116,7 +116,7 @@ try {
   await page.locator('[data-filter="all"]').click();
 
   const dashboardCount = await page.locator('#bundles .bundle').count();
-  if (dashboardCount !== 17) throw new Error('Bundle Dashboard rendered '+dashboardCount+' cards: '+(await page.locator('#bundles').innerText()));
+  if (dashboardCount !== 17) throw new Error('Bundle Dashboard rendered '+dashboardCount+' cards: '+(await page.locator('#bundles').innerText())+' | page errors: '+errors.join(' | '));
 
   await page.locator('[data-filter="not-started"]').click();
   if (await page.locator('#bundles .bundle').count() !== 17) throw new Error('Not-started filter changed the existing dashboard contract.');
