@@ -1,5 +1,5 @@
 {
-  "version":"1.0",
+  "version":"1.1",
   "status":"active",
   "surfaces":[
     {"id":"academy","entry":"bundle-dashboard.html","role":"bundle-first learning"},
@@ -17,7 +17,12 @@
     "data/challenge-schema.json",
     "data/rework-schema.json",
     "data/workflow-state-machine.json",
-    "data/navigation-contract.json"
+    "data/navigation-contract.json",
+    "data/bundle-engine-contract.json",
+    "data/bundle-module-map.json",
+    "data/provisional-lesson-module-map-v1.json",
+    "data/module-practice-evidence-scaffold-v2.json",
+    "data/module-practice-evidence-integration-v1.json"
   ],
   "flow":["academy","studio","review","progress"],
   "integrationRule":"All learner-facing surfaces must use the shared workflow states and data contracts; no surface may invent conflicting completion semantics.",
