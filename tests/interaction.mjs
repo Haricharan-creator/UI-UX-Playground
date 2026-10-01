@@ -57,6 +57,36 @@ try {
   const counts = ['finding','correction','before-after','test'].map(type => trace.filter(x => x.type === type).length);
   if (counts.join(',') !== '1,1,1,1') throw new Error(`Trace persistence mismatch: ${counts.join(',')}`);
 
+  // Bundle Dashboard interaction smoke: filters -> bundle -> coverage -> lesson -> repeat.
+  await page.goto('http://127.0.0.1:4173/bundle-dashboard.html', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(500);
+
+  if (await page.locator('#bundles .bundle').count() !== 17) throw new Error('Bundle Dashboard did not render all 17 bundles.');
+
+  await page.locator('[data-filter="not-started"]').click();
+  if (await page.locator('#bundles .bundle').count() !== 17) throw new Error('Not-started filter did not retain the expected bundles.');
+
+  await page.locator('[data-filter="all"]').click();
+  const b01 = page.locator('#bundles .bundle[data-id="B01"]');
+  await b01.press('Enter');
+  await page.waitForTimeout(250);
+
+  if (await page.locator('#detail.hidden').count() !== 0) throw new Error('Bundle Dashboard keyboard activation did not open bundle detail.');
+  const coverage = page.locator('#detail .coverage');
+  if (await coverage.count() !== 1) throw new Error('Source lesson coverage did not render.');
+  const lessonLink = coverage.locator('a').first();
+  if (await lessonLink.count() !== 1) throw new Error('Bundle coverage did not expose an Open lesson link.');
+
+  const lessonPage = await page.waitForEvent('popup', () => lessonLink.click());
+  await lessonPage.waitForLoadState('domcontentloaded');
+  if (!lessonPage.url().includes('lesson-')) throw new Error('Open lesson did not open the expected lesson page.');
+  await lessonPage.close();
+
+  await page.locator('[data-filter="all"]').click();
+  await page.locator('#bundles .bundle[data-id="B01"]').press(' ');
+  await page.waitForTimeout(250);
+  if (await page.locator('#detail.hidden').count() !== 0) throw new Error('Space keyboard activation did not reopen bundle detail.');
+
   if (errors.length) throw new Error('Browser console/page errors: ' + errors.join(' | '));
   console.log(JSON.stringify({
     ok:true,
