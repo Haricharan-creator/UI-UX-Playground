@@ -1,5 +1,5 @@
 {
-  "version": "2.0",
+  "version": "2.1",
   "status": "provisional-consolidated-source-backed-practice-evidence",
   "purpose": "Unified additive scaffold for Module -> Practice -> Tool Task -> Evidence -> Review -> Rework -> Validation. It consolidates the existing source-backed v2/v3 work without rewriting, merging, deleting, or replacing lesson content.",
   "sourceOfTruth": [
@@ -81,13 +81,13 @@
       "title": "Heuristics and Evidence-Based UX Evaluation",
       "status": "source-backed-provisional",
       "sourceLessonIds": [
-        "lesson-heuristics.html"
+        "lesson-heuristics"
       ],
       "skillIds": [],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
-          "lesson-heuristics.html"
+          "lesson-heuristics"
         ],
         "activity": "Inspect an interface against usability principles and turn concrete evidence into actionable findings."
       },
@@ -157,19 +157,19 @@
       "title": "Visual Hierarchy, Layout, Spacing and Typography",
       "status": "source-backed-provisional",
       "sourceLessonIds": [
-        "lesson-content-hierarchy.html",
-        "lesson-spacing-layout.html",
-        "lesson-typography.html",
-        "lesson-visual-hierarchy.html"
+        "lesson-content-hierarchy",
+        "lesson-spacing-layout",
+        "lesson-typography",
+        "lesson-visual-hierarchy"
       ],
       "skillIds": [],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
-          "lesson-content-hierarchy.html",
-          "lesson-spacing-layout.html",
-          "lesson-typography.html",
-          "lesson-visual-hierarchy.html"
+          "lesson-content-hierarchy",
+          "lesson-spacing-layout",
+          "lesson-typography",
+          "lesson-visual-hierarchy"
         ],
         "activity": "Create clear visual hierarchy using layout, spacing, typography and grouping to communicate purpose and priority."
       },
@@ -240,13 +240,13 @@
       "title": "Colour and Visual Accessibility Foundations",
       "status": "source-backed-provisional",
       "sourceLessonIds": [
-        "lesson-color-contrast.html"
+        "lesson-color-contrast"
       ],
       "skillIds": [],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
-          "lesson-color-contrast.html"
+          "lesson-color-contrast"
         ],
         "activity": "Apply colour and contrast decisions that support readable, distinguishable UI without making colour the sole carrier of meaning."
       },
@@ -317,17 +317,17 @@
       "title": "Research, Personas and Empathy",
       "status": "source-backed-provisional",
       "sourceLessonIds": [
-        "lesson-user-research.html",
-        "lesson-personas.html",
-        "lesson-empathy-journey-mapping.html"
+        "lesson-user-research",
+        "lesson-personas",
+        "lesson-empathy-journey-mapping"
       ],
       "skillIds": [],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
-          "lesson-user-research.html",
-          "lesson-personas.html",
-          "lesson-empathy-journey-mapping.html"
+          "lesson-user-research",
+          "lesson-personas",
+          "lesson-empathy-journey-mapping"
         ],
         "activity": "Frame a research question, choose a method, represent meaningful patterns and map the experience using evidence."
       },
@@ -400,13 +400,13 @@
       "title": "Research Synthesis and Inclusive Research",
       "status": "source-backed-provisional",
       "sourceLessonIds": [
-        "lesson-inclusive-research-and-testing.html"
+        "lesson-inclusive-research-and-testing"
       ],
       "skillIds": [],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
-          "lesson-inclusive-research-and-testing.html"
+          "lesson-inclusive-research-and-testing"
         ],
         "activity": "Plan research/testing that considers inclusion and appropriate participant/context needs."
       },
@@ -478,15 +478,15 @@
       "title": "Information Architecture, Navigation and Findability",
       "status": "source-backed-provisional",
       "sourceLessonIds": [
-        "lesson-information-architecture.html",
-        "lesson-79-search-discovery-and-findability.html"
+        "lesson-information-architecture",
+        "lesson-79-search-discovery-and-findability"
       ],
       "skillIds": [],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
-          "lesson-information-architecture.html",
-          "lesson-79-search-discovery-and-findability.html"
+          "lesson-information-architecture",
+          "lesson-79-search-discovery-and-findability"
         ],
         "activity": "Organize content, navigation and findability around user goals and tasks."
       },
@@ -558,13 +558,13 @@
       "title": "User Flows and Content Structure",
       "status": "source-backed-provisional",
       "sourceLessonIds": [
-        "lesson-user-flows.html"
+        "lesson-user-flows"
       ],
       "skillIds": [],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
-          "lesson-user-flows.html"
+          "lesson-user-flows"
         ],
         "activity": "Model a user's task as a clear flow from goal through actions, decisions and outcomes."
       },
@@ -636,15 +636,15 @@
       "title": "Interaction Patterns, States and Feedback",
       "status": "source-backed-provisional",
       "sourceLessonIds": [
-        "lesson-75-feedback-and-system-status.html",
-        "lesson-73-empty-loading-success-states.html"
+        "lesson-75-feedback-and-system-status",
+        "lesson-73-empty-loading-success-states"
       ],
       "skillIds": [],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
-          "lesson-75-feedback-and-system-status.html",
-          "lesson-73-empty-loading-success-states.html"
+          "lesson-75-feedback-and-system-status",
+          "lesson-73-empty-loading-success-states"
         ],
         "activity": "Design interaction feedback and meaningful system states so users understand what is happening and what to do next."
       },
@@ -715,15 +715,15 @@
       "title": "Forms, Errors, Recovery and Interruption",
       "status": "source-backed-provisional",
       "sourceLessonIds": [
-        "lesson-74-designing-for-recovery.html",
-        "lesson-76-designing-for-interruption-and-resumption.html"
+        "lesson-74-designing-for-recovery",
+        "lesson-76-designing-for-interruption-and-resumption"
       ],
       "skillIds": [],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
-          "lesson-74-designing-for-recovery.html",
-          "lesson-76-designing-for-interruption-and-resumption.html"
+          "lesson-74-designing-for-recovery",
+          "lesson-76-designing-for-interruption-and-resumption"
         ],
         "activity": "Design error recovery and interruption/resumption paths that help users recover without losing task context."
       },
@@ -795,19 +795,19 @@
       "title": "Dialogs, Overlays, Motion and Notifications",
       "status": "source-backed-provisional",
       "sourceLessonIds": [
-        "lesson-accessible-dialogs-modals.html",
-        "lesson-accessible-dialogs-overlays.html",
-        "lesson-accessible-notifications-status.html",
-        "lesson-accessible-motion-animation.html"
+        "lesson-accessible-dialogs-modals",
+        "lesson-accessible-dialogs-overlays",
+        "lesson-accessible-notifications-status",
+        "lesson-accessible-motion-animation"
       ],
       "skillIds": [],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
-          "lesson-accessible-dialogs-modals.html",
-          "lesson-accessible-dialogs-overlays.html",
-          "lesson-accessible-notifications-status.html",
-          "lesson-accessible-motion-animation.html"
+          "lesson-accessible-dialogs-modals",
+          "lesson-accessible-dialogs-overlays",
+          "lesson-accessible-notifications-status",
+          "lesson-accessible-motion-animation"
         ],
         "activity": "Design dialogs, overlays, notifications and motion with clear purpose, status, control and accessibility considerations."
       },
@@ -879,13 +879,13 @@
       "title": "Wireframing and Prototype Communication",
       "status": "source-backed-provisional",
       "sourceLessonIds": [
-        "lesson-wireframing.html"
+        "lesson-wireframing"
       ],
       "skillIds": [],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
-          "lesson-wireframing.html"
+          "lesson-wireframing"
         ],
         "activity": "Communicate structure and interaction intent through wireframes while preserving the source gap around standalone prototype instruction."
       },
@@ -1128,41 +1128,104 @@
       "moduleId": "B07-M03",
       "bundleId": "B07",
       "title": "Specialized Inclusive and Accessibility Capabilities",
-      "status": "scaffold-needs-definition",
-      "sourceLessonIds": [],
+      "status": "source-backed-provisional",
+      "sourceLessonIds": [
+        "lesson-61-designing-for-older-adults",
+        "lesson-62-designing-for-children",
+        "lesson-63-designing-for-language-literacy",
+        "lesson-64-localization-internationalization",
+        "lesson-65-rtl-bidirectional-ux",
+        "lesson-68-voice-conversational-accessibility",
+        "lesson-69-multimodal-accessibility",
+        "lesson-accessible-multilingual-content",
+        "lesson-low-vision-design",
+        "lesson-motor-accessibility",
+        "lesson-neurodiversity-inclusive-ux"
+      ],
       "skillIds": [],
       "practice": {
-        "status": "needs-definition",
-        "linkedLessonIds": [],
-        "activity": null
+        "status": "defined",
+        "linkedLessonIds": [
+          "lesson-61-designing-for-older-adults",
+          "lesson-62-designing-for-children",
+          "lesson-63-designing-for-language-literacy",
+          "lesson-64-localization-internationalization",
+          "lesson-65-rtl-bidirectional-ux",
+          "lesson-68-voice-conversational-accessibility",
+          "lesson-69-multimodal-accessibility",
+          "lesson-accessible-multilingual-content",
+          "lesson-low-vision-design",
+          "lesson-motor-accessibility",
+          "lesson-neurodiversity-inclusive-ux"
+        ],
+        "activity": "Apply specialized inclusive-accessibility considerations to a key product flow across varied ability, language, input, sensory and context needs."
       },
       "toolTask": {
-        "status": "needs-definition",
-        "toolMode": "none",
-        "task": null
+        "status": "defined",
+        "toolMode": "figma",
+        "task": "Create Figma/Framer variants and stress states for one flow covering relevant specialized needs such as larger text/zoom, motor alternatives, multilingual/RTL expansion, child or older-adult context, voice fallback and multimodal alternatives."
       },
       "evidence": {
-        "status": "needs-definition",
-        "types": [],
-        "submission": null
+        "status": "defined",
+        "types": [
+          "figma-link",
+          "framer-link",
+          "screenshot",
+          "prototype",
+          "observation",
+          "reflection",
+          "review",
+          "rework",
+          "validation"
+        ],
+        "submission": [
+          "Specialized accessibility/inclusion audit",
+          "Context or variant states",
+          "Stress-test evidence",
+          "Design rationale",
+          "V2 changes",
+          "Unvalidated scope"
+        ]
       },
       "review": {
-        "status": "needs-definition",
-        "criteria": [],
-        "decision": null
+        "status": "defined",
+        "criteria": [
+          "Specialized needs are tied to the intended context rather than stereotypes",
+          "Important tasks have practical alternatives where relevant",
+          "Language/locale/direction changes are handled",
+          "Zoom/text/input/sensory conditions do not break essential tasks",
+          "Claims remain within available evidence"
+        ],
+        "decision": "human review required"
       },
       "rework": {
-        "status": "needs-definition",
-        "required": false,
-        "cycle": null
+        "status": "defined",
+        "required": true,
+        "cycle": [
+          "V1",
+          "Specialized stress/context review",
+          "V2",
+          "Retest relevant conditions",
+          "Validate",
+          "Reflect"
+        ]
       },
       "validation": {
-        "status": "needs-definition",
-        "criteria": [],
-        "gate": null
+        "status": "defined",
+        "criteria": [
+          "Learner can apply specialized inclusive and accessibility considerations to an interface while preserving task clarity and distinguishing assumptions from validated evidence."
+        ],
+        "gate": "required evidence + review + rework (when required)"
       },
-      "humanDecisionPoints": [],
-      "notes": []
+      "humanDecisionPoints": [
+        "Select which specialized contexts are relevant to the product and users.",
+        "Review evidence and decide whether demonstrated capability is sufficient.",
+        "Do not treat lesson completion as capability validation."
+      ],
+      "notes": [
+        "Consolidated from mapped source lessons; no new lesson content was created.",
+        "Specialized scope remains contextual: not every specialized condition is required for every product."
+      ]
     },
     {
       "moduleId": "B08-M01",
@@ -1170,13 +1233,13 @@
       "title": "Responsive and Cross-Device Foundations",
       "status": "source-backed-provisional",
       "sourceLessonIds": [
-        "lesson-responsive-design.html"
+        "lesson-responsive-design"
       ],
       "skillIds": [],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
-          "lesson-responsive-design.html"
+          "lesson-responsive-design"
         ],
         "activity": "Adapt an interface across screen sizes, input contexts and content constraints while preserving user goals."
       },
@@ -1247,17 +1310,17 @@
       "title": "Responsive Accessibility and Mobile Interaction",
       "status": "source-backed-provisional",
       "sourceLessonIds": [
-        "lesson-inclusive-responsive-design.html",
-        "lesson-66-responsive-accessible-layouts.html",
-        "lesson-67-touch-targets-mobile-ux.html"
+        "lesson-inclusive-responsive-design",
+        "lesson-66-responsive-accessible-layouts",
+        "lesson-67-touch-targets-mobile-ux"
       ],
       "skillIds": [],
       "practice": {
         "status": "defined",
         "linkedLessonIds": [
-          "lesson-inclusive-responsive-design.html",
-          "lesson-66-responsive-accessible-layouts.html",
-          "lesson-67-touch-targets-mobile-ux.html"
+          "lesson-inclusive-responsive-design",
+          "lesson-66-responsive-accessible-layouts",
+          "lesson-67-touch-targets-mobile-ux"
         ],
         "activity": "Stress-test responsive accessibility across viewport, zoom/text, orientation and mobile input constraints."
       },
@@ -2164,18 +2227,16 @@
       "v2",
       "v3"
     ],
-    "sourceBackedModuleCount": 24,
+    "sourceBackedModuleCount": 25,
     "totalCandidateModules": 28,
     "needsDefinitionModuleIds": [
       "B01-M01",
-      "B07-M03",
       "B13-M01",
       "B14-M01"
     ],
     "preservedGaps": [
       "B01-M01 source coverage gap",
       "B06-M01 standalone prototype mastery gap",
-      "B07-M03 practice/evidence definition not yet consolidated",
       "B13-M01 and B14-M01 remain tool/workflow layers",
       "B15-B17 remain evidence/rework/challenge/portfolio layers, not lesson containers"
     ],
