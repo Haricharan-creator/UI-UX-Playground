@@ -151,6 +151,8 @@ try {
     if (!page.url().includes('studio.html')) throw new Error('Open Studio navigation did not reach Studio.');
     await page.goBack({ waitUntil: 'domcontentloaded' });
     await page.waitForSelector('#bundles .bundle[data-id="B01"]');
+    await page.locator('#bundles .bundle[data-id="B01"]').press('Enter');
+    await page.waitForFunction(() => document.querySelector('#detail .moduleCoverage')?.innerText.includes('B01-M01'), null, { timeout: 5000 });
   const moduleCoverageText = await page.locator('#detail .moduleCoverage').innerText();
   if (!moduleCoverageText.includes('B01-M01')) throw new Error('B01 module coverage did not render.');
   if (!moduleCoverageText.includes('source-gap')) throw new Error('B01 source-gap state did not render.');
