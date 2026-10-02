@@ -112,7 +112,7 @@ try {
 
   // Dedicated capability evidence view uses the same persisted Studio/Review records.
   await page.goto('http://127.0.0.1:4173/capability-evidence.html', { waitUntil: 'networkidle' });
-  await page.waitForTimeout(500);
+  await page.waitForFunction(() => document.querySelector('#current')?.innerText.includes('B01-M02'), null, { timeout: 3000 });
   if ((await page.locator('#current').innerText()).indexOf('B01-M02') === -1) throw new Error('Capability Evidence did not load the current Studio submission.');
   if (!(await page.locator('#workflow').innerText()).includes('Validated')) throw new Error('Capability Evidence did not render the shared validated workflow state.');
   if (await page.locator('#moduleCount').innerText() !== '28 definitions') throw new Error('Capability Evidence did not load the 28 candidate module definitions.');
