@@ -142,6 +142,7 @@ try {
   await page.waitForTimeout(250);
 
   if (await page.locator('#detail.hidden').count() !== 0) throw new Error('Bundle Dashboard keyboard activation did not open bundle detail.');
+  await page.waitForFunction(() => document.querySelector('#detail .moduleCoverage')?.innerText.includes('B01-M01'), null, { timeout: 5000 });
   if (await page.locator('#detail .moduleCoverage').count() !== 1) throw new Error('Module practice/evidence coverage did not render.');
   const studioLink = page.locator('#detail a[href="studio.html"]').first();
     if (await studioLink.count() !== 1) throw new Error('Bundle detail did not expose Open Studio.');
