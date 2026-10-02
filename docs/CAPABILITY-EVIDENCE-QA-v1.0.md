@@ -4,6 +4,7 @@ Status: QA RUN REQUESTED — NOT YET FINAL
 
 Source commit:
 - 90aa838980310c339ce5267647b603e555ff15bb
+- QA hardening merged on main: 154b7aad9efab69dbd6ce2f359d05af71e7295f2
 
 Scope:
 - capability-evidence.html
