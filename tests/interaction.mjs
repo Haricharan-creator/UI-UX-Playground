@@ -64,6 +64,8 @@ try {
   await page.selectOption('#module', 'B01-M01');
   if (!(await page.locator('#moduleMeta').innerText()).includes('Source gap')) throw new Error('Studio source-gap state did not render.');
   await page.selectOption('#module', 'B01-M02');
+  if (!(await page.locator('#challengeTitle').innerText()).includes('Heuristics and Evidence-Based UX Evaluation')) throw new Error('Studio did not render the selected module challenge.');
+  if (!(await page.locator('#toolTask').innerText()).includes('Evaluate a Figma/Framer screen or flow')) throw new Error('Studio did not render the source-backed tool task.');
   await page.locator('#work').fill('Audit the interface against usability principles and record evidence.');
   for (const id of ['screenshot','prototype','reflection']) await page.locator('#'+id).check();
   await page.locator('#submit').click();
