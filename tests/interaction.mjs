@@ -143,6 +143,13 @@ try {
 
   if (await page.locator('#detail.hidden').count() !== 0) throw new Error('Bundle Dashboard keyboard activation did not open bundle detail.');
   if (await page.locator('#detail .moduleCoverage').count() !== 1) throw new Error('Module practice/evidence coverage did not render.');
+  const studioLink = page.locator('#detail a[href="studio.html"]').first();
+    if (await studioLink.count() !== 1) throw new Error('Bundle detail did not expose Open Studio.');
+    await studioLink.click();
+    await page.waitForLoadState('domcontentloaded');
+    if (!page.url().includes('studio.html')) throw new Error('Open Studio navigation did not reach Studio.');
+    await page.goBack({ waitUntil: 'domcontentloaded' });
+    await page.waitForSelector('#bundles .bundle[data-id="B01"]');
   const moduleCoverageText = await page.locator('#detail .moduleCoverage').innerText();
   if (!moduleCoverageText.includes('B01-M01')) throw new Error('B01 module coverage did not render.');
   if (!moduleCoverageText.includes('source-gap')) throw new Error('B01 source-gap state did not render.');
