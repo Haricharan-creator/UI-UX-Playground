@@ -121,13 +121,18 @@ try {
   if ((await page.locator('#modules').innerText()).indexOf('B01-M01') === -1) throw new Error('Capability Evidence did not render source-gap module coverage.');
   if ((await page.locator('#modules').innerText()).indexOf('B01-M02') === -1) throw new Error('Capability Evidence did not render mapped module coverage.');
 
-  // Responsive smoke for the isolated evidence view.
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.reload({ waitUntil: 'networkidle' });
-  await page.waitForTimeout(300);
-  const mobileOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
-  if (mobileOverflow) throw new Error('Capability Evidence has horizontal overflow at mobile width.');
-  await page.setViewportSize({ width: 1440, height: 1000 });
+  // Responsive smoke for the isolated evidence view across phone, tablet and desktop widths.
+  for (const viewport of [
+    { name: 'mobile', width: 390, height: 844 },
+    { name: 'tablet', width: 768, height: 1024 },
+    { name: 'desktop', width: 1440, height: 1000 }
+  ]) {
+    await page.setViewportSize({ width: viewport.width, height: viewport.height });
+    await page.reload({ waitUntil: 'networkidle' });
+    await page.waitForTimeout(300);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
+    if (overflow) throw new Error(`Capability Evidence has horizontal overflow at ${viewport.name} width.`);
+  }
 
   // Bundle Dashboard interaction smoke: filters -> bundle -> coverage -> lesson -> repeat.
   await page.goto('http://127.0.0.1:4173/bundle-dashboard.html', { waitUntil: 'networkidle' });
