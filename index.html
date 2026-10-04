@@ -333,8 +333,17 @@ select[multiple]{min-height:95px}
 </style>
 <script src="runtime-fix.js"></script>
 <script src="design-dna-runtime.js"></script>
+
+<style>
+.hacharaUiSwitch{position:fixed;right:18px;top:12px;z-index:2000;display:flex;gap:7px;align-items:center}
+.hacharaUiSwitch a{display:inline-flex;align-items:center;gap:6px;padding:8px 11px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(16,20,38,.94);color:#fff;text-decoration:none;font:700 11px/1 Inter,system-ui,sans-serif;box-shadow:0 7px 18px rgba(0,0,0,.16)}
+.hacharaUiSwitch a:hover{background:#262d49}
+.hacharaClassicFooter{margin:28px 0 8px;padding:18px 4px 8px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;align-items:center;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-align:right}
+@media(max-width:720px){.hacharaUiSwitch{right:10px;top:8px}.hacharaUiSwitch a:last-child{display:none}.hacharaClassicFooter{justify-content:center;text-align:center}}
+</style>
 </head>
 <body>
+<div class="hacharaUiSwitch"><a href="ui-options.html">🎨 Choose UI</a><a href="modern.html">Modern →</a></div>
 <div class="identity-strip" role="banner"><strong>UI UX Playground</strong><span>Signature: <b>HACHARA</b></span><span>Learn + Think + Ideate + Develop + Test + Rework + Build + Share</span></div>
 
 <div class="app">
@@ -5085,5 +5094,6 @@ function clearHandoffScript(){
 }
 
 function exportWorkflow(){const b={workflow:JSON.parse(localStorage.getItem("uiuxPlaygroundWorkflow")||"{}"),curriculum:JSON.parse(localStorage.getItem("uiuxPlaygroundCurriculum")||"{}"),research:JSON.parse(localStorage.getItem("uiuxPlaygroundResearch")||"[]"),ideas:JSON.parse(localStorage.getItem("uiuxPlaygroundIdeas")||"[]"),wireframe:JSON.parse(localStorage.getItem("uiuxPlaygroundWireframe")||"[]"),critiques:JSON.parse(localStorage.getItem("uiuxPlaygroundCritiques")||"[]")};const u=URL.createObjectURL(new Blob([JSON.stringify(b,null,2)],{type:"application/json"}));const a=document.createElement("a");a.href=u;a.download="ui-ux-playground-project.json";a.click();URL.revokeObjectURL(u);}
-</script></body>
+</script><footer class="hacharaClassicFooter"><span>HACHARA · Learn · Think · Create · Grow</span></footer>
+</body>
 </html>
