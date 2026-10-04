@@ -206,12 +206,30 @@ try {
       if (await page.locator(surface.required).count() < 1) {
         throw new Error(`Responsive surface missing ${surface.required} on ${surface.path} at ${viewport.name}.`);
       }
-      const metrics = await page.evaluate(() => ({
-        overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
-        viewportWidth: document.documentElement.clientWidth
-      }));
+      const metrics = await page.evaluate(() => {
+        const viewportWidth = document.documentElement.clientWidth;
+        const offenders = [...document.querySelectorAll('body *')].map(el => {
+          const rect = el.getBoundingClientRect();
+          return {
+            tag: el.tagName.toLowerCase(),
+            id: el.id,
+            className: typeof el.className === 'string' ? el.className.slice(0,120) : '',
+            left: Math.round(rect.left),
+            right: Math.round(rect.right),
+            width: Math.round(rect.width),
+            display: getComputedStyle(el).display
+          };
+        }).filter(x => x.display !== 'none' && (x.right > viewportWidth + 1 || x.left < -1))
+          .sort((a,b) => Math.max(b.right - viewportWidth, 0) - Math.max(a.right - viewportWidth, 0))
+          .slice(0,5);
+        return {
+          overflow: document.documentElement.scrollWidth > viewportWidth + 1,
+          viewportWidth,
+          offenders
+        };
+      });
       if (metrics.overflow) {
-        throw new Error(`Horizontal overflow on ${surface.path} at ${viewport.name} (${metrics.viewportWidth}px).`);
+        throw new Error(`Horizontal overflow on ${surface.path} at ${viewport.name} (${metrics.viewportWidth}px). Offenders: ${JSON.stringify(metrics.offenders)}`);
       }
     }
   }
