@@ -341,6 +341,11 @@ select[multiple]{min-height:95px}
 .hacharaClassicFooter{margin:28px 0 8px;padding:18px 4px 8px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;align-items:center;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-align:right}
 @media(max-width:720px){.hacharaUiSwitch{right:10px;top:46px}.hacharaUiSwitch a:last-child{display:none}.hacharaClassicFooter{justify-content:center;text-align:center}}
 </style>
+
+<style>
+/* HACHARA accessibility: visible keyboard focus */
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #16b8c4;outline-offset:2px}
+</style>
 </head>
 <body>
 <div class="hacharaUiSwitch"><a href="ui-options.html">🎨 Choose UI</a><a href="modern.html">Modern →</a></div>
