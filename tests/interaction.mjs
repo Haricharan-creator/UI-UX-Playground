@@ -237,8 +237,8 @@ try {
   // Keyboard-focus smoke on the primary Classic workspace navigation and UI preference controls.
   await page.setViewportSize({ width:390, height:844 });
   await page.goto('http://127.0.0.1:4173/index.html', { waitUntil:'networkidle' });
-  await page.locator('a[href="academy.html"]').first().focus();
-  if (await page.evaluate(() => document.activeElement?.tagName !== 'A')) throw new Error('Classic workspace navigation did not accept keyboard focus.');
+  await page.locator('#nav button[data-view="uibuilder"]').focus();
+  if (await page.evaluate(() => document.activeElement?.tagName !== 'BUTTON')) throw new Error('Classic workspace navigation did not accept keyboard focus.');
   await page.goto('http://127.0.0.1:4173/ui-options.html', { waitUntil:'networkidle' });
   await page.locator('#continue').focus();
   if (await page.evaluate(() => document.activeElement?.id !== 'continue')) throw new Error('UI preference continue control did not accept keyboard focus.');
