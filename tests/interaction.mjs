@@ -181,6 +181,50 @@ try {
   await page.waitForTimeout(250);
   if (await page.locator('#detail.hidden').count() !== 0) throw new Error('Space keyboard activation did not reopen bundle detail.');
 
+  // Core workspace responsive regression: exercise the primary product surfaces at phone/tablet/desktop widths.
+  // This is a layout smoke gate, not a visual snapshot comparison; it catches overflow and missing primary surfaces.
+  const responsivePages = [
+    { path:'index.html', required:'#hwoButton' },
+    { path:'academy.html', required:'body' },
+    { path:'bundle-dashboard.html', required:'#bundles' },
+    { path:'studio.html', required:'#module' },
+    { path:'review.html', required:'#decision' },
+    { path:'progress.html', required:'#validatedCount' },
+    { path:'capability-evidence.html', required:'#current' },
+    { path:'modern.html', required:'.hero' }
+  ];
+  const responsiveViewports = [
+    { name:'mobile', width:390, height:844 },
+    { name:'tablet', width:768, height:1024 },
+    { name:'desktop', width:1440, height:1000 }
+  ];
+  for (const surface of responsivePages) {
+    for (const viewport of responsiveViewports) {
+      await page.setViewportSize({ width:viewport.width, height:viewport.height });
+      await page.goto('http://127.0.0.1:4173/' + surface.path, { waitUntil:'networkidle' });
+      await page.waitForTimeout(200);
+      if (await page.locator(surface.required).count() < 1) {
+        throw new Error(`Responsive surface missing ${surface.required} on ${surface.path} at ${viewport.name}.`);
+      }
+      const metrics = await page.evaluate(() => ({
+        overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+        viewportWidth: document.documentElement.clientWidth
+      }));
+      if (metrics.overflow) {
+        throw new Error(`Horizontal overflow on ${surface.path} at ${viewport.name} (${metrics.viewportWidth}px).`);
+      }
+    }
+  }
+
+  // Keyboard-focus smoke on the primary Classic workspace navigation and UI preference controls.
+  await page.setViewportSize({ width:390, height:844 });
+  await page.goto('http://127.0.0.1:4173/index.html', { waitUntil:'networkidle' });
+  await page.locator('a[href="academy.html"]').first().focus();
+  if (await page.evaluate(() => document.activeElement?.tagName !== 'A')) throw new Error('Classic workspace navigation did not accept keyboard focus.');
+  await page.goto('http://127.0.0.1:4173/ui-options.html', { waitUntil:'networkidle' });
+  await page.locator('#continue').focus();
+  if (await page.evaluate(() => document.activeElement?.id !== 'continue')) throw new Error('UI preference continue control did not accept keyboard focus.');
+
   if (errors.length) throw new Error('Browser console/page errors: ' + errors.join(' | '));
   console.log(JSON.stringify({
     ok:true,
