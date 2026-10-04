@@ -67,7 +67,7 @@ jobs:
           .hacharaClassicFooter{margin:28px 0 8px;padding:18px 4px 8px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;align-items:center;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-align:right}
           @media(max-width:720px){.hacharaUiSwitch{right:10px;top:8px}.hacharaUiSwitch a:last-child{display:none}.hacharaClassicFooter{justify-content:center;text-align:center}}
           </style>
-'''
+          '''
           if 'class="hacharaUiSwitch"' not in s and '</head>' in s:
               s = s.replace('</head>', style + '</head>', 1)
 
