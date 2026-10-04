@@ -23,6 +23,9 @@ jobs:
       - name: Validate curriculum and lesson structure
         run: python3 scripts/validate_playground.py
 
+      - name: Validate authoritative curriculum inventory
+        run: python3 scripts/validate_curriculum_integrity.py
+
       - name: Build inventory report
         run: |
           echo "## HACHARA build inventory" >> "$GITHUB_STEP_SUMMARY"
