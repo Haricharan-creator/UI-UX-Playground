@@ -218,6 +218,56 @@ try {
   if (await page.locator('#playIntent').inputValue() !== '' || await page.locator('#playContext').inputValue() !== '') throw new Error('Play Builder clear did not clear inputs.');
   if (!(await page.locator('#playOutput').innerText()).includes('Your created output will appear here')) throw new Error('Play Builder clear did not reset output.');
 
+  // End-to-end learning evidence loop: Studio → Review → Rework → Resubmit → Ready → Human Validate → Progress/Evidence.
+  await page.goto('http://127.0.0.1:4173/studio.html', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(300);
+  const studioModule = page.locator('#module option').first();
+  if (await studioModule.count() !== 1) throw new Error('Studio did not load a selectable module.');
+  const moduleValue = await studioModule.getAttribute('value');
+  if (!moduleValue) throw new Error('Studio first module has no value.');
+  await page.locator('#module').selectOption(moduleValue);
+  if (!(await page.locator('#challengeTitle').innerText()).trim()) throw new Error('Studio challenge did not render.');
+  await page.locator('#work').fill('Create a clearer first-run onboarding flow and document the design decision.');
+  for (const id of ['screenshot','prototype','reflection']) await page.locator('#'+id).check();
+  await page.getByRole('button', { name: 'Save submission' }).click();
+  if (!(await page.locator('#state').innerText()).includes('Submitted')) throw new Error('Studio submission did not reach Submitted state.');
+  await page.getByRole('link', { name: 'Open Review' }).click();
+  await page.waitForLoadState('networkidle');
+  if (await page.locator('#content').evaluate(el => el.classList.contains('hidden'))) throw new Error('Review did not load the Studio submission.');
+
+  await page.locator('#decision').selectOption('rework');
+  await page.locator('#note').fill('Strengthen the primary onboarding action and reduce competing emphasis.');
+  await page.locator('#v2summary').fill('Reworked hierarchy and CTA emphasis while preserving the original V1 submission.');
+  await page.locator('#feedback').fill('F-01: clarify primary action; A-01: rework hierarchy.');
+  await page.locator('#preserveV1').check();
+  await page.getByRole('button', { name: 'Record Rework & Resubmit' }).click();
+  if (!(await page.locator('#state').innerText()).includes('Needs Rework')) throw new Error('Review did not record Needs Rework.');
+  if (await page.locator('#resubmit').evaluate(el => el.classList.contains('hidden'))) throw new Error('Resubmit V2 action did not appear after rework.');
+  const reviewAfterRework = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
+  if (!reviewAfterRework?.v1Preserved || reviewAfterRework?.rework?.versions?.[0]?.version !== 'V1') throw new Error('V1 preservation was not recorded.');
+
+  await page.locator('#v2summary').fill('V2 improves onboarding hierarchy and CTA emphasis; V1 remains preserved for comparison.');
+  await page.getByRole('button', { name: 'Resubmit V2' }).click();
+  if (!(await page.locator('#state').innerText()).includes('Resubmitted')) throw new Error('V2 resubmission did not record.');
+  const reviewAfterResubmit = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
+  if (reviewAfterResubmit?.workflowState !== 'resubmitted' || reviewAfterResubmit?.rework?.versions?.length !== 2) throw new Error('V2 rework record is incomplete.');
+
+  await page.locator('#decision').selectOption('ready-for-validation');
+  await page.locator('#findingsResolved').check();
+  await page.locator('#note').fill('Rework evidence reviewed; findings are resolved for human validation.');
+  await page.getByRole('button', { name: 'Move to Validation' }).click();
+  if (!(await page.locator('#state').innerText()).includes('Ready for Validation')) throw new Error('Review did not reach Ready for Validation.');
+  await page.locator('#validationNote').fill('Human validation confirms the submitted evidence supports the documented design decision and rework.');
+  await page.getByRole('button', { name: 'Validate Evidence' }).click();
+  if (!(await page.locator('#state').innerText()).includes('Validated')) throw new Error('Human validation did not reach Validated state.');
+  const finalReview = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
+  if (finalReview?.workflowState !== 'validated' || finalReview?.validation?.validatedBy !== 'human-review') throw new Error('Validated review record is incomplete.');
+
+  await page.goto('http://127.0.0.1:4173/progress.html', { waitUntil: 'networkidle' });
+  if (!(await page.locator('#validatedCount').innerText()).match(/1/)) throw new Error('Progress did not reflect validated evidence.');
+  await page.goto('http://127.0.0.1:4173/capability-evidence.html', { waitUntil: 'networkidle' });
+  if (!(await page.locator('#workflow').innerText()).includes('Validated')) throw new Error('Capability Evidence did not reflect validated workflow state.');
+
   // Key user-facing standalone pages must render with no console/page errors.
   for (const path of [
     'academy.html',
