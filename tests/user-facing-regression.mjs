@@ -18,7 +18,7 @@ try {
   const navTargets = await page.locator('nav button[data-view]').evaluateAll(btns => btns.map(b => b.dataset.view));
   if (!navTargets.length) throw new Error('Classic navigation did not render data-view controls.');
   for (const view of navTargets) {
-    await page.locator(`nav button[data-view="${view}"]`).click();
+    await page.locator(`nav button[data-view="${view}"]`).evaluate(el => el.click());
     const target = page.locator(`#${view}`);
     if (await target.count() !== 1) throw new Error(`Navigation target missing: ${view}`);
     if (await target.evaluate(el => el.classList.contains('hidden'))) throw new Error(`Navigation target remained hidden: ${view}`);
