@@ -1,0 +1,20 @@
+{
+  "schema": "1.0",
+  "purpose": "Protect versioned HACHARA benchmark and lock documents from accidental deletion or content replacement.",
+  "protectedFiles": [
+    "docs/HACHARA-SAFE-BENCHMARK-v1.0.md",
+    "docs/HACHARA-LOCK-INDEX-v1.0.md",
+    "docs/HACHARA-ARCHITECTURE-LOCK-v1.0.md",
+    "docs/HACHARA-OUTPUT-CONTRACT-v1.0.md",
+    "docs/HACHARA-SAFE-BENCHMARK-v1.1.md",
+    "docs/HACHARA-LOCK-INDEX-v1.1.md"
+  ],
+  "gitBlobSha": {
+    "docs/HACHARA-SAFE-BENCHMARK-v1.0.md": "ed78b0748cf507cb7c354ac56d71f9a78bd65a88",
+    "docs/HACHARA-LOCK-INDEX-v1.0.md": "9cf1aba7b3afaafc2dc73c953fa6258044de53c5",
+    "docs/HACHARA-ARCHITECTURE-LOCK-v1.0.md": "3da5fce250e02e7e0a6040945a4d300e825c0657",
+    "docs/HACHARA-OUTPUT-CONTRACT-v1.0.md": "c16ca624dbbc1a33decbe2ea835c8539d2a04d22",
+    "docs/HACHARA-SAFE-BENCHMARK-v1.1.md": "349b8f39cfb87419a490a9a40fc139288781d857",
+    "docs/HACHARA-LOCK-INDEX-v1.1.md": "f10812fcd9e7059fa7208de98619abc857a6c731"
+  }
+}
