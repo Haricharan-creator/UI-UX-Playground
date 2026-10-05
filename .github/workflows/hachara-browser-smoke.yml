@@ -32,3 +32,5 @@ jobs:
         run: node tests/smoke.mjs
       - name: Run interaction smoke test
         run: node tests/interaction.mjs
+      - name: Run user-facing regression test
+        run: node tests/user-facing-regression.mjs
