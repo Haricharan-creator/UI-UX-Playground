@@ -269,6 +269,26 @@ try {
   await page.goto('http://127.0.0.1:4173/capability-evidence.html', { waitUntil: 'networkidle' });
   if (!(await page.locator('#workflow').innerText()).includes('Validated')) throw new Error('Capability Evidence did not reflect validated workflow state.');
 
+  // Interactive lesson checks: unanswered, incorrect, and correct paths plus practice handoff.
+  for (const lesson of ['lesson-visual-hierarchy.html','lesson.html']) {
+    await page.goto('http://127.0.0.1:4173/' + lesson, { waitUntil: 'networkidle' });
+    if (!(await page.locator('h1').first().innerText()).trim()) throw new Error(lesson + ' did not render a lesson heading.');
+    if (await page.locator('#check').count() !== 1) throw new Error(lesson + ' is missing its knowledge-check action.');
+    await page.locator('#check').click();
+    if (!(await page.locator('#feedback').innerText()).includes('Choose an answer first.')) throw new Error(lesson + ' did not handle an unanswered knowledge check.');
+    await page.locator('input[name="q"][value="a"]').check();
+    await page.locator('#check').click();
+    if ((await page.locator('#feedback').innerText()).includes('Correct')) throw new Error(lesson + ' incorrectly marked the wrong answer as correct.');
+    await page.locator('input[name="q"][value="b"]').check();
+    await page.locator('#check').click();
+    if (!(await page.locator('#feedback').innerText()).includes('Correct')) throw new Error(lesson + ' did not mark the correct answer as correct.');
+    const practiceLink = page.getByRole('link', { name: /Open Tool Practice/ });
+    if (await practiceLink.count() !== 1) throw new Error(lesson + ' is missing the Tool Practice handoff.');
+    await practiceLink.click();
+    await page.waitForLoadState('networkidle');
+    if (!page.url().endsWith('/tool-practice.html')) throw new Error(lesson + ' Tool Practice handoff failed.');
+  }
+
   // Key user-facing standalone pages must render with no console/page errors.
   for (const path of [
     'academy.html',
