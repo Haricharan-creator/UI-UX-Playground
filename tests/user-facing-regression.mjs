@@ -221,11 +221,12 @@ try {
   // End-to-end learning evidence loop: Studio → Review → Rework → Resubmit → Ready → Human Validate → Progress/Evidence.
   await page.goto('http://127.0.0.1:4173/studio.html', { waitUntil: 'networkidle' });
   await page.waitForTimeout(300);
-  const studioModule = page.locator('#module option').first();
-  if (await studioModule.count() !== 1) throw new Error('Studio did not load a selectable module.');
-  const moduleValue = await studioModule.getAttribute('value');
-  if (!moduleValue) throw new Error('Studio first module has no value.');
-  await page.locator('#module').selectOption(moduleValue);
+  const studioModuleValue = await page.evaluate(async () => {
+    const data = await fetch('data/module-practice-evidence-integration-v1.json').then(r => r.json());
+    return (data.modules || []).find(m => m.mappingStatus === 'mapped' && m.practiceStatus === 'defined')?.moduleId || '';
+  });
+  if (!studioModuleValue) throw new Error('Studio did not expose a mapped, defined practice module.');
+  await page.locator('#module').selectOption(studioModuleValue);
   if (!(await page.locator('#challengeTitle').innerText()).trim()) throw new Error('Studio challenge did not render.');
   await page.locator('#work').fill('Create a clearer first-run onboarding flow and document the design decision.');
   for (const id of ['screenshot','prototype','reflection']) await page.locator('#'+id).check();
