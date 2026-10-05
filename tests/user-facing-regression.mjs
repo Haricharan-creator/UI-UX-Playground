@@ -84,6 +84,36 @@ try {
   await page.getByRole('button', { name: 'iOS / Android' }).click();
   if (!(await page.locator('#mobile').evaluate(el => el.classList.contains('active')))) throw new Error('Mobile shortcut tab did not activate.');
 
+  // Workspace selector + Modern presentation: selection must persist and route correctly.
+  await page.goto('http://127.0.0.1:4173/ui-options.html', { waitUntil: 'networkidle' });
+  await page.getByRole('radio', { name: /Modern Workspace/ }).check();
+  await page.getByRole('button', { name: 'Continue with selected UI' }).click();
+  await page.waitForURL('**/modern.html');
+  if (await page.evaluate(() => localStorage.getItem('hacharaUI')) !== 'modern') throw new Error('Modern workspace preference did not persist.');
+  if (!(await page.locator('text=WELCOME TO HACHARA').count())) throw new Error('Modern workspace did not render the expected hero.');
+
+  // Modern workspace responsive gate.
+  for (const width of [390, 768, 1440]) {
+    await page.setViewportSize({ width, height: width === 390 ? 844 : width === 768 ? 1024 : 1000 });
+    await page.reload({ waitUntil: 'networkidle' });
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
+    if (overflow) throw new Error(`Modern workspace has horizontal overflow at ${width}px width.`);
+  }
+
+  // Bundle dashboard: filters, card activation and keyboard activation must remain functional.
+  await page.goto('http://127.0.0.1:4173/bundle-dashboard.html', { waitUntil: 'networkidle' });
+  const firstBundle = page.locator('.bundle[data-id]').first();
+  await firstBundle.click();
+  if (await page.locator('#detail').evaluate(el => el.classList.contains('hidden'))) throw new Error('Bundle detail did not open.');
+  await page.getByRole('button', { name: 'Validated' }).click();
+  if (!(await page.getByRole('button', { name: 'Validated' }).evaluate(el => el.classList.contains('active')))) throw new Error('Bundle filter did not activate.');
+  const filtered = page.locator('.bundle[data-id]').first();
+  if (await filtered.count()) {
+    await filtered.focus();
+    await filtered.press('Enter');
+    if (await page.locator('#detail').evaluate(el => el.classList.contains('hidden'))) throw new Error('Bundle keyboard activation did not open detail.');
+  }
+
   // Key user-facing standalone pages must render with no console/page errors.
   for (const path of [
     'academy.html',
