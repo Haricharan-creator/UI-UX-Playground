@@ -25,7 +25,7 @@ try {
   }
 
   // Project handoff: generate -> copy -> clear -> clipboard paste.
-  await page.locator('nav button[data-view="workspace"]').evaluate(el => el.click());
+  await page.locator('nav button[data-view="project_workspace"]').evaluate(el => el.click());
   await page.locator('textarea#handoffScript').fill('');
   await page.getByRole('button', { name: 'Generate handoff script' }).click();
   const handoff = await page.locator('#handoffScript').inputValue();
