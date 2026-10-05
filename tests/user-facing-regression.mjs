@@ -77,6 +77,31 @@ try {
   await page.reload({ waitUntil: 'networkidle' });
   if (await page.evaluate(() => localStorage.getItem('hacharaToolTrainingFigmaAutoLayout')) !== 'complete') throw new Error('Tool lesson completion did not persist.');
 
+  // Academy learning entry points: catalog filters must work and lesson links must resolve to real pages.
+  await page.goto('http://127.0.0.1:4173/academy.html', { waitUntil: 'networkidle' });
+  if (!(await page.getByText('HACHARA Academy', { exact: false }).count())) throw new Error('Academy landing page did not render.');
+  const academyOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
+  if (academyOverflow) throw new Error('Academy landing page has horizontal overflow.');
+
+  await page.goto('http://127.0.0.1:4173/academy-lesson-catalog.html', { waitUntil: 'networkidle' });
+  const allLessons = page.locator('.lesson');
+  const allCount = await allLessons.count();
+  if (!allCount) throw new Error('Lesson catalog contains no lessons.');
+  for (const filter of ['foundation','visual','ux','systems','practice']) {
+    await page.locator(`button[data-filter="${filter}"]`).click();
+    const visible = await page.locator('.lesson:visible').count();
+    if (!visible) throw new Error(`Lesson catalog filter produced no visible lessons: ${filter}`);
+    if (!(await page.locator(`button[data-filter="${filter}"]`).evaluate(el => el.classList.contains('active')))) throw new Error(`Lesson catalog filter did not activate: ${filter}`);
+  }
+  await page.locator('button[data-filter="all"]').click();
+  if (await page.locator('.lesson:visible').count() !== allCount) throw new Error('Lesson catalog All filter did not restore all lessons.');
+
+  const lessonLinks = await page.locator('.lesson a').evaluateAll(as => as.map(a => a.getAttribute('href')).filter(Boolean));
+  for (const href of [...new Set(lessonLinks)]) {
+    const response = await page.request.get(`http://127.0.0.1:4173/${href}`);
+    if (!response.ok()) throw new Error(`Lesson entry point does not resolve: ${href}`);
+  }
+
   // Tool shortcut tabs must switch content and remain usable.
   await page.goto('http://127.0.0.1:4173/tool-shortcuts.html', { waitUntil: 'networkidle' });
   await page.getByRole('button', { name: 'Framer' }).click();
