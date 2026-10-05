@@ -303,6 +303,33 @@ try {
     if (!page.url().endsWith('/tool-practice.html')) throw new Error(lesson + ' Tool Practice handoff failed.');
   }
 
+  // Tool learning/practice controls: lesson completion/reset, shortcut tabs, and submission validation.
+  await page.goto('http://127.0.0.1:4173/tool-training-lesson.html', { waitUntil: 'networkidle' });
+  await page.getByRole('button', { name: 'Use Auto Layout with spacing and padding' }).click();
+  if (!(await page.locator('#status').innerText()).includes('70%')) throw new Error('Tool lesson correct answer did not advance progress.');
+  await page.getByRole('button', { name: 'Mark lesson complete' }).click();
+  if (!(await page.locator('#status').innerText()).includes('Lesson complete')) throw new Error('Tool lesson completion did not update status.');
+  if (await page.evaluate(() => localStorage.getItem('hacharaToolTrainingFigmaAutoLayout')) !== 'complete') throw new Error('Tool lesson completion did not persist.');
+  await page.getByRole('button', { name: 'Reset' }).click();
+  if (!(await page.locator('#status').innerText()).includes('20%')) throw new Error('Tool lesson reset did not restore initial progress.');
+  if (await page.evaluate(() => localStorage.getItem('hacharaToolTrainingFigmaAutoLayout')) !== null) throw new Error('Tool lesson reset did not clear persisted completion.');
+
+  await page.goto('http://127.0.0.1:4173/tool-shortcuts.html', { waitUntil: 'networkidle' });
+  await page.getByRole('button', { name: 'Framer' }).click();
+  if (!(await page.locator('#framer').evaluate(el => el.classList.contains('active')))) throw new Error('Tool shortcuts Framer tab did not activate.');
+  if (await page.locator('#figma').evaluate(el => el.classList.contains('active'))) throw new Error('Tool shortcuts left Figma tab active after switching.');
+  await page.getByRole('button', { name: 'iOS / Android' }).click();
+  if (!(await page.locator('#mobile').evaluate(el => el.classList.contains('active')))) throw new Error('Tool shortcuts mobile tab did not activate.');
+
+  await page.goto('http://127.0.0.1:4173/tool-practice.html', { waitUntil: 'networkidle' });
+  const dialogs=[]; page.once('dialog', async d => { dialogs.push(d.message()); await d.dismiss(); });
+  await page.getByRole('button', { name: 'Review my submission' }).click();
+  if (!dialogs.some(m => m.includes('Please choose a screenshot or export first.'))) throw new Error('Tool Practice did not block empty submission.');
+  await page.setInputFiles('#shot', { name: 'qa-submission.png', mimeType: 'image/png', buffer: Buffer.from('qa') });
+  await page.getByRole('button', { name: 'Review my submission' }).click();
+  if (!(await page.locator('#review').isVisible())) throw new Error('Tool Practice did not reveal review after submission.');
+  if (!(await page.locator('#fileName').innerText()).includes('qa-submission.png')) throw new Error('Tool Practice did not record submitted filename.');
+
   // Key user-facing standalone pages must render with no console/page errors.
   for (const path of [
     'academy.html',
