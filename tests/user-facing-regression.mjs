@@ -114,6 +114,45 @@ try {
     if (await page.locator('#detail').evaluate(el => el.classList.contains('hidden'))) throw new Error('Bundle keyboard activation did not open detail.');
   }
 
+  // Playground: Play → Create → Use must generate usable, copyable, and savable outputs.
+  await page.goto('http://127.0.0.1:4173/index.html', { waitUntil: 'networkidle' });
+  await page.locator('nav button[data-view="playground"]').evaluate(el => el.click());
+  await page.locator('#playIntent').fill('Improve onboarding for first-time users.');
+  await page.locator('#playContext').fill('Mobile product; evidence is still incomplete; validate before deciding.');
+  await page.locator('#playOutputType').selectOption('framework');
+  await page.getByRole('button', { name: 'Create', exact: true }).click();
+  const framework = await page.locator('#playOutput').innerText();
+  if (!framework.includes('HACHARA UX THINKING FRAMEWORK')) throw new Error('Play framework output did not render.');
+  if (!framework.includes('Improve onboarding for first-time users.')) throw new Error('Play output did not preserve user intent.');
+
+  await page.evaluate(() => {
+    const store = { value: '', writes: 0 };
+    Object.defineProperty(navigator, 'clipboard', { configurable: true, value: {
+      writeText: async value => { store.value = value; store.writes++; },
+      readText: async () => store.value
+    }});
+    window.__hacharaClipboard = store;
+  });
+  await page.getByRole('button', { name: 'Copy / Use externally' }).click();
+  await page.waitForTimeout(100);
+  const playClipboard = await page.evaluate(() => window.__hacharaClipboard);
+  if (!playClipboard?.writes || playClipboard.value !== framework) throw new Error('Play output did not copy for external use.');
+
+  await page.getByRole('button', { name: 'Save to Playground' }).click();
+  if (!(await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaPlayOutputs') || '[]').length > 0))) throw new Error('Play output did not save locally.');
+
+  for (const type of ['prompt', 'workflow', 'artifact']) {
+    await page.locator('#playOutputType').selectOption(type);
+    await page.getByRole('button', { name: 'Create', exact: true }).click();
+    const output = await page.locator('#playOutput').innerText();
+    if (!output.trim()) throw new Error(`Play output was empty for type: ${type}`);
+  }
+
+  // Create entry points must lead to an actual workspace rather than a placeholder alert.
+  await page.locator('button.btn.primary', { hasText: '+ Create' }).click();
+  if (await page.locator('#workspace').evaluate(el => el.classList.contains('hidden'))) throw new Error('Create entry point did not open Project Workspace.');
+  if (await page.locator('#pwName').count() !== 1) throw new Error('Project Workspace project-name field is missing.');
+
   // Key user-facing standalone pages must render with no console/page errors.
   for (const path of [
     'academy.html',
