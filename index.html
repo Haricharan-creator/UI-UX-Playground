@@ -921,6 +921,22 @@ select[multiple]{min-height:95px}
 <div class="card"><h2>HACHARA loop</h2><div class="steps"><span class="step on">Learn</span><span class="step">Think</span><span class="step">Ideate</span><span class="step">Develop</span><span class="step">Test</span><span class="step">Rework</span><span class="step">Build</span><span class="step">Share</span></div><p class="muted">You can enter the loop anywhere.</p></div>
 </div>
 <div class="section card"><h2>My ideas</h2><div id="ideasList" class="muted">No captured ideas yet.</div></div>
+
+<div class="section card">
+  <span class="badge">PLAY → CREATE → USE</span>
+  <h2>HACHARA Play Builder</h2>
+  <p class="muted">Turn an intention into something usable. HACHARA structures the work; you decide what to keep, edit or reject.</p>
+  <div class="two">
+    <div><label>What do you want to do?</label><textarea id="playIntent" placeholder="Example: Improve the onboarding experience for first-time users."></textarea></div>
+    <div><label>Context / constraints</label><textarea id="playContext" placeholder="Users, product, evidence, device, deadline, constraints or anything else that matters."></textarea></div>
+  </div>
+  <div class="two">
+    <div><label>Create</label><select id="playOutputType"><option value="prompt">Prompt for another AI / search tool</option><option value="framework">UX thinking framework</option><option value="workflow">Action workflow</option><option value="artifact">UX artifact starter</option></select></div>
+    <div><label>Artifact type</label><select id="playArtifactType"><option>Problem statement</option><option>User research plan</option><option>Information architecture</option><option>User flow</option><option>Usability test plan</option><option>Design review</option><option>Case study outline</option></select></div>
+  </div>
+  <div class="toolbar"><button class="btn primary" onclick="createPlayOutput()">Create</button><button class="btn ghost" onclick="copyPlayOutput()">Copy / Use externally</button><button class="btn ghost" onclick="savePlayOutput()">Save to Playground</button><button class="btn ghost" onclick="clearPlayBuilder()">Clear</button></div>
+  <div id="playOutput" class="section" style="background:#F8FAFC;min-height:120px"><p class="muted">Your created output will appear here. Nothing is sent automatically to another tool.</p></div>
+</div>
 </section>
 
 <section id="research" class="view hidden">
@@ -3286,6 +3302,18 @@ function renderGrowth(){
  const map=qs('growthMap'); if(!map)return;
  map.innerHTML=uiuxCurriculum.map(x=>`<div class="card skill-card"><b>${escapeHtml(x[0])}</b><p class="muted">${st[x[0]]||"Not started"}</p></div>`).join('');
 }
+function playEsc(s){return String(s||'').trim();}
+function playOutputText(type,intent,context,artifact){
+ const i=playEsc(intent)||'Unspecified intent'; const x=playEsc(context)||'No additional context supplied';
+ if(type==='prompt') return 'TASK\n'+i+'\n\nCONTEXT\n'+x+'\n\nWORKING RULES\n- State assumptions separately from evidence.\n- Do not invent missing information.\n- Explain the reasoning behind recommendations.\n- Identify what should be validated with users or evidence.\n- Keep the human designer responsible for material decisions.\n\nOUTPUT\nGive me a structured response with findings, options, trade-offs, recommended next steps and questions that remain open.';
+ if(type==='framework') return 'HACHARA UX THINKING FRAMEWORK\n\n1. Intent — '+i+'\n2. Context — '+x+'\n3. Understand — What do we know and what is still unknown?\n4. Analyse — What patterns, constraints and user needs matter?\n5. Ideate — Generate multiple directions before choosing.\n6. Evaluate — Compare user value, feasibility, evidence and testability.\n7. Build — Turn the selected direction into a concrete artifact.\n8. Test — Define how the direction will be validated.\n9. Rework — Capture what changed and why.\n10. Decide — Human owner makes the final decision.';
+ if(type==='workflow') return 'HACHARA ACTION WORKFLOW\n\nIntent: '+i+'\nContext: '+x+'\n\n01 · Clarify the goal and success criteria\n02 · Gather or identify available evidence\n03 · Frame the user/problem context\n04 · Generate at least two possible directions\n05 · Compare value, feasibility, evidence and testability\n06 · Create the first usable artifact\n07 · Review against principles and constraints\n08 · Test with appropriate evidence/users\n09 · Rework and record the change\n10 · Validate and share the outcome\n\nDecision rule: do not treat an unvalidated recommendation as a fact.';
+ return 'HACHARA ARTIFACT STARTER\n\nArtifact: '+artifact+'\nIntent: '+i+'\nContext: '+x+'\n\nPURPOSE\n[What this artifact is meant to help decide or communicate]\n\nUSER / AUDIENCE\n[Who is affected]\n\nEVIDENCE\n[Research, observation, analytics or other source-backed evidence]\n\nPROBLEM / OPPORTUNITY\n[Describe the need without prematurely prescribing a solution]\n\nDIRECTION / CONTENT\n[Draft the artifact here]\n\nASSUMPTIONS & OPEN QUESTIONS\n[Separate assumptions from verified evidence]\n\nVALIDATION\n[How will this be tested or reviewed?]';
+}
+function createPlayOutput(){const type=document.getElementById('playOutputType').value;const artifact=document.getElementById('playArtifactType').value;const text=playOutputText(type,document.getElementById('playIntent').value,document.getElementById('playContext').value,artifact);document.getElementById('playOutput').innerHTML='<pre style="white-space:pre-wrap;font:13px/1.6 Inter,system-ui,sans-serif;margin:0">'+escapeHtml(text)+'</pre>';localStorage.setItem('hacharaPlayBuilder',JSON.stringify({type,artifact,intent:document.getElementById('playIntent').value,context:document.getElementById('playContext').value,output:text,updated:new Date().toLocaleString()}));}
+function copyPlayOutput(){const saved=JSON.parse(localStorage.getItem('hacharaPlayBuilder')||'{}');const text=saved.output||document.getElementById('playOutput')?.innerText||'';if(!text.trim())return alert('Create an output first.');if(navigator.clipboard?.writeText)navigator.clipboard.writeText(text).then(()=>alert('Copied. You can paste it into another AI or search tool.')).catch(()=>alert('Copy was blocked by the browser. Select and copy the output manually.'));else alert('Clipboard is unavailable. Select and copy the output manually.');}
+function savePlayOutput(){const saved=JSON.parse(localStorage.getItem('hacharaPlayBuilder')||'{}');if(!saved.output)return alert('Create an output first.');const items=JSON.parse(localStorage.getItem('hacharaPlayOutputs')||'[]');items.unshift(saved);localStorage.setItem('hacharaPlayOutputs',JSON.stringify(items));alert('Play output saved locally.');}
+function clearPlayBuilder(){['playIntent','playContext'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});document.getElementById('playOutput').innerHTML='<p class="muted">Your created output will appear here. Nothing is sent automatically to another tool.</p>';localStorage.removeItem('hacharaPlayBuilder');}
 function saveResearch(){
  const r={objective:document.getElementById('resObjective').value,method:document.getElementById('resMethod').value,participants:document.getElementById('resParticipants').value,questions:document.getElementById('resQuestions').value,evidence:document.getElementById('resEvidence').value,finding:document.getElementById('resFinding').value,time:new Date().toLocaleString()};
  let a=JSON.parse(localStorage.getItem('uiuxPlaygroundResearch')||'[]');a.unshift(r);localStorage.setItem('uiuxPlaygroundResearch',JSON.stringify(a));renderResearch();alert('Research record saved locally.');
@@ -3375,7 +3403,7 @@ function generateDirections(){
 function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
 function saveIdea(){let x=document.getElementById('idea').value.trim();if(!x)return alert('Write an idea first.');let a=JSON.parse(localStorage.getItem('hacharaIdeas')||'[]');a.unshift({text:x,time:new Date().toLocaleString()});localStorage.setItem('hacharaIdeas',JSON.stringify(a));document.getElementById('idea').value='';renderIdeas()}
 function renderIdeas(){let a=JSON.parse(localStorage.getItem('hacharaIdeas')||'[]');document.getElementById('ideasList').innerHTML=a.length?a.map(x=>`<div class="card" style="margin:8px 0"><b>${escapeHtml(x.text)}</b><div class="muted">${x.time}</div></div>`).join(''):'No captured ideas yet.'}
-function newProject(){go('projects');alert('Create Project flow is the next interaction to implement.')}
+function newProject(){go('workspace');setTimeout(()=>{const el=document.getElementById('pwName');if(el)el.focus()},50);}
 function saveResearch(){localStorage.setItem('hacharaResearch',JSON.stringify({goal:document.getElementById('researchGoal').value,qs:document.getElementById('researchQs').value}));alert('Research plan saved locally in this prototype.')}
 function copyResearch(){navigator.clipboard?.writeText(`Research Goal:\n${document.getElementById('researchGoal').value}\n\nResearch Questions:\n${document.getElementById('researchQs').value}`);alert('Copied.')}
 function exportResearch(){let data=localStorage.getItem('hacharaResearch')||'{}';let b=new Blob([data],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='hachara-research.json';a.click();URL.revokeObjectURL(u)}
