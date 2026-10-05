@@ -151,7 +151,9 @@ try {
   // Create entry points must lead to an actual workspace rather than a placeholder alert.
   await page.locator('button.btn.primary', { hasText: '+ Create' }).click();
   if (await page.locator('#workspace').evaluate(el => el.classList.contains('hidden'))) throw new Error('Create entry point did not open Project Workspace.');
-  if (await page.locator('#pwName').count() !== 1) throw new Error('Project Workspace project-name field is missing.');
+  const workspaceNameFields = page.locator('#workspace #pwName');
+  if (await workspaceNameFields.count() !== 1) throw new Error('Classic Project Workspace project-name field is missing.');
+  if (!(await workspaceNameFields.isVisible())) throw new Error('Classic Project Workspace project-name field is not visible.');
 
   // Play Builder: create each supported output mode, persist it, copy it for external use, then clear it.
   await page.goto('http://127.0.0.1:4173/index.html', { waitUntil: 'networkidle' });
