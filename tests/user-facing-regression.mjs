@@ -153,6 +153,44 @@ try {
   if (await page.locator('#workspace').evaluate(el => el.classList.contains('hidden'))) throw new Error('Create entry point did not open Project Workspace.');
   if (await page.locator('#pwName').count() !== 1) throw new Error('Project Workspace project-name field is missing.');
 
+  // Play Builder: create each supported output mode, persist it, copy it for external use, then clear it.
+  await page.goto('http://127.0.0.1:4173/index.html', { waitUntil: 'networkidle' });
+  await page.locator('nav button[data-view="playground"]').evaluate(el => el.click());
+  await page.locator('#playIntent').fill('Improve onboarding for first-time users.');
+  await page.locator('#playContext').fill('Mobile product, limited evidence, accessibility required.');
+  await page.evaluate(() => {
+    const store = { value: '', writes: 0 };
+    Object.defineProperty(navigator, 'clipboard', { configurable: true, value: {
+      writeText: async value => { store.value = value; store.writes++; },
+      readText: async () => store.value
+    }});
+    window.__hacharaClipboard = store;
+  });
+
+  for (const type of ['prompt','framework','workflow','artifact']) {
+    await page.locator('#playOutputType').selectOption(type);
+    await page.getByRole('button', { name: 'Create', exact: true }).click();
+    const output = await page.locator('#playOutput').innerText();
+    if (!output.trim() || output.includes('Your created output will appear here')) throw new Error(`Play Builder did not create ${type} output.`);
+    if (type === 'framework' && !output.includes('HACHARA UX THINKING FRAMEWORK')) throw new Error('Framework output is incorrect.');
+    if (type === 'workflow' && !output.includes('HACHARA ACTION WORKFLOW')) throw new Error('Workflow output is incorrect.');
+    if (type === 'artifact' && !output.includes('HACHARA ARTIFACT STARTER')) throw new Error('Artifact output is incorrect.');
+    if (type === 'prompt' && !output.includes('WORKING RULES')) throw new Error('Prompt output is missing controlled-work rules.');
+    await page.getByRole('button', { name: 'Copy / Use externally' }).click();
+    await page.waitForTimeout(100);
+    const copied = await page.evaluate(() => window.__hacharaClipboard?.value || '');
+    if (copied !== output) throw new Error(`Play Builder copy mismatch for ${type} output.`);
+    const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaPlayBuilder') || '{}'));
+    if (saved.type !== type || saved.output !== output) throw new Error(`Play Builder persistence failed for ${type} output.`);
+  }
+
+  await page.getByRole('button', { name: 'Save to Playground' }).click();
+  const savedOutputs = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaPlayOutputs') || '[]'));
+  if (!savedOutputs.length) throw new Error('Play Builder save did not persist an output.');
+  await page.getByRole('button', { name: 'Clear', exact: true }).click();
+  if (await page.locator('#playIntent').inputValue() !== '' || await page.locator('#playContext').inputValue() !== '') throw new Error('Play Builder clear did not clear inputs.');
+  if (!(await page.locator('#playOutput').innerText()).includes('Your created output will appear here')) throw new Error('Play Builder clear did not reset output.');
+
   // Key user-facing standalone pages must render with no console/page errors.
   for (const path of [
     'academy.html',
