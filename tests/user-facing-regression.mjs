@@ -77,6 +77,20 @@ try {
   await page.reload({ waitUntil: 'networkidle' });
   if (await page.evaluate(() => localStorage.getItem('hacharaToolTrainingFigmaAutoLayout')) !== 'complete') throw new Error('Tool lesson completion did not persist.');
 
+  // Tool Training entry points must lead somewhere actionable, not dead in-page anchors.
+  await page.goto('http://127.0.0.1:4173/tool-training.html', { waitUntil: 'networkidle' });
+  const figmaTrainingHref = await page.getByRole('link', { name: 'Start Figma Training' }).getAttribute('href');
+  if (figmaTrainingHref !== 'tool-training-lesson.html') throw new Error('Figma training entry point does not lead to the guided lesson.');
+  await page.getByRole('link', { name: 'Start Figma Training' }).click();
+  await page.waitForLoadState('networkidle');
+  if (!page.url().endsWith('/tool-training-lesson.html')) throw new Error('Figma training entry point navigation failed.');
+  await page.goto('http://127.0.0.1:4173/tool-training.html', { waitUntil: 'networkidle' });
+  const framerPracticeHref = await page.getByRole('link', { name: 'Start Framer Practice' }).getAttribute('href');
+  if (framerPracticeHref !== 'tool-practice.html') throw new Error('Framer practice entry point does not lead to the shared tool practice flow.');
+  await page.getByRole('link', { name: 'Start Framer Practice' }).click();
+  await page.waitForLoadState('networkidle');
+  if (!page.url().endsWith('/tool-practice.html')) throw new Error('Framer practice entry point navigation failed.');
+
   // Academy learning entry points: catalog filters must work and lesson links must resolve to real pages.
   await page.goto('http://127.0.0.1:4173/academy.html', { waitUntil: 'networkidle' });
   if (!(await page.getByText('HACHARA Academy', { exact: false }).count())) throw new Error('Academy landing page did not render.');
