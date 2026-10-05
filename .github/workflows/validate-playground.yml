@@ -25,6 +25,8 @@ jobs:
 
       - name: Validate authoritative curriculum inventory
         run: python3 scripts/validate_curriculum_integrity.py
+      - name: Validate protected HACHARA benchmark
+        run: python3 scripts/validate_benchmark_protection.py
 
       - name: Build inventory report
         run: |
