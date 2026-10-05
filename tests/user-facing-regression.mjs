@@ -70,7 +70,7 @@ try {
   await page.goto('http://127.0.0.1:4173/tool-training-lesson.html', { waitUntil: 'networkidle' });
   await page.getByRole('button', { name: /Use Auto Layout with spacing and padding/ }).click();
   if (!(await page.locator('#feedback').innerText()).includes('Correct')) throw new Error('Tool lesson correct-answer feedback did not render.');
-  if (!(await page.locator('#fill').evaluate(el => el.style.width)) === '70%') throw new Error('Tool lesson progress did not advance after correct answer.');
+  if ((await page.locator('#fill').evaluate(el => el.style.width)) !== '70%') throw new Error('Tool lesson progress did not advance after correct answer.');
   await page.getByRole('button', { name: 'Mark lesson complete' }).click();
   if (!(await page.locator('#status').innerText()).includes('Lesson complete')) throw new Error('Tool lesson completion state did not render.');
   await page.reload({ waitUntil: 'networkidle' });
