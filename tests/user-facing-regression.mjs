@@ -137,6 +137,12 @@ try {
     await page.reload({ waitUntil: 'networkidle' });
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
     if (overflow) throw new Error(`Modern workspace has horizontal overflow at ${width}px width.`);
+    const loopCheck = await page.evaluate(() => {
+      const grid = document.querySelector('.loopGrid');
+      const items = grid ? [...grid.querySelectorAll('.loopItem')] : [];
+      return { count: items.length, scrolls: !!grid && grid.scrollWidth > grid.clientWidth + 1, visible: items.every(item => item.getBoundingClientRect().width > 0) };
+    });
+    if (loopCheck.count !== 10 || loopCheck.scrolls || !loopCheck.visible) throw new Error(`HACHARA Loop is clipped or incomplete at ${width}px: ${JSON.stringify(loopCheck)}`);
   }
 
   // Bundle dashboard: filters, card activation and keyboard activation must remain functional.
