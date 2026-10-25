@@ -175,3 +175,33 @@ Before any third-party code is adopted, record repository/package, exact compone
 
 ## Updated status
 Great Learning's public course overview is now researched to a more specific level. This expands the public-source baseline, but **does not close the full teardown checklist**. Authenticated course interactions, screen-by-screen UI inventory, HACHARA code-level gap mapping and a third-party code/license audit remain open.
+
+
+## HACHARA repository evidence mapping — inspected on 2026-10-26
+This mapping is based on current files fetched from the repository, not inferred from the competitor websites. It is a source inspection, not a claim that all runtime flows have been tested.
+
+| HACHARA file/data source | What the current source establishes | Implication for adoption |
+|---|---|---|
+| `LESSON-REGISTRY.md` | Authoritative registry states 96 physical lesson files and distinguishes physical file count from distinct curriculum topics; overlap candidates are preserved pending audit | Any curriculum enhancement must map to existing lesson files and preserve all 96; never equate file count with unique lesson count |
+| `academy-lesson-catalog.html` | A dedicated lesson catalog page exists with category/filter UI and lesson cards | Audit metadata accuracy and navigation before adding another discovery layer; verify filters and destinations in browser |
+| `studio.html` | Dedicated Studio authoring workspace exists | Candidate destination for guided practice and cumulative project evidence; inspect persistence and link context at runtime |
+| `review.html` | Dedicated Review page exists; its source styles and UI are review-focused | Use existing review/rework flow rather than create a parallel assessment system; runtime evidence still required |
+| `data/review-rubric.json` | Active rubric v1.0 defines UX, UI, accessibility, interaction and visual dimensions; findings require dimension, severity, confidence, evidence, principle, impact and recommendation; evidence types distinguish observed, submitted artifact, test result, principle-based and inferred; workflow includes submitted → reviewed → needs-rework → resubmitted → validated | The core rubric already aligns with evidence-based critique. Priority is to verify that UI/runtime enforces required fields and transitions, not redesign the rubric from scratch |
+| `data/progress-model.json` | Active model v1.0 distinguishes lesson, evidence and skill states; says progress reflects demonstrated capability rather than page views/clicks | Competitor-inspired progress should build on this model. Verify actual storage and calculations in `progress.html` and shared scripts before changing the model |
+| `progress.html` | A dedicated progress dashboard exists; its page contains progress summary and skill-style display patterns | Confirm displayed values derive from learner evidence and are not hard-coded or illustrative without a label; verify refresh, reset and cross-page persistence |
+| `CURRICULUM-BUNDLE-MASTER.md` and `data/curriculum-manifest.json` | Present in the repository tree as curriculum structure sources | Treat these as authoritative inputs to validate before changing catalog metadata, bundle links or progress calculations |
+
+### Evidence-based gap assessment
+- **Already represented at the data-contract level:** multidimensional review criteria, evidence/confidence labels, rework and validation states, a capability-based progress principle, and a lesson registry. These are verified from source files.
+- **Not established by source inspection alone:** whether all screens enforce those contracts; whether state persists across reloads/pages; whether the user can resume a partially completed practice; whether progress values are fully derived from persisted evidence; whether every lesson has a consistent lesson contract; whether keyboard/mobile acceptance passes.
+- **Highest-value next engineering task:** a read-only runtime audit of the Academy → lesson → Studio → Review → Rework → resubmit → validate → Progress journey. Use seeded/test evidence, reload each route, and record screenshots/assertions. Do not change data schemas until runtime findings establish a real gap.
+- **No product code changed as part of this competitor research update.** This commit updates the research register only.
+
+## Prioritized execution decision
+1. **P0 — Runtime proof:** check real navigation, context transfer, persistence, reload/resume and state transitions against `data/progress-model.json` and `data/review-rubric.json`; attach reproducible test evidence.
+2. **P1 — Contract enforcement:** compare lesson pages/catalog metadata to `LESSON-REGISTRY.md`; report missing or inconsistent fields without mass-editing curriculum content.
+3. **P1 — Progress truthfulness:** trace the source of every displayed metric in `progress.html` to stored events/data; label illustrative content and avoid false completion claims.
+4. **P2 — Targeted teaching pilot:** choose one existing lesson already relevant to component states/accessibility and trial the “example → independent practice → evidence → critique → rework” format without adding, deleting or renumbering lessons.
+5. **P3 — External code:** no integration until a named component has a verified license, dependency and architecture fit.
+
+Completion status for this pass: public competitor baseline expanded; current HACHARA source files mapped to adoption opportunities. Full competitor screen captures and HACHARA runtime journey validation remain open.
