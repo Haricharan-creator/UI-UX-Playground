@@ -96,6 +96,10 @@ try {
   if (!(await page.getByText('HACHARA Academy', { exact: false }).count())) throw new Error('Academy landing page did not render.');
   const academyOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
   if (academyOverflow) throw new Error('Academy landing page has horizontal overflow.');
+  for (const [label, destination] of [['Browse Lesson Catalog →','academy-lesson-catalog.html'],['Tool Training →','tool-training.html']]) {
+    const link = page.getByRole('link', { name: label });
+    if (await link.getAttribute('href') !== destination) throw new Error(`Academy navigation ${label} does not point to ${destination}.`);
+  }
 
   await page.goto('http://127.0.0.1:4173/academy-lesson-catalog.html', { waitUntil: 'networkidle' });
   const allLessons = page.locator('.lesson');
