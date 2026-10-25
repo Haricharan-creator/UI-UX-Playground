@@ -174,6 +174,7 @@ try {
     const view = page.locator('#' + destination.split('#')[1]);
     if (await view.count() !== 1 || await view.evaluate(el => el.classList.contains('hidden'))) throw new Error(`Modern navigation "${label}" did not open its intended workspace view.`);
   }
+  await page.goto('http://127.0.0.1:4173/modern.html', { waitUntil: 'networkidle' });
   if (!(await page.locator('.sectionHead', { hasText: 'Continue Your Journey' }).innerText()).includes('Illustrative examples')) throw new Error('Modern sample progress is not labelled as illustrative.');
   
   // Bundle dashboard: filters, card activation and keyboard activation must remain functional.
