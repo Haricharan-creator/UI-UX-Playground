@@ -51,7 +51,7 @@ label{display:block;font-size:12px;font-weight:800;margin:14px 0 6px}
 @media(max-width:1000px){.actions{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:1fr 1fr}}
 @media(max-width:720px){.app{grid-template-columns:1fr}aside{position:static;height:auto;padding:14px;min-width:0}.brand{margin-bottom:10px}nav{display:flex;overflow:auto;min-width:0;max-width:100%}nav button{white-space:nowrap;width:auto;flex:0 0 auto}.stuck{display:none}main{padding:16px}.top{align-items:stretch;flex-direction:column}.search{min-width:0;width:100%}.actions,.grid,.two{grid-template-columns:1fr}.hero{padding:23px}h1{font-size:28px}}
 
-.identity-strip{position:sticky;top:0;z-index:999;display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:9px 18px;background:linear-gradient(90deg,#15172b,#29234f);color:#fff;font-size:12px;letter-spacing:.2px;box-shadow:0 2px 12px rgba(0,0,0,.12)}.identity-strip strong{font-size:14px}.identity-strip span{opacity:.9}.identity-strip b{color:#ffd76a}
+.identity-strip{position:sticky;top:0;z-index:999;display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:9px 18px;background:linear-gradient(90deg,#15172b,#29234f);color:#fff;font-size:12px;letter-spacing:.2px;box-shadow:0 2px 12px rgba(0,0,0,.12);min-width:0}.identity-strip strong{font-size:14px;flex:0 0 auto}.identity-strip span{opacity:.9;min-width:0;overflow-wrap:anywhere}.identity-strip span:last-child{flex-basis:100%}.identity-strip b{color:#ffd76a}
 </style>
 
 <style>
@@ -339,7 +339,7 @@ select[multiple]{min-height:95px}
 .hacharaUiSwitch a{display:inline-flex;align-items:center;gap:6px;padding:8px 11px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(16,20,38,.94);color:#fff;text-decoration:none;font:700 11px/1 Inter,system-ui,sans-serif;box-shadow:0 7px 18px rgba(0,0,0,.16)}
 .hacharaUiSwitch a:hover{background:#262d49}
 .hacharaClassicFooter{margin:28px 0 8px;padding:18px 4px 8px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;align-items:center;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-align:right}
-@media(max-width:720px){.hacharaUiSwitch{right:10px;top:46px}.hacharaUiSwitch a:last-child{display:none}.hacharaClassicFooter{justify-content:center;text-align:center}}
+@media(max-width:720px){.hacharaUiSwitch{position:static;justify-content:flex-end;padding:8px 10px;background:#211c42}.hacharaUiSwitch a:last-child{display:none}.identity-strip{top:0;gap:7px 12px;padding:10px 14px}.identity-strip span:last-child{flex-basis:100%;line-height:1.4}.hacharaClassicFooter{justify-content:center;text-align:center}}
 </style>
 
 <style>
