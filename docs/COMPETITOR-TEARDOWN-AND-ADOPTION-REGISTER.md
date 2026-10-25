@@ -108,3 +108,70 @@ Consider only after core journey reliability and after scope, moderation, privac
 - [ ] Recommendation with testable acceptance criteria
 
 Current completion: partial public-source baseline. Authenticated screen-by-screen teardown and code/licence-level reuse audit remain open.
+
+## Competitor 3 — Great Learning Academy (expanded public-page inspection)
+Additional sources:
+- https://www.mygreatlearning.com/academy/learn-for-free/courses/ui-ux
+- https://www.mygreatlearning.com/academy/learn-for-free/courses/figma-for-ui-ux-design
+- https://www.mygreatlearning.com/ux-design/free-courses
+
+Verified public-page details:
+- The UI/UX for Beginners course is labelled beginner level and is advertised as approximately 3.0 learning hours on the course page (other Great Learning catalog surfaces display 2 hours; duration labels are inconsistent across public surfaces and should be verified after enrollment rather than silently reconciled).
+- The course page advertises free access to course content, skill quizzes, and a completion certificate subject to a certificate fee. It says the full curriculum is available after enrollment.
+- The visible outline has four broad modules: (1) Design Thinking and Research Foundations, including frameworks, surveys and NPS; (2) Understanding Your Users, including personas and empathy maps; (3) Designing the Experience, including user flows, wireframes and prototypes; and (4) Testing and Measuring UX, including usability tests and UX metrics.
+- The page promotes beginner entry, instructor attribution, learner counts/ratings, skill outcomes and a next-step path. The separate Figma course page describes exercises including onboarding-flow design, logo creation and homepage redesign, but these belong to that separate course and must not be attributed to the UI/UX for Beginners course.
+- Public page states that course content can be revisited; authenticated persistence, actual player navigation, quiz grading, lesson completion rules and resume states remain unverified.
+
+Analysis/inference (not a verified in-course observation):
+- The four-part sequence offers a compact end-to-end mental model: frame the problem → understand people → design a flow/prototype → test and measure.
+- The course's concise module outline and beginner positioning could inform a clearer HACHARA course overview, but HACHARA should retain richer practice/rework/validation and evidence-linked outcomes rather than reduce the curriculum to four headings.
+- The inconsistency between 2-hour and 3-hour public labels is itself a discoverability/trust lesson: HACHARA should have one source of truth for lesson and bundle effort estimates.
+
+Still unknown:
+- Exact videos/lesson sequence and length; in-lesson visual design; quiz question types and explanations; whether hands-on work is submitted or self-evaluated; grading; certificate eligibility details after enrollment; actual progress/resume and mobile interaction. No logged-in course screens were inspected.
+
+## Cross-competitor comparison — verified scope, not a ranking
+| Platform | Publicly evidenced learning mechanism | Publicly evidenced practice/output | Feedback / progress evidence | Important unknown |
+|---|---|---|---|---|
+| Skillshare | Short, focused lesson segments; one concept per lesson encouraged | Class project; lightweight or staged projects encouraged | Project Gallery and instructor/community feedback guidance | Actual player and saved-progress UI |
+| Coursera UI/UX specialization | Four-course staged learning sequence | Visual/non-visual exercises, wireframes, mockups, prototype and complex-site plan | Course page states applied learning; detailed assessment flow not captured | Authenticated grading, rubrics, peer review UI |
+| Great Learning Academy | Four broad modules from research to testing/metrics | Course page mentions examples; separate Figma course lists onboarding, logo and homepage exercises | Quizzes advertised; completion certificate fee disclosed | Exact lesson, quiz and resume experience |
+| Codecademy | Beginner course: three lessons; theory → wireframes → Figma prototype | Two named Ridgeline projects and three quizzes | Quiz presence is verified; evaluator behaviour unknown | In-lesson hints, validation and feedback |
+| GRRAS | Four-month design-to-development program; weekly tests advertised | Hands-on projects and assignments | Weekly performance tracking and mentorship advertised | Student portal and real review/grading UI |
+| UX UI Open | 25 units in five parts; AI generates → learner judges → refines | Projects throughout; component states, design system, research, flows and testing | Curriculum and roadmap are public; account persistence is advertised on free-course page | Logged-in assessment mechanics and mobile UI |
+
+## Reusable code and assets audit — current result
+No competitor-specific code or assets have been verified as safe to copy or integrate. The public pages support adoption of learning principles, not a claim that their source code is available for reuse. Do not scrape lesson videos, copy course text, reproduce proprietary graphics, or reuse paid course material.
+Potentially relevant *separate reference libraries* are not competitors' code:
+- Radix Primitives: React-oriented accessible primitives; technical fit is low without an approved framework change.
+- shadcn/ui: MIT license, React/Tailwind ecosystem; individual source components and dependencies still require a compatibility/license review before use.
+- WCAG 2.2, Apple HIG and Figma Auto Layout guidance: standards/documentation for design and acceptance criteria, not plug-in implementation code.
+Before any third-party code is adopted, record repository/package, exact component, license file/version, copyright notices, dependencies, security/maintenance status, framework fit, modifications and attribution obligations. Until then: adopt patterns, not code.
+
+## Implementation mapping and acceptance criteria (proposed; not yet implemented)
+| Candidate | HACHARA surface to inspect first | Acceptance criteria before calling it done |
+|---|---|---|
+| Lesson contract and expected outcome | Academy/catalog and physical lesson files | Each sampled lesson exposes objective, context, example, action, deliverable, criteria and next step; no curriculum renumbering or file removal |
+| Short lesson + one practice action | Lesson template/content registry | A learner can identify one key concept and complete one small practice without losing the larger lesson context |
+| Cumulative project checkpoints | Studio, Review, project/bundle dashboard | Each checkpoint links to prior evidence; resubmission preserves earlier version and open findings |
+| Rubric/evidence-based feedback | Review and Rework workflow | Every finding has evidence, severity/priority, actionable recommendation and validation outcome; no unsupported claim presented as fact |
+| Transparent progress | Progress page and storage model | Counts derive from persisted learner events; viewed/attempted/submitted/reviewed/validated are distinct; reload/resume and reset tested |
+| Component-state exercise | Existing lesson mapped to Studio/Review | Learner checks default, hover, focus, pressed, disabled, loading, error/success where applicable; keyboard/focus and responsive behaviour tested |
+| Beginner course discovery | Catalog and bundle overview | Level, effort, prerequisites, tools and deliverables come from a single validated data source |
+| Share/community | No implementation surface selected | Do not build until privacy, moderation, access control, persistence and operational ownership are designed |
+
+## Evidence and confidence labels
+- **Verified public page/help documentation:** explicitly described on a cited public source.
+- **Analysis/inference:** design implication derived from verified information; useful hypothesis, not a competitor feature claim.
+- **Not inspected:** paid/authenticated or interaction-level behaviour that has not been observed directly.
+- **Not a code-reuse candidate:** no exact repository, license and technical compatibility review completed.
+
+## Next inspection pass
+1. Capture the public page and, where accessible without account access, the visible course/lesson preview for each platform.
+2. Record screenshots/notes for catalog, course overview, lesson, practice, assessment, completion and resume; mark inaccessible screens rather than guessing.
+3. Capture one representative exercise prompt per platform verbatim only in short, necessary excerpts; otherwise paraphrase and link to the source.
+4. Validate HACHARA's actual files and data model before marking any proposed mapping as an existing capability.
+5. Add a separate adoption decision record after evidence collection: adopt / adapt / defer / reject, owner, dependencies, test and rollback plan.
+
+## Updated status
+Great Learning's public course overview is now researched to a more specific level. This expands the public-source baseline, but **does not close the full teardown checklist**. Authenticated course interactions, screen-by-screen UI inventory, HACHARA code-level gap mapping and a third-party code/license audit remain open.
