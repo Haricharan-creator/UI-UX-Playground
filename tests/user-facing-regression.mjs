@@ -145,6 +145,23 @@ try {
     if (loopCheck.count !== 10 || loopCheck.scrolls || !loopCheck.visible) throw new Error(`HACHARA Loop is clipped or incomplete at ${width}px: ${JSON.stringify(loopCheck)}`);
   }
 
+  // Modern Workspace navigation must lead to the corresponding working destinations.
+  const modernDestinations = [
+    ['Learn','academy-lesson-catalog.html'],
+    ['Develop','studio.html'],
+    ['Test & Iterate','review.html'],
+    ['Build','bundle-dashboard.html'],
+    ['My Growth','progress.html'],
+    ['Labs','tool-practice.html']
+  ];
+  for (const [label, destination] of modernDestinations) {
+    const link = page.locator('.nav a', { hasText: label });
+    if (await link.getAttribute('href') !== destination) throw new Error(`Modern navigation "${label}" does not point to ${destination}.`);
+    const response = await page.request.get('http://127.0.0.1:4173/' + destination);
+    if (!response.ok()) throw new Error(`Modern navigation "${label}" destination failed HTTP ${response.status()}.`);
+  }
+  if (!(await page.locator('.sectionHead', { hasText: 'Continue Your Journey' }).innerText()).includes('Illustrative examples')) throw new Error('Modern sample progress is not labelled as illustrative.');
+  
   // Bundle dashboard: filters, card activation and keyboard activation must remain functional.
   await page.goto('http://127.0.0.1:4173/bundle-dashboard.html', { waitUntil: 'networkidle' });
   const firstBundle = page.locator('.bundle[data-id]').first();
