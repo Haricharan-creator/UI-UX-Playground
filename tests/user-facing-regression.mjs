@@ -152,17 +152,27 @@ try {
   // Modern Workspace navigation must lead to the corresponding working destinations.
   const modernDestinations = [
     ['Learn','academy-lesson-catalog.html'],
+    ['Think & Ideate','index.html#ideation'],
     ['Develop','studio.html'],
     ['Test & Iterate','review.html'],
     ['Build','bundle-dashboard.html'],
+    ['Share','index.html#projects'],
+    ['My Workspace','index.html#workspace'],
     ['My Growth','progress.html'],
-    ['Labs','tool-practice.html']
+    ['Idea Parking Lot','index.html#projects'],
+    ['Labs','tool-practice.html'],
+    ['User Manual','index.html#manual']
   ];
   for (const [label, destination] of modernDestinations) {
     const link = page.locator('.nav a', { hasText: label });
     if (await link.getAttribute('href') !== destination) throw new Error(`Modern navigation "${label}" does not point to ${destination}.`);
-    const response = await page.request.get('http://127.0.0.1:4173/' + destination);
+    const response = await page.request.get('http://127.0.0.1:4173/' + destination.split('#')[0]);
     if (!response.ok()) throw new Error(`Modern navigation "${label}" destination failed HTTP ${response.status()}.`);
+    if (destination.includes('#')) {
+      await page.goto('http://127.0.0.1:4173/' + destination, { waitUntil: 'networkidle' });
+      const view = page.locator('#' + destination.split('#')[1]);
+      if (await view.count() !== 1 || await view.evaluate(el => el.classList.contains('hidden'))) throw new Error(`Modern navigation "${label}" did not open its intended workspace view.`);
+    }
   }
   if (!(await page.locator('.sectionHead', { hasText: 'Continue Your Journey' }).innerText()).includes('Illustrative examples')) throw new Error('Modern sample progress is not labelled as illustrative.');
   
