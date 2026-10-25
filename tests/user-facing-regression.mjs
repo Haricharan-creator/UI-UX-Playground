@@ -358,6 +358,14 @@ try {
     await page.reload({ waitUntil: 'networkidle' });
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
     if (overflow) throw new Error(`Classic workspace has horizontal overflow at ${viewport.name} width.`);
+    if (viewport.name === 'mobile') {
+      const overlap = await page.evaluate(() => {
+        const chooser = document.querySelector('.hacharaUiSwitch')?.getBoundingClientRect();
+        const identity = document.querySelector('.identity-strip')?.getBoundingClientRect();
+        return !chooser || !identity || chooser.bottom > identity.top + 1;
+      });
+      if (overlap) throw new Error('Mobile UI chooser overlaps the HACHARA identity strip.');
+    }
   }
 
   if (errors.length) throw new Error('Browser console/page errors: ' + errors.join(' | '));
