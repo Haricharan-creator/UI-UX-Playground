@@ -3390,6 +3390,9 @@ function loadDNA(){
 
 function go(id){document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
+function openViewFromHash(){const id=decodeURIComponent(location.hash.slice(1));const target=document.getElementById(id);if(id&&target?.classList.contains('view'))go(id)}
+window.addEventListener('hashchange',openViewFromHash);
+openViewFromHash();
 
 function generateDirections(){
  const p=document.getElementById('problem').value.trim();
