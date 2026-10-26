@@ -429,6 +429,26 @@ try {
   await page.evaluate(() => { localStorage.removeItem('hacharaReview'); localStorage.removeItem('hacharaStudioSubmission'); });
 
 
+  // Capability Evidence must not present an old review as belonging to a newer submission.
+  await page.evaluate(() => {
+    localStorage.setItem('hacharaStudioSubmission', JSON.stringify({
+      moduleId: 'B01-M02', tool: 'Figma', work: 'Current submission for stale-review regression',
+      evidence: ['screenshot'], state: 'Submitted', savedAt: 'qa-current-submission'
+    }));
+    localStorage.setItem('hacharaReview', JSON.stringify({
+      workflowState: 'validated', decision: 'ready-for-validation', submissionSavedAt: 'qa-older-submission',
+      validation: { note: 'Old validation must not attach to current evidence.' }
+    }));
+  });
+  await page.goto('http://127.0.0.1:4173/capability-evidence.html', { waitUntil: 'networkidle' });
+  if (!(await page.locator('#workflow').innerText()).includes('not linked to the current Studio submission')) {
+    throw new Error('Capability Evidence incorrectly treated a stale review as current.');
+  }
+  if ((await page.locator('#workflow').innerText()).includes('Validated')) {
+    throw new Error('Capability Evidence exposed stale validation as current.');
+  }
+  await page.evaluate(() => { localStorage.removeItem('hacharaReview'); localStorage.removeItem('hacharaStudioSubmission'); });
+
   // Key user-facing standalone pages must render with no console/page errors.
   for (const path of [
     'academy.html',
