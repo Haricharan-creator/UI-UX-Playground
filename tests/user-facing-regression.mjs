@@ -329,6 +329,11 @@ try {
 
   await page.goto('http://127.0.0.1:4173/progress.html', { waitUntil: 'networkidle' });
   if (!(await page.locator('#validatedCount').innerText()).match(/1/)) throw new Error('Progress did not reflect validated evidence.');
+  // A review record for an older submission must not be counted against a newer submission.
+  await page.evaluate(() => { const sub=JSON.parse(localStorage.getItem('hacharaStudioSubmission')); sub.savedAt='qa-new-submission-without-review'; sub.state='Submitted'; localStorage.setItem('hacharaStudioSubmission',JSON.stringify(sub)); });
+  await page.reload({ waitUntil: 'networkidle' });
+  if ((await page.locator('#validatedCount').innerText()).trim() !== '0' || (await page.locator('#validatedPipeline').innerText()).trim() !== '0') throw new Error('Progress counted a stale review against a different Studio submission.');
+  if (!(await page.locator('#moduleEvidence').innerText()).includes('not linked to the current submission')) throw new Error('Progress did not explain the unmatched prior review record.');
   await page.goto('http://127.0.0.1:4173/capability-evidence.html', { waitUntil: 'networkidle' });
   if (!(await page.locator('#workflow').innerText()).includes('Validated')) throw new Error('Capability Evidence did not reflect validated workflow state.');
 
