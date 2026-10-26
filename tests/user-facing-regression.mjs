@@ -432,6 +432,17 @@ try {
   if ((await page.locator('#state').innerText()) !== 'Under Review') throw new Error('Review UI did not show Under Review after V2 resubmission.');
   if (!(await page.locator('#notice').innerText()).includes('No design file was uploaded')) throw new Error('Review did not clarify that V2 resubmission records a change summary, not an uploaded design file.');
   if (!(await page.locator('label[for="v2summary"]').innerText()).includes('no file upload')) throw new Error('V2 change summary field does not disclose the no-upload limitation.');
+
+  // A second rework cycle must append V3 without replacing V1 or V2 history.
+  await page.locator('#v2summary').fill('V3 change summary for repeated-cycle regression test');
+  await page.getByRole('button', { name: /Record Rework & Resubmit/ }).click();
+  if ((await page.locator('#state').innerText()) !== 'Needs Rework') throw new Error('Second review cycle did not re-enter Needs Rework.');
+  await page.getByRole('button', { name: 'Resubmit V2' }).click();
+  const repeatedReview = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
+  const versions = repeatedReview?.rework?.versions || [];
+  if (versions.length !== 3 || versions[0]?.version !== 'V1' || versions[1]?.version !== 'V2' || versions[2]?.version !== 'V3') throw new Error('Repeated rework cycle did not preserve V1/V2 and append V3.');
+  if (!versions[0]?.preserved || versions[2]?.summary !== 'V3 change summary for repeated-cycle regression test') throw new Error('Repeated rework cycle lost V1 preservation or the latest V3 summary.');
+  if (repeatedReview?.workflowState !== 'under-review') throw new Error('V3 resubmission did not return to Under Review.');
   await page.evaluate(() => { localStorage.removeItem('hacharaReview'); localStorage.removeItem('hacharaStudioSubmission'); });
 
 
