@@ -300,6 +300,15 @@ try {
   if (await page.locator('#resubmit').evaluate(el => el.classList.contains('hidden'))) throw new Error('Resubmit V2 action did not appear after rework.');
   const reviewAfterRework = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
   if (!reviewAfterRework?.v1Preserved || reviewAfterRework?.rework?.versions?.[0]?.version !== 'V1') throw new Error('V1 preservation was not recorded.');
+  // Needs Rework must survive navigation/reload and remain correctly counted in Progress.
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForFunction(() => !document.querySelector('#content')?.classList.contains('hidden'));
+  if (!(await page.locator('#state').innerText()).includes('Needs Rework')) throw new Error('Review did not restore Needs Rework after reload.');
+  if (await page.locator('#resubmit').evaluate(el => el.classList.contains('hidden'))) throw new Error('Review did not restore the V2 resubmit action after reload.');
+  await page.goto('http://127.0.0.1:4173/progress.html', { waitUntil: 'networkidle' });
+  if ((await page.locator('#reworkCount').innerText()).trim() !== '1' || (await page.locator('#submittedCount').innerText()).trim() !== '0') throw new Error('Progress did not count Needs Rework correctly.');
+  await page.goto('http://127.0.0.1:4173/review.html', { waitUntil: 'networkidle' });
+  await page.waitForFunction(() => !document.querySelector('#content')?.classList.contains('hidden'));
   // Studio must reflect the persisted review state, not overwrite it with its default state.
   await page.goto('http://127.0.0.1:4173/studio.html', { waitUntil: 'networkidle' });
   if (!(await page.locator('#state').innerText()).includes('Needs Rework')) throw new Error('Studio did not reflect the saved Needs Rework state.');
