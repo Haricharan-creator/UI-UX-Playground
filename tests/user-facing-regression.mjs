@@ -300,6 +300,13 @@ try {
   if (await page.locator('#resubmit').evaluate(el => el.classList.contains('hidden'))) throw new Error('Resubmit V2 action did not appear after rework.');
   const reviewAfterRework = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
   if (!reviewAfterRework?.v1Preserved || reviewAfterRework?.rework?.versions?.[0]?.version !== 'V1') throw new Error('V1 preservation was not recorded.');
+  // Studio must reflect the persisted review state, not overwrite it with its default state.
+  await page.goto('http://127.0.0.1:4173/studio.html', { waitUntil: 'networkidle' });
+  if (!(await page.locator('#state').innerText()).includes('Needs Rework')) throw new Error('Studio did not reflect the saved Needs Rework state.');
+  await page.reload({ waitUntil: 'networkidle' });
+  if (!(await page.locator('#state').innerText()).includes('Needs Rework')) throw new Error('Studio did not restore Needs Rework after reload.');
+  await page.goto('http://127.0.0.1:4173/review.html', { waitUntil: 'networkidle' });
+  await page.waitForFunction(() => !document.querySelector('#content')?.classList.contains('hidden'));
 
   await page.locator('#v2summary').fill('V2 improves onboarding hierarchy and CTA emphasis; V1 remains preserved for comparison.');
   await page.getByRole('button', { name: 'Resubmit V2' }).click();
@@ -328,6 +335,10 @@ try {
   if (!(await page.locator('#state').innerText()).includes('Validated')) throw new Error('Human validation did not reach Validated state.');
   const finalReview = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
   if (finalReview?.workflowState !== 'validated' || finalReview?.validation?.validatedBy !== 'human-review') throw new Error('Validated review record is incomplete.');
+  await page.goto('http://127.0.0.1:4173/studio.html', { waitUntil: 'networkidle' });
+  if (!(await page.locator('#state').innerText()).includes('Validated')) throw new Error('Studio did not reflect the validated workflow state.');
+  await page.reload({ waitUntil: 'networkidle' });
+  if (!(await page.locator('#state').innerText()).includes('Validated')) throw new Error('Studio did not restore the validated workflow state after reload.');
 
   await page.goto('http://127.0.0.1:4173/progress.html', { waitUntil: 'networkidle' });
   if (!(await page.locator('#validatedCount').innerText()).match(/1/)) throw new Error('Progress did not reflect validated evidence.');
