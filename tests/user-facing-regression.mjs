@@ -301,9 +301,9 @@ try {
 
   await page.locator('#v2summary').fill('V2 improves onboarding hierarchy and CTA emphasis; V1 remains preserved for comparison.');
   await page.getByRole('button', { name: 'Resubmit V2' }).click();
-  if (!(await page.locator('#state').innerText()).includes('Resubmitted')) throw new Error('V2 resubmission did not record.');
+  if (!(await page.locator('#state').innerText()).includes('Under Review')) throw new Error('V2 resubmission did not return to Under Review.');
   const reviewAfterResubmit = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
-  if (reviewAfterResubmit?.workflowState !== 'resubmitted' || reviewAfterResubmit?.rework?.versions?.length !== 2) throw new Error('V2 rework record is incomplete.');
+  if (reviewAfterResubmit?.workflowState !== 'under-review' || reviewAfterResubmit?.rework?.status !== 'resubmitted' || reviewAfterResubmit?.rework?.versions?.length !== 2) throw new Error('V2 rework record is incomplete.');
 
   await page.locator('#decision').selectOption('ready-for-validation');
   await page.locator('#findingsResolved').check();
