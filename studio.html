@@ -17,7 +17,7 @@ function renderModule(){
  if(m.toolMode==='figma')tool.insertAdjacentHTML('beforeend','<option>Any tool</option>');
  if(m.toolMode==='framer')tool.insertAdjacentHTML('beforeend','<option>Any tool</option>');
  if(activity) document.querySelector('#work').placeholder=activity;
- document.querySelector('#state').textContent=defined?'In Progress':'Source Gap — Definition Required';
+ const existing=(()=>{try{return JSON.parse(localStorage.getItem('hacharaStudioSubmission')||'null')}catch{return null}})();const review=(()=>{try{return JSON.parse(localStorage.getItem('hacharaReview')||'null')}catch{return null}})();const stateLabels={'under-review':'Under Review','needs-rework':'Needs Rework','ready-for-validation':'Ready for Validation','validated':'Validated'};document.querySelector('#state').textContent=!defined?'Source Gap — Definition Required':existing?.moduleId===m.moduleId?(review?.submissionSavedAt===existing.savedAt?(stateLabels[review.workflowState]||existing.state||'Submitted for Review'):(existing.state==='Submitted'?'Submitted for Review':existing.state||'In Progress')):'In Progress';
 }
 async function load(){
  try{
