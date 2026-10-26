@@ -368,6 +368,29 @@ try {
   if (!(await page.locator('#review').isVisible())) throw new Error('Tool Practice did not reveal review after submission.');
   if (!(await page.locator('#fileName').innerText()).includes('qa-submission.png')) throw new Error('Tool Practice did not record submitted filename.');
 
+  // Review state-machine regression: V2 resubmission must return to Under Review, not remain in a terminal-looking Resubmitted state.
+  await page.goto('http://127.0.0.1:4173/', { waitUntil: 'networkidle' });
+  await page.evaluate(() => {
+    localStorage.removeItem('hacharaReview');
+    localStorage.setItem('hacharaStudioSubmission', JSON.stringify({
+      moduleId: 'B01-M02', tool: 'Figma', work: 'V1 design decision for regression test',
+      evidence: ['screenshot','prototype','reflection'], state: 'Submitted', savedAt: 'qa-resubmission-v1'
+    }));
+  });
+  await page.goto('http://127.0.0.1:4173/review.html', { waitUntil: 'networkidle' });
+  await page.waitForFunction(() => !document.querySelector('#content')?.classList.contains('hidden'));
+  await page.locator('#preserveV1').check();
+  await page.locator('#v2summary').fill('V2 change summary for regression test');
+  await page.getByRole('button', { name: /Record Rework & Resubmit/ }).click();
+  if ((await page.locator('#state').innerText()) !== 'Needs Rework') throw new Error('Review did not enter Needs Rework state.');
+  await page.getByRole('button', { name: 'Resubmit V2' }).click();
+  const resubmittedReview = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
+  if (resubmittedReview?.workflowState !== 'under-review') throw new Error('V2 resubmission did not return to under-review state.');
+  if (resubmittedReview?.rework?.status !== 'resubmitted') throw new Error('V2 resubmission history was not preserved.');
+  if ((await page.locator('#state').innerText()) !== 'Under Review') throw new Error('Review UI did not show Under Review after V2 resubmission.');
+  await page.evaluate(() => { localStorage.removeItem('hacharaReview'); localStorage.removeItem('hacharaStudioSubmission'); });
+
+
   // Key user-facing standalone pages must render with no console/page errors.
   for (const path of [
     'academy.html',
