@@ -357,7 +357,8 @@ try {
   if ((await page.locator('#validatedCount').innerText()).trim() !== '0' || (await page.locator('#validatedPipeline').innerText()).trim() !== '0') throw new Error('Progress counted a stale review against a different Studio submission.');
   if (!(await page.locator('#moduleEvidence').innerText()).toLowerCase().includes('not linked to the current submission')) throw new Error('Progress did not explain the unmatched prior review record.');
   await page.goto('http://127.0.0.1:4173/capability-evidence.html', { waitUntil: 'networkidle' });
-  if (!(await page.locator('#workflow').innerText()).includes('Validated')) throw new Error('Capability Evidence did not reflect validated workflow state.');
+  if (!(await page.locator('#workflow').innerText()).includes('not linked to the current Studio submission')) throw new Error('Capability Evidence did not explain the unmatched prior review record.');
+  if ((await page.locator('#workflow').innerText()).includes('Validated')) throw new Error('Capability Evidence presented stale validation as current.');
 
   // Interactive lesson checks: unanswered, incorrect, and correct paths plus practice handoff.
   for (const lesson of ['lesson-visual-hierarchy.html','lesson.html']) {
