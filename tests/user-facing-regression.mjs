@@ -304,6 +304,11 @@ try {
   if (!(await page.locator('#state').innerText()).includes('Under Review')) throw new Error('V2 resubmission did not return to Under Review.');
   const reviewAfterResubmit = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
   if (reviewAfterResubmit?.workflowState !== 'under-review' || reviewAfterResubmit?.rework?.status !== 'resubmitted' || reviewAfterResubmit?.rework?.versions?.length !== 2) throw new Error('V2 rework record is incomplete.');
+  // Resume after reload: the saved review history must survive and remain attached to the same submission.
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForFunction(() => !document.querySelector('#content')?.classList.contains('hidden'));
+  const reviewAfterResume = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
+  if (reviewAfterResume?.workflowState !== 'under-review' || reviewAfterResume?.rework?.versions?.length !== 2 || reviewAfterResume?.rework?.versions?.[0]?.version !== 'V1' || reviewAfterResume?.rework?.versions?.[1]?.version !== 'V2') throw new Error('Reload/resume lost V1/V2 review history.');
 
   await page.locator('#decision').selectOption('ready-for-validation');
   await page.locator('#findingsResolved').check();
