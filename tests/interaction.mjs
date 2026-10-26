@@ -90,7 +90,7 @@ try {
   if (await page.locator('#resubmit').count() !== 1 || await page.locator('#resubmit').isHidden()) throw new Error('Resubmit V2 control did not appear.');
   await page.locator('#resubmit').click();
   reviewRecord = await page.evaluate(() => JSON.parse(localStorage.getItem('hacharaReview') || 'null'));
-  if (!reviewRecord || reviewRecord.workflowState !== 'resubmitted' || reviewRecord.rework.versions.length !== 2) throw new Error('Resubmitted state did not persist V1/V2 records.');
+  if (!reviewRecord || reviewRecord.workflowState !== 'under-review' || reviewRecord.rework.status !== 'resubmitted' || reviewRecord.rework.versions.length !== 2) throw new Error('V2 resubmission did not return to Under Review while preserving V1/V2 records.');
 
   await page.selectOption('#decision', 'ready-for-validation');
   await page.locator('#findingsResolved').check();
