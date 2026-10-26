@@ -52,6 +52,7 @@ Use these versioned documents before starting substantial product or UX work:
 - [Product Architecture & Operating Model](docs/HACHARA-PRODUCT-ARCHITECTURE-AND-OPERATING-MODEL-v1.0.md) — logical layers, source-of-truth hierarchy, conceptual data entities, boundaries and quality gates.
 - [Personas & Empathy Maps](docs/HACHARA-PERSONAS-AND-EMPATHY-MAPS-v1.0.md) — provisional personas and empathy maps; hypotheses that must be validated with real learners.
 - [User Journey, Process Flow & Task Flow Maps](docs/HACHARA-USER-JOURNEY-AND-FLOW-MAPS-v1.0.md) — end-to-end learning journey, submission/review/rework/validation flow, task flows and edge cases.
+- [Hands-Off Continuity & Safe Execution Contract](docs/HACHARA-HANDS-OFF-CONTINUITY-AND-SAFE-EXECUTION-v1.0.md) — preservation rules, checkpoints, evidence labels, live status, safe automation boundaries and handoff continuity.
 - [Background Documents & Delivery Accelerator](docs/HACHARA-BACKGROUND-DOCUMENTS-AND-DELIVERY-ACCELERATOR-v1.0.md) — onboarding reading order, task brief template, automation-first process, definition of ready/done and risk register.
 - [Competitor Teardown & Adoption Register](docs/COMPETITOR-TEARDOWN-AND-ADOPTION-REGISTER.md) — public-source competitor findings, adoption ideas and research gaps.
 
