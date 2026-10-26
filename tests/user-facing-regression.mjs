@@ -284,6 +284,8 @@ try {
   for (const id of ['screenshot','prototype','reflection']) await page.locator('#'+id).check();
   await page.getByRole('button', { name: 'Save submission' }).click();
   if (!(await page.locator('#state').innerText()).includes('Submitted')) throw new Error('Studio submission did not reach Submitted state.');
+  await page.reload({ waitUntil: 'networkidle' });
+  if (!(await page.locator('#state').innerText()).includes('Submitted for Review')) throw new Error('Studio did not restore the submitted workflow state after reload.');
   await page.getByRole('link', { name: 'Open Review' }).click();
   await page.waitForLoadState('networkidle');
   if (await page.locator('#content').evaluate(el => el.classList.contains('hidden'))) throw new Error('Review did not load the Studio submission.');
