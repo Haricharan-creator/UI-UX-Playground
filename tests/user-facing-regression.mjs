@@ -349,6 +349,9 @@ try {
   await page.reload({ waitUntil: 'networkidle' });
   if (!(await page.locator('#state').innerText()).includes('Validated')) throw new Error('Studio did not restore the validated workflow state after reload.');
 
+  await page.goto('http://127.0.0.1:4173/capability-evidence.html', { waitUntil: 'networkidle' });
+  if (!(await page.locator('#workflow').innerText()).includes('Human validation confirms the submitted evidence')) throw new Error('Capability Evidence did not display the saved human validation note.');
+
   await page.goto('http://127.0.0.1:4173/progress.html', { waitUntil: 'networkidle' });
   if (!(await page.locator('#validatedCount').innerText()).match(/1/)) throw new Error('Progress did not reflect validated evidence.');
   // A review record for an older submission must not be counted against a newer submission.
