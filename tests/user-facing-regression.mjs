@@ -430,6 +430,8 @@ try {
   if (resubmittedReview?.workflowState !== 'under-review') throw new Error('V2 resubmission did not return to under-review state.');
   if (resubmittedReview?.rework?.status !== 'resubmitted') throw new Error('V2 resubmission history was not preserved.');
   if ((await page.locator('#state').innerText()) !== 'Under Review') throw new Error('Review UI did not show Under Review after V2 resubmission.');
+  if (!(await page.locator('#notice').innerText()).includes('No design file was uploaded')) throw new Error('Review did not clarify that V2 resubmission records a change summary, not an uploaded design file.');
+  if (!(await page.locator('label[for="v2summary"]').innerText()).includes('no file upload')) throw new Error('V2 change summary field does not disclose the no-upload limitation.');
   await page.evaluate(() => { localStorage.removeItem('hacharaReview'); localStorage.removeItem('hacharaStudioSubmission'); });
 
 
