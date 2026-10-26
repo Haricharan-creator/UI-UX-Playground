@@ -310,6 +310,12 @@ try {
   await page.locator('#note').fill('Rework evidence reviewed; findings are resolved for human validation.');
   await page.getByRole('button', { name: 'Move to Validation' }).click();
   if (!(await page.locator('#state').innerText()).includes('Ready for Validation')) throw new Error('Review did not reach Ready for Validation.');
+  // Changing the decision after reaching the validation gate must not leave a stale validation-only click handler attached.
+  await page.locator('#decision').selectOption('rework');
+  if (!(await page.getByRole('button', { name: 'Record Rework & Resubmit' }).count())) throw new Error('Review action did not follow a changed decision.');
+  await page.locator('#decision').selectOption('ready-for-validation');
+  await page.getByRole('button', { name: 'Move to Validation' }).click();
+  if (!(await page.locator('#state').innerText()).includes('Ready for Validation')) throw new Error('Review decision change bypassed the validation gate.');
   await page.locator('#validationNote').fill('Human validation confirms the submitted evidence supports the documented design decision and rework.');
   await page.getByRole('button', { name: 'Validate Evidence' }).click();
   if (!(await page.locator('#state').innerText()).includes('Validated')) throw new Error('Human validation did not reach Validated state.');
